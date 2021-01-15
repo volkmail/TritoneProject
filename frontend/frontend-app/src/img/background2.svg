@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="66.832 0.619 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <filter id="gaussian-blur-filter-0" color-interpolation-filters="sRGB" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="gaussian-blur 1 7.8">
+      <feGaussianBlur stdDeviation="7.8 7.8" edgeMode="none"/>
+    </filter>
+    <filter id="drop-shadow-filter-0" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="drop-shadow 1 10 10 5 0.69 rgba(0,0,0,0.3)">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="10" dy="10"/>
+      <feComponentTransfer result="offsetblur">
+        <feFuncA id="spread-ctrl" type="linear" slope="1.38"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.3)" x="10" y="10"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="66.832" y="0.55" width="500.619" height="501.238" style="paint-order: fill; fill: rgba(92, 196, 0, 0.25); filter: url(#gaussian-blur-filter-0);"/>
+  <polyline style="stroke: rgba(0, 124, 6, 0.84); fill: rgba(0, 142, 19, 0.32); filter: url(#drop-shadow-filter-0);" points="148.515 163.298 243.812 128.644 133.045 127.406 181.931 219.609 203.589 111.317 245.05 197.951"/>
+  <polyline style="stroke: rgba(0, 124, 6, 0.84); fill: rgba(0, 142, 19, 0.32); filter: url(#drop-shadow-filter-0);" points="215.347 326.664 454.208 210.946 536.51 427.53 259.901 254.263 324.257 462.184 537.129 216.515"/>
+  <polyline style="stroke: rgba(0, 124, 6, 0.84); fill: rgba(0, 142, 19, 0.32); filter: url(#drop-shadow-filter-0);" points="297.649 195.476 517.327 124.312 148.515 445.476 87.871 180.006 452.352 462.184 293.936 76.664"/>
+</svg>

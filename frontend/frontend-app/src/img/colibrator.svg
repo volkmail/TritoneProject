@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="svg3023" viewBox="15.403 36.405 117.736 63.011" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <view id="view-1">
+      <title>View 1</title>
+    </view>
+  </defs>
+  <title>Demo - Pendrive</title>
+  <desc>Source: openclipart.org/detail/74809</desc>
+  <g transform="matrix(0, 0.506361, -0.488587, 0, 593.179932, 441.360565)" style="">
+    <path style="stroke: rgb(0, 0, 0); stroke-width: 4.02031px; fill: rgb(255, 255, 255);" d="M -750.81 967.098 L -787.075 982.892 L -723.609 1010.536 L -687.34 994.739 L -750.81 967.098 Z"/>
+    <path style="stroke: rgb(0, 0, 0); stroke-width: 4.02031px; fill: rgb(255, 255, 255);" d="M -723.609 1168.487 L -723.609 1010.533 L -787.075 982.892 L -787.075 1140.846 L -723.609 1168.487 Z"/>
+    <path style="stroke: rgb(0, 0, 0); stroke-width: 4.02031px; fill: rgb(255, 255, 255);" d="M -723.609 1168.487 L -723.609 1010.533 L -687.343 994.738 L -687.343 1152.692 L -723.609 1168.487 Z"/>
+  </g>
+  <line style="stroke-width: 2px; stroke: rgb(0, 0, 0);" x1="36.406059858963616" y1="64.25511372271669" x2="42.00699214495802" y2="48.852549936232066"/>
+  <line style="stroke-width: 2px; stroke: rgb(0, 0, 0);" x1="42.00699214495802" y1="48.852549936232066" x2="98.01631500490204" y2="48.852549936232066"/>
+  <line style="stroke-width: 2px; stroke: rgb(0, 0, 0);" x1="98.01631500490204" y1="48.852549936232066" x2="91.015" y2="64.255"/>
+</svg>

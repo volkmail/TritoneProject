@@ -1,0 +1,41 @@
+.header_container{
+    position: absolute;
+    margin-top: 0.4vh;
+    z-index: 1;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F6F6F6;
+    box-shadow: 0 0.25vh 1.5vh rgba(0, 0, 0, 0.5);
+    height: 8vh;
+    width: 100vw;
+    border: 0 transparent;
+    border-radius: 15px;
+}
+
+.logo, .logo>a>img{
+    max-width: 11vw;
+    max-height: 8vh;
+    min-width: 5.5vw;
+    min-height: 4vh;
+}
+
+.logo_title{
+    max-width: 60vw;
+    max-height: 6vh;
+    min-width: 30vw;
+    min-height: 4vh;
+    background-color: transparent;
+}
+
+.menu{
+    margin-right: 0.5vw;
+}
+
+.menu>a{
+    text-decoration: none;
+}

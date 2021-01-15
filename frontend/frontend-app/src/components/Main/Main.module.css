@@ -1,0 +1,43 @@
+.main{
+    background-image: url(../../img/background2.svg);
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main>a{
+    text-decoration: none;
+}
+
+.main_intro{
+    max-width: 40vw;
+    min-width: 10vw;
+    background-color: rgba(235, 235, 235, 0.85);
+    box-shadow: 0 0.25vh 2.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 30px;
+    padding: 3.5vh;
+}
+
+.button_start{
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: #000;
+    background-color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    padding: 1vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.button_start:hover {
+    background-color: #99ff99;
+    transform: scale(1.1);
+}

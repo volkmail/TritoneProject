@@ -1,0 +1,16 @@
+.article_text2>table{
+    width: 65vw;
+    margin:0 0 0 1vw;
+}
+
+.article_text2>table tr td{
+    padding:0.5vw;
+}
+
+.table_first_column{
+    text-align: start;
+}
+
+.table_third_column{
+    text-align: center;
+}
