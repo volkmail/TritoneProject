@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../index.css'
 import style from  './ArticleList.module.css';
 
 const ArticleList = (props) => {

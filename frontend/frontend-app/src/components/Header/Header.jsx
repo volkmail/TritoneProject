@@ -1,8 +1,7 @@
 import React from "react";
 import style from "./Header.module.css";
-import "../../index.css";
-import logoImg from "../../img/triton_logo.svg";
 import {NavLink} from "react-router-dom";
+import logoImg from "../../assets/img/triton_logo.svg";
 
 const Header = (props) => {
     return (
@@ -17,7 +16,9 @@ const Header = (props) => {
                     <p className="font_bold-center">Анализатор спектра цифровой интегрирующий<br/>"Тритон"</p>
                 </div>
                 <div className={style.menu}>
-                    <NavLink id="help" className="button_classic" to={"/help"}>Справочник</NavLink>
+                    <NavLink id="help" className="button_classic" to={"/help"}>
+                        Справочник
+                    </NavLink>
                 </div>
             </div>
         </div>

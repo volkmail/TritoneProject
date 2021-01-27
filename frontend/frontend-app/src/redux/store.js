@@ -1,8 +1,10 @@
 import {combineReducers, createStore} from "redux";
-import helpReducer from "./help-reducer";
+import helpReducer from "./reducers/help-reducer";
+import diagramReducer from "./reducers/diagramElements-reducer";
 
 let reducers = combineReducers({
-    helpPage: helpReducer
+    helpPage: helpReducer,
+    diagramPage: diagramReducer
 });
 
 let store = createStore(reducers);

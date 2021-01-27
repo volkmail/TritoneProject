@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Main.module.css";
+import {NavLink} from "react-router-dom";
 
 const Main = (props) => {
     return(
@@ -8,12 +9,12 @@ const Main = (props) => {
                 <p className="font_usual-center">Добро пожаловать!
                     Мы рады приветсвовать вас.
                     Данный демонстрационный стенд создан
-                    для ознакомления с принципом работы и получания опыта использования
+                    для ознакомления с принципом работы и получения опыта использования
                     цифрового интегрирующего анализатора спекта "Тритон".
                     Для того, чтобы приступить к ознакомлению необходимо нажать кнопку "Начать выполнение рабты".
                     </p>
             </div>
-                <a className={style.button_start}>Начать выполнение работы</a>
+                <NavLink to={'/testing/diagram'} className={style.button_start}>Начать выполнение работы</NavLink>
         </div>
     )
 };
