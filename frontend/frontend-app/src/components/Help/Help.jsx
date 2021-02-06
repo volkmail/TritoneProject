@@ -3,8 +3,12 @@ import style from "./Help.module.css";
 import ArticleList from "./HelpArticleList/ArticleList";
 import GeneralArticle from "./HelpArticles/GeneralArticle";
 import EquipmentArticle from "./HelpArticles/EquipmentArticle";
+import {useSelector} from "react-redux";
+import {GetArticleId} from "../../redux/selectors/help-selector";
 
 const Help = (props) => {
+
+    const currentArticleId = useSelector(GetArticleId)
 
     let ChoiceArticle = (id) =>{
         switch (id){
@@ -23,7 +27,7 @@ const Help = (props) => {
             <div className={style.info_block}>
                 <ArticleList choiceArticle = {props.choiceArticle}/>
                 <div className={style.info_block_article_text}>
-                    {ChoiceArticle(props.currentArticleId)}
+                    {ChoiceArticle(currentArticleId)}
                 </div>
             </div>
         </div>

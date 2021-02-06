@@ -1,4 +1,5 @@
-import {combineReducers, createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
 import helpReducer from "./reducers/help-reducer";
 import diagramReducer from "./reducers/diagramElements-reducer";
 
@@ -7,7 +8,7 @@ let reducers = combineReducers({
     diagramPage: diagramReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunk));
 
 window.store = store;
 

@@ -8,9 +8,8 @@ import ReactFlow, {
 
 import style from './DiagramConstructor.module.css';
 import ElementsList from "./ElementsList/ElementsList.jsx";
-import PC from "../../assets/img/PC.svg";
 
-const DiagramConstructor = (props) => {
+const DiagramConstructor = () => {
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [elements, setElements] = useState([]);
@@ -41,7 +40,8 @@ const DiagramConstructor = (props) => {
         event.preventDefault();
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
         const name = event.dataTransfer.getData('application/reactflow');
-        const id = event.dataTransfer.getData('text/plain');
+        const [id, image] = event.dataTransfer.getData('text/plain').split('|');
+        debugger;
         const position = reactFlowInstance.project({
             x: event.clientX - reactFlowBounds.left,
             y: event.clientY - reactFlowBounds.top,
@@ -50,14 +50,14 @@ const DiagramConstructor = (props) => {
             id: id,
             type: 'special',
             position,
-            data: {label: `${name}`, img: PC},
+            data: {label: `${name}`, img: image},
         };
         setElements((es) => es.concat(newNode));
     };
 
     return (
         <div className={style.constructor_container}>
-            <ElementsList elementsOnList={props.elementsOnList} fieldElementAdd={props.FieldElementAdd}/>
+            <ElementsList />
             <div className={style.constructor_elements}>
                 <div id="schema_field" className={style.constructor_field}>
                     <ReactFlowProvider>

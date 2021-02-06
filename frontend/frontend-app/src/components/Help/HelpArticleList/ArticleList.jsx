@@ -1,10 +1,14 @@
 import React from 'react';
 import style from  './ArticleList.module.css';
+import {useDispatch} from "react-redux";
+import {choiceArticle} from "../../../redux/reducers/help-reducer";
 
-const ArticleList = (props) => {
+const ArticleList = () => {
+
+    const dispatchArticleId = useDispatch()
 
     let onChoiceArticle =  (event) =>{
-        props.choiceArticle(parseInt(event.target.id));
+        dispatchArticleId(choiceArticle(parseInt(event.target.id)));
     }
 
     return(
