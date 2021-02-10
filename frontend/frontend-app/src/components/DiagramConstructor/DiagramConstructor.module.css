@@ -71,6 +71,7 @@
     min-width: 6vw;
     max-width: 6vw;
     height: 7vh;
+    padding: 4vh 0;
 
     border: 0.5px solid #50aa5f;
     background-color: #e7ffeaef;
@@ -83,9 +84,14 @@
     max-height: 6vh;
 }
 
-.element_on_field:hover,
-.element_on_field:focus{
+.element_on_field:hover{
     border: 0.5px solid #3a7a45;
     background-color: #a1faacef;
     border-radius: 15px;
+}
+
+.element_on_field:focus {
+    background-color: #a1faacef;
+    outline-style: none;
+    box-shadow: 0 0 8px #3a7a45;
 }

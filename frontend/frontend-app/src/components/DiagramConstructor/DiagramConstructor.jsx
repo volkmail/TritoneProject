@@ -20,7 +20,6 @@ const DiagramConstructor = () => {
             type: 'default',
             animated: true,
             style: {stroke: 'black', strokeWidth: '1.75'},
-            arrowHeadType: 'arrow'
         };
         setElements((els) => addEdge(paramsCopy, els));
     };
@@ -39,8 +38,7 @@ const DiagramConstructor = () => {
     const onDrop = (event) => {
         event.preventDefault();
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-        const name = event.dataTransfer.getData('application/reactflow');
-        const [id, image] = event.dataTransfer.getData('text/plain').split('|');
+        const [id, image, name] = event.dataTransfer.getData('text/plain').split('|');
         debugger;
         const position = reactFlowInstance.project({
             x: event.clientX - reactFlowBounds.left,
@@ -91,7 +89,7 @@ const DiagramConstructor = () => {
 
 const CustomNodeComponent = ({data}) => {
     return (
-        <div className={style.element_on_field} data-title={data.label}>
+        <div className={style.element_on_field} data-title={data.label} tabIndex={0}>
             <img src={data.img} style={{pointerEvents: 'none'}}/>
             <Handle
                 type="source"

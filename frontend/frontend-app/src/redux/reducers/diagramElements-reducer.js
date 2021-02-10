@@ -19,16 +19,20 @@ const diagramReducer = (state = initial_state, action) => {
 }
 
 //ActionCreators
-export const getElements = (elements) => {
+const getElements = (elements) => {
     return {
         type: GET_ELEMENTS,
         elements
     }
 }
 
-export const getDiagramElements = () => async (dispatch) => {
+//ThunkCreators
+const getDiagramElements = () => async (dispatch) => {
     const response = await TestingAPI.GetDiagramElements();
-    dispatch(getElements(response));
+    dispatch(getElements(response.data.elements));
 }
 
-export default diagramReducer;
+export{
+    diagramReducer,
+    getDiagramElements
+}

@@ -13,23 +13,27 @@ const ElementsList = () =>{
     },[dispatchGetElements])
 
     const onDragStart = (event) => {
-        event.dataTransfer.setData('application/reactflow', event.currentTarget.dataset.title);
-        event.dataTransfer.setData('text/plain', `${parseInt(event.currentTarget.id)}|${event.target.src}`);
+        event.dataTransfer.setData('text/plain',
+            `${event.currentTarget.id}|
+            ${event.currentTarget.firstChild.currentSrc || event.target.src}|
+            ${event.currentTarget.dataset.title}`);
         event.dataTransfer.effectAllowed = 'move';
     };
+
     return(
         <div className={style.elements_list_container}>
             <div className={style.elements_list_title}>
                 <p className="font_usual-center">Содержимое комплекта</p>
             </div>
-            <div id="elements" className={style.elements_list}>
-                {elements && elements.length >= 1 && elements.map(el =>
-                    <div id={el.element_id} className={style.element} data-title={el.element_name}
-                         onDragStart={(event) => onDragStart(event)} draggable
-                         key={el.elementId}>
-                        <img src={el.element_image} alt={el.elementId}/>
-                    </div>)}
-            </div>
+                <div id="elements" className={style.elements_list}>
+                    {(elements && elements.length >= 1) ? elements.map(el =>
+                        <div id={el.element_id} className={style.element} data-title={el.element_name}
+                             onDragStart={(event) => onDragStart(event)} draggable
+                             key={el.elementId}>
+                            <img src={el.element_image} alt={el.elementId}/>
+                        </div>):
+                    <div>Loading...</div>}
+                </div>
         </div>
     );
 }

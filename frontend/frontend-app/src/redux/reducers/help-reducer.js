@@ -17,11 +17,14 @@ const helpReducer = (state = initial_state, action) => {
 }
 
 //ActionCreators
-export const choiceArticle = (articleId) => {
+const choiceArticle = (articleId) => {
     return {
         type: CHOICE_ARTICLE,
         articleId: articleId
     }
 }
 
-export default helpReducer;
+export{
+    helpReducer,
+    choiceArticle
+}
