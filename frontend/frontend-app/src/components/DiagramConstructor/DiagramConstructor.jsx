@@ -8,20 +8,31 @@ import ReactFlow, {
 
 import style from './DiagramConstructor.module.css';
 import ElementsList from "./ElementsList/ElementsList.jsx";
+import {useDispatch} from "react-redux";
+import {PopElement} from "../../redux/ActionCreators/DiagramActionCreators";
 
 const DiagramConstructor = () => {
     const reactFlowWrapper = useRef(null);
     const [reactFlowInstance, setReactFlowInstance] = useState(null);
     const [elements, setElements] = useState([]);
+    const [rightElements, setRightElements] = useState([]);
+    const dispatchPopElement = useDispatch();
 
     const onConnect = (params) => {
         let paramsCopy = {
             ...params,
+            id: `${params.source}${params.sourceHandle}-${params.target}${params.targetHandle}`,
             type: 'default',
             animated: true,
             style: {stroke: 'black', strokeWidth: '1.75'},
         };
+
+        setRightElements((relem) => relem ? console.log(relem): console.log("lol"));
+        //     relem.push({id: paramsCopy.id, source: paramsCopy.id.split('-')[0],
+        // target: paramsCopy.id.split('-')[1]})));
+
         setElements((els) => addEdge(paramsCopy, els));
+        console.log(elements);
     };
 
     const onElementsRemove = (elementsToRemove) =>
@@ -39,7 +50,6 @@ const DiagramConstructor = () => {
         event.preventDefault();
         const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
         const [id, image, name] = event.dataTransfer.getData('text/plain').split('|');
-        debugger;
         const position = reactFlowInstance.project({
             x: event.clientX - reactFlowBounds.left,
             y: event.clientY - reactFlowBounds.top,
@@ -51,6 +61,7 @@ const DiagramConstructor = () => {
             data: {label: `${name}`, img: image},
         };
         setElements((es) => es.concat(newNode));
+        dispatchPopElement(PopElement(parseInt(id)));
     };
 
     return (
@@ -76,11 +87,11 @@ const DiagramConstructor = () => {
                     </ReactFlowProvider>
                 </div>
                 <div className={style.constructor_remote_elements}>
-                    <a id="history_back" className="button_classic" href="#">back</a>
-                    <a id="history_forward" className="button_classic" href="#">forward</a>
-                    <a id="delete_object" className="button_classic" href="#">Удалить элемент</a>
-                    <a id="schema_check" className="button_classic" href="#">Проверить</a>
-                    <a id="con" className="button_classic" href="#">Соединить</a>
+                    <button id="history_back" className="button_classic">back</button>
+                    <button id="history_forward" className="button_classic">forward</button>
+                    <button id="delete_object" className="button_classic">Удалить элемент</button>
+                    <button id="schema_check" className="button_classic">Проверить</button>
+                    <button id="con" className="button_classic">Соединить</button>
                 </div>
             </div>
         </div>
@@ -90,17 +101,17 @@ const DiagramConstructor = () => {
 const CustomNodeComponent = ({data}) => {
     return (
         <div className={style.element_on_field} data-title={data.label} tabIndex={0}>
-            <img src={data.img} style={{pointerEvents: 'none'}}/>
+            <img src={data.img} style={{pointerEvents: 'none'}} alt={data.label}/>
             <Handle
                 type="source"
                 position="left"
-                style={{borderRadius: '10px', width: '12px', height: '12px', backgroundColor: 'rgb(39, 205, 6)'}}
+                style={{borderRadius: '10px', width: '12px', height: '12px', backgroundColor: 'rgb(0, 255, 127)'}}
                 id="a"/>
             <Handle
                 type="source"
                 position="right"
                 id="b"
-                style={{borderRadius: '10px', width: '12px', height: '12px', backgroundColor: 'rgb(39, 205, 6)'}}
+                style={{borderRadius: '10px', width: '12px', height: '12px', backgroundColor: 'rgb(0, 255, 127)'}}
             />
             <Handle
                 type="target"

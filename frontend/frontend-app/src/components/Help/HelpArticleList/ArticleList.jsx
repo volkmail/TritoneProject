@@ -1,7 +1,7 @@
 import React from 'react';
 import style from  './ArticleList.module.css';
 import {useDispatch} from "react-redux";
-import {choiceArticle} from "../../../redux/reducers/help-reducer";
+import {choiceArticle} from "../../../redux/ActionCreators/HelpActionCreators";
 
 const ArticleList = () => {
 

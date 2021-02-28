@@ -3,13 +3,22 @@ import thunk from "redux-thunk";
 import {helpReducer} from "./reducers/help-reducer";
 import {diagramReducer} from "./reducers/diagramElements-reducer";
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     helpPage: helpReducer,
     diagramPage: diagramReducer
 });
 
-let store = createStore(reducers, applyMiddleware(thunk));
+type AppStateType = ReturnType<typeof rootReducer>;
 
-window.store = store;
+let store = createStore(rootReducer, applyMiddleware(thunk));
 
-export default store;
+// @ts-ignore
+window.__store__ = store;
+
+export {
+    store
+}
+
+export type{
+    AppStateType
+}

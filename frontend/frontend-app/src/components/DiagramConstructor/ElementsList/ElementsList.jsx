@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import style from './ElementsList.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {getDiagramElements} from "../../../redux/reducers/diagramElements-reducer";
+import {GetListElements} from "../../../redux/selectors/diagram-selector";
 
 const ElementsList = () =>{
 
-    const elements = useSelector(state => state.diagramPage.elements)
+    const elements = useSelector(GetListElements)
     const dispatchGetElements = useDispatch()
 
     useEffect(()=> {

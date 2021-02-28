@@ -3,7 +3,7 @@ import style from "./Header.module.css";
 import {NavLink} from "react-router-dom";
 import logoImg from "../../assets/img/triton_logo.svg";
 
-const Header = (props) => {
+const Header = () => {
     return (
         <div className={style.header_container}>
             <div className={style.header}>

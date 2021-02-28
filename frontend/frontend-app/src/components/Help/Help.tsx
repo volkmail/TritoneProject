@@ -6,11 +6,15 @@ import EquipmentArticle from "./HelpArticles/EquipmentArticle";
 import {useSelector} from "react-redux";
 import {GetArticleId} from "../../redux/selectors/help-selector";
 
-const Help = (props) => {
+type HelpPropsType = {
+    lol: string
+}
+
+const Help: React.FC<HelpPropsType> = (props: HelpPropsType) => {
 
     const currentArticleId = useSelector(GetArticleId)
 
-    let ChoiceArticle = (id) =>{
+    let ChoiceArticle = (id: number): any =>{
         switch (id){
             case 1: return <GeneralArticle/>;
             case 2: return <EquipmentArticle/>;
@@ -25,7 +29,7 @@ const Help = (props) => {
                 <p className="font_bold-center">Справочные материалы</p>
             </div>
             <div className={style.info_block}>
-                <ArticleList choiceArticle = {props.choiceArticle}/>
+                <ArticleList/>
                 <div className={style.info_block_article_text}>
                     {ChoiceArticle(currentArticleId)}
                 </div>

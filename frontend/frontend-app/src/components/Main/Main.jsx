@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Main.module.css";
 import {NavLink} from "react-router-dom";
 
-const Main = (props) => {
+const Main = () => {
     return(
         <div className={style.main}>
             <div className={style.main_intro}>
