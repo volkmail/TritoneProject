@@ -1,5 +1,5 @@
 import {ThunkAction} from "redux-thunk";
-import {TestingAPI} from "../../api/api";
+import {TestingAPI} from "../../api/testingApi";
 import {AppStateType} from "../store";
 import {Dispatch} from "react";
 import {DiagramElementType} from "../../types/generalTypes";
@@ -21,14 +21,14 @@ const diagramReducer = (state: DiagramInitialStateType = initialState, action: D
                 ...state,
                 listElements: [...action.elements],
             }
-        case "POP_DIAGRAM_ELEMENT":
-            let popIndex = state.listElements.findIndex(elem => elem.element_id === action.elementId)
+        case "DELETE_DIAGRAM_ELEMENT_IN_LIST":
+            let popIndex = state.listElements.findIndex(elem => elem.elementId === action.elementId)
             let newElementsArray = [...state.listElements];
             newElementsArray.splice(popIndex, 1);
-
             return {
                 ...state,
-                listElements: [...newElementsArray]
+                listElements: [...newElementsArray],
+                filedElements: [...state.filedElements, state.listElements[popIndex]]
             }
         case "DELETE_DIAGRAM_ELEMENT_ON_FIELD":
             return {
@@ -43,8 +43,8 @@ const diagramReducer = (state: DiagramInitialStateType = initialState, action: D
 const getDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
         const responseData = await TestingAPI.GetDiagramElements();
-        if (responseData && responseData.ResultCode === DataResponseCodesTypes.Success)
-            dispatch(GetElements(responseData.data.elements));
+        if (responseData && responseData.resultCode === DataResponseCodesTypes.Success)
+            dispatch(GetElements(responseData.data));
     }
 
 export {

@@ -1,7 +1,7 @@
 type DiagramElementType = {
-    element_id: number,
-    element_name: string,
-    element_image: string
+    elementId: number,
+    elementName: string,
+    elementImageSrc: string
 }
 
 export type {

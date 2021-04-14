@@ -1,13 +1,13 @@
 import React from 'react';
 import style from './EquipmentArticle.module.css';
 
-const EquipmentArticle = (props) => {
+const EquipmentArticle = () => {
     return (
         <div className={style.article_text2}>
-            <table border="1">
+            <table border={1}>
                 <caption style={{marginBottom: "1vh"}}><b>Состав базового комплекта изделия "Тритон" и его
                     дополнительные опции</b></caption>
-                <tr>
+                <tr >
                     <th style={{textAlign:"center"}}>Наименование</th>
                     <th style={{textAlign:"center"}}>Тип, модель</th>
                     <th style={{textAlign:"center"}}>Количество, шт.</th>
@@ -15,7 +15,7 @@ const EquipmentArticle = (props) => {
                 <tr>
                     <td className={style.table_first_column}>1 Блок согласования и преобразования</td>
                     <td>БСП<br/>МСШЕ.421711.001</td>
-                    <td className="table_third_column">1 комплект</td>
+                    <td className={style.table_third_column}>1 комплект</td>
                 </tr>
                 <tr>
                     <td className={style.table_first_column}>2 Персональная ЭВМ</td>
@@ -99,7 +99,7 @@ const EquipmentArticle = (props) => {
                     <td className={style.table_third_column}>1 комплект</td>
                 </tr>
                 <tr>
-                    <td colSpan="3" style={{textAlign: "center"}}><b>Дополнительные опции</b></td>
+                    <td colSpan={3} style={{textAlign: "center"}}><b>Дополнительные опции</b></td>
                 </tr>
                 <tr>
                     <td className={style.table_first_column}>11 Источник калиброванного звукового<br/>

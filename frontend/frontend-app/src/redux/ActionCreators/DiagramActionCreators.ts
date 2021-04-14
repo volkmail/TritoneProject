@@ -9,7 +9,7 @@ const GetElements = (elements: Array<DiagramElementType>) => {
 
 const PopElement = (elementId: number) => {
     return {
-        type: "POP_DIAGRAM_ELEMENT",
+        type: "DELETE_DIAGRAM_ELEMENT_IN_LIST",
         elementId
     } as const
 }

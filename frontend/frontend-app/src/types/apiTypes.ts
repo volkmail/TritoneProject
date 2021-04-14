@@ -10,10 +10,8 @@ enum ConnectionResponseCodesTypes{
 }
 
 type ResponseDiagramElementsType = {
-    data: {
-        elements: Array<DiagramElementType>
-    }
-    ResultCode: DataResponseCodesTypes
+    data: Array<DiagramElementType>
+    resultCode: DataResponseCodesTypes
 }
 
 export type {

@@ -1,16 +1,12 @@
 import React from "react";
 import style from "./Help.module.css";
-import ArticleList from "./HelpArticleList/ArticleList";
 import GeneralArticle from "./HelpArticles/GeneralArticle";
 import EquipmentArticle from "./HelpArticles/EquipmentArticle";
 import {useSelector} from "react-redux";
 import {GetArticleId} from "../../redux/selectors/help-selector";
+import ArticleList from "./HelpArticleList/ArticleList";
 
-type HelpPropsType = {
-    lol: string
-}
-
-const Help: React.FC<HelpPropsType> = (props: HelpPropsType) => {
+const Help = () => {
 
     const currentArticleId = useSelector(GetArticleId)
 
