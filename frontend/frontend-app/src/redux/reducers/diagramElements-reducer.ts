@@ -39,17 +39,8 @@ const diagramReducer = (state: DiagramInitialStateType = initialState, action: D
     }
 }
 
-//ThunkCreators
-const getDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
-    async (dispatch: Dispatch<DiagramActionTypes>) => {
-        const responseData = await TestingAPI.GetDiagramElements();
-        if (responseData && responseData.resultCode === DataResponseCodesTypes.Success)
-            dispatch(GetElements(responseData.data));
-    }
-
 export {
     diagramReducer,
-    getDiagramElements,
 }
 
 export type{

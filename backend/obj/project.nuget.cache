@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dsnBiI2QRadqVBR9qXzZDltLJmx++rz9kdHeFKt5Z6Y9FCzZU4AL9z4zfHenR0sWtAN1CP7igYsdigfdK2uodw==",
+  "dgSpecHash": "awGZs9BoYGZ5gd8VC/I6jV8FDTZP62xYO4wJjY1XYYF8YgqH8PHt1/DKKNcXBh9k8mLDKzV6m2X9jjpIsUEIQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\TritonBackend.csproj",
+  "projectFilePath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aleksey\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Aleksey\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.13\\microsoft.aspnetcore.authentication.jwtbearer.3.1.13.nupkg.sha512",

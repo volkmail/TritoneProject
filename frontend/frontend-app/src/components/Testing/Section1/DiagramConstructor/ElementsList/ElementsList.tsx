@@ -1,8 +1,8 @@
 import React, {useEffect, DragEvent} from 'react';
 import style from './ElementsList.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import {getDiagramElements} from "../../../../../redux/reducers/diagramElements-reducer";
 import {GetListElements} from "../../../../../redux/selectors/diagram-selector";
+import {getDiagramElements} from "../../../../../redux/ThunkCreators/DiagramThunks";
 
 const ElementsList = () =>{
 

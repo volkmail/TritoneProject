@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\TritonBackend.csproj": {}
+    "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\TritonBackend.csproj": {
+    "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\TritonBackend.csproj",
+        "projectUniqueName": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj",
         "projectName": "TritonBackend",
-        "projectPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\TritonBackend.csproj",
+        "projectPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj",
         "packagesPath": "C:\\Users\\Aleksey\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritonBackAsp\\TritonBackend\\obj\\",
+        "outputPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

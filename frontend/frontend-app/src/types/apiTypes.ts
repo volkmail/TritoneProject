@@ -5,8 +5,9 @@ enum DataResponseCodesTypes {
     Error = 1
 }
 
-enum ConnectionResponseCodesTypes{
-    ConnectionSuccess = 200
+enum ServerResponseCodesTypes{
+    Ok = 200,
+    Unauthorized = 401
 }
 
 type ResponseDiagramElementsType = {
@@ -20,5 +21,5 @@ export type {
 
 export {
     DataResponseCodesTypes,
-    ConnectionResponseCodesTypes
+    ServerResponseCodesTypes
 }

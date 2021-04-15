@@ -11,7 +11,7 @@ const Help = React.lazy(()=>import ('./components/Help/Help'));
 
 const App = () => {
     return (
-        <div>
+        <>
             <Auth/>
             {/*<Header/>*/}
             {/*<Switch>*/}
@@ -21,7 +21,7 @@ const App = () => {
             {/*    <Route exact path="/testing" render={() => <Testing/>}/>*/}
             {/*    <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>*/}
             {/*</Switch>*/}
-        </div>
+        </>
     );
 }
 
