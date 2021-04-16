@@ -37,7 +37,7 @@ namespace TritonBackend.Controllers
             }
             else
             {
-                return Unauthorized();
+                return Ok(new { errorMessage = "Введен неправильный логин или пароль"});
             }
         }
 
@@ -47,6 +47,8 @@ namespace TritonBackend.Controllers
             SymmetricSecurityKey securityKey = authParams.GetSymmetricSecurityKey();
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+            string userRole = context.Roles.Single(r => r.RoleId == user.RoleId).RoleName;
+
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
@@ -54,7 +56,7 @@ namespace TritonBackend.Controllers
                 new Claim("surname", user.Surname),
                 new Claim("patronymic", user.Patronymic),
                 new Claim("login", user.Login),
-                new Claim("role", user.RoleId.ToString())
+                new Claim("role", userRole)
             };
 
             JwtSecurityToken token = new JwtSecurityToken(authParams.Issuer,

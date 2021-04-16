@@ -6,21 +6,29 @@ import DiagramConstructor from "./components/Testing/Section1/DiagramConstructor
 import {withSuspense} from "./hoc/withSuspense";
 import Testing from "./components/Testing/Testing";
 import Auth from "./components/Auth/Auth";
+import {useSelector} from "react-redux";
+import {GetUserInfo} from "./redux/selectors/user-selector";
 
 const Help = React.lazy(()=>import ('./components/Help/Help'));
 
 const App = () => {
+    const userInfo = useSelector(GetUserInfo);
     return (
         <>
-            <Auth/>
-            {/*<Header/>*/}
-            {/*<Switch>*/}
-            {/*    <Route exact path="/" render={() => <Redirect to={'/home'}/>}/>*/}
-            {/*    <Route path='/home' render={() => <Main/>}/>*/}
-            {/*    <Route path="/help" render={withSuspense(Help)}/>*/}
-            {/*    <Route exact path="/testing" render={() => <Testing/>}/>*/}
-            {/*    <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>*/}
-            {/*</Switch>*/}
+            {userInfo
+                ?<>
+                <Header/>
+                    <Switch>
+                        <Route exact path="/" render={() => <Redirect to={'/home'}/>}/>
+                        <Route path='/home' render={() => <Main/>}/>
+                        <Route path="/help" render={withSuspense(Help)}/>
+                        <Route exact path="/testing" render={() => <Testing/>}/>
+                        <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>
+                    </Switch>
+                </>
+                :<Auth/>}
+
+
         </>
     );
 }

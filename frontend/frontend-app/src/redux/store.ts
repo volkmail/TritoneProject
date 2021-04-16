@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import {helpReducer} from "./reducers/help-reducer";
 import {diagramReducer} from "./reducers/diagramElements-reducer";
 import {appDataReducer} from "./reducers/appData-reducer";
+import {userReducer} from "./reducers/user-reducer";
 
 let rootReducer = combineReducers({
     helpPage: helpReducer,
     diagramPage: diagramReducer,
-    appData: appDataReducer
+    appData: appDataReducer,
+    userData: userReducer
 });
 
 type AppStateType = ReturnType<typeof rootReducer>;

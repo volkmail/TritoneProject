@@ -10,16 +10,22 @@ enum ServerResponseCodesTypes{
     Unauthorized = 401
 }
 
+type ResponseAuthDataType = {
+    accessToken?:string
+    errorMessage?: string
+}
+
 type ResponseDiagramElementsType = {
     data: Array<DiagramElementType>
     resultCode: DataResponseCodesTypes
 }
 
 export type {
-    ResponseDiagramElementsType
+    ResponseDiagramElementsType,
+    ResponseAuthDataType
 }
 
 export {
     DataResponseCodesTypes,
-    ServerResponseCodesTypes
+    ServerResponseCodesTypes,
 }

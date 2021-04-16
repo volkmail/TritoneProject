@@ -1,11 +1,5 @@
-import {ThunkAction} from "redux-thunk";
-import {TestingAPI} from "../../api/testingApi";
-import {AppStateType} from "../store";
-import {Dispatch} from "react";
 import {DiagramElementType} from "../../types/generalTypes";
-import {GetElements} from "../ActionCreators/DiagramActionCreators";
 import {DiagramActionTypes} from "../../types/actionsTypes";
-import {DataResponseCodesTypes} from "../../types/apiTypes";
 
 type DiagramInitialStateType = typeof initialState;
 
