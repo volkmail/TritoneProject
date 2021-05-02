@@ -20,25 +20,33 @@
     letter-spacing: 1px;
     background-color: rgba(235, 235, 235, 0.85);
     z-index: 2;
+    max-height: 90vh;
+    max-width: 70vw;
     font-size: 1.1rem;
 }
 
 .form>p{
-    margin: 1vh 0;
+    margin: 2vh 0;
     font-size: 1.3rem;
 }
 
-.form>a{
-    text-decoration: underline;
-    color: black;
-    margin: 1.5vh;
-    font-size: 0.75rem;
-    transition: 0.4s ease-in-out;
+.form>button{
+    margin: 2vh 0;
 }
 
-.form>a:hover{
-    text-decoration: underline;
-    color: #089101;
+.horizontalGroup{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1vh;
+}
+
+.horizontalGroup_group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .inputGroup {
@@ -88,8 +96,23 @@
 
 .inputGroup__errorVisible{
     position: absolute;
-    bottom: -0.25vh;
-    right: 10vw;
+    bottom: 0vh;
+    right: 0vw;
     color: red;
     font-size: 0.75rem;
+    width: 20vw;
+}
+
+.inputSelectionGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 19vw;
+}
+
+.inputSelectionGroup>select{
+    border-radius: 15px;
+    width: 8vw;
+    padding: 2px;
 }

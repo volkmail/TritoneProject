@@ -8,6 +8,12 @@ type UserData = {
     role: string
 }
 
+type GroupType = {
+    groupName: string,
+    groupId: string
+}
+
 export type {
-    UserData
+    UserData,
+    GroupType
 }

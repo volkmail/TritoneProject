@@ -2,7 +2,7 @@ import React, {useEffect, DragEvent} from 'react';
 import style from './ElementsList.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import {GetListElements} from "../../../../../redux/selectors/diagram-selector";
-import {getDiagramElements} from "../../../../../redux/ThunkCreators/DiagramThunks";
+import {GetDiagramElements} from "../../../../../redux/ThunkCreators/testingThunks";
 
 const ElementsList = () =>{
 
@@ -10,14 +10,12 @@ const ElementsList = () =>{
     const dispatchGetElements = useDispatch()
 
     useEffect(()=> {
-        dispatchGetElements(getDiagramElements())
+        dispatchGetElements(GetDiagramElements())
     },[dispatchGetElements])
 
     const onDragStart = (event: DragEvent<HTMLDivElement>) => {
         event.dataTransfer.setData('text/plain',
-            `${event.currentTarget.id}
-            |${(event.currentTarget.firstChild as HTMLImageElement).src}
-            |${event.currentTarget.dataset.title}`)
+            `${event.currentTarget.id}|${(event.currentTarget.firstChild as HTMLImageElement).src}|${event.currentTarget.dataset.title}|${event.currentTarget.innerText}`)
         event.dataTransfer.effectAllowed = 'move';
     };
 
@@ -32,6 +30,7 @@ const ElementsList = () =>{
                              onDragStart={(event) => onDragStart(event)} draggable
                              key={el.elementId}>
                             <img src={el.elementImageSrc} alt={`${el.elementId}`}/>
+                            <p>{el.elementText ? el.elementText : ""}</p>
                         </div>):
                     <div>Loading...</div>}
                 </div>

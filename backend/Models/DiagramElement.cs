@@ -14,5 +14,7 @@ namespace TritonBackend.Models
         public string ElementName { get; set; }
         [MaxLength(100)]
         public string ElementImageSrc { get; set; }
+        [MaxLength(50)]
+        public string? ElementText { get; set; }
     }
 }

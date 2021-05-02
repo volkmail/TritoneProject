@@ -21,12 +21,28 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     background-color: rgba(250, 250, 250, 1);
-    width: 13vw;
     margin: 5vh 0 0 0;
     border: 0 transparent;
     border-radius: 10px;
+    height: 70vh;
+    width: 14vw;
+    direction: rtl;
+    overflow-y: scroll;
+}
+
+.elements_list::-webkit-scrollbar{
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0.25vh 1vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 30px;
+}
+
+.elements_list::-webkit-scrollbar-thumb{
+    background-color: rgba(200, 200, 200, 0.75);
+    border: 0 transparent;
+    border-radius: 30px;
 }
 
 .element{
@@ -34,15 +50,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 6vw;
-    max-width: 6vw;
-    height: 7vh;
+    min-width: 5vw;
+    max-width: 8vw;
+    max-height: 16vh;
     margin: 1.5vh 0 1.5vh 0;
+    padding: 1vh 0;
+    border: 0.5px solid #000000;
+    border-radius: 15px;
 }
 
 .element>img{
     max-width: 6vw;
     max-height: 6vh;
+}
+
+.element>p{
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid black;
+    min-height: 0;
+    min-width: 0;
+    max-width: 8vw;
 }
 
 .element:hover,
@@ -54,25 +82,23 @@
 
 [data-title]:hover:after {
     opacity: 1;
-    transition: all 0.1s ease 0.2s;
-    visibility: visible;
+    top: 2em;
 }
 
 [data-title]:after {
     content: attr(data-title);
-    background-color: #e7ffeaef;
-    color: #111;
-    font-size: 0.9rem;
-    position: absolute;
-    padding: 0.5vh;
-    bottom: 1em;
-    left: 110%;
-    white-space: nowrap;
-    box-shadow: 1px 1px 3px #222222;
-    opacity: 0;
-    border: 1px solid #111111;
-    z-index: 99999;
-    visibility: hidden;
+    position: absolute; /* Абсолютное позиционирование */
+    width: 150px; /* Ширина подсказки */
+    left: -15px; top: 0; /* Положение подсказки */
+    background: #e7ffeaef; /* Синий цвет фона */
+    color: #fff; /* Цвет текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 0.75s;
+    text-align: center;
+    z-index: 555;
+    color: black;
 }
 
 [data-title] {

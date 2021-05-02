@@ -1,9 +1,31 @@
 type DiagramElementType = {
     elementId: number,
     elementName: string,
-    elementImageSrc: string
+    elementImageSrc: string,
+    elementText?: string
+}
+
+type CheckPoint = {
+    cpId: number,
+    cpName: string,
+    isActive: boolean,
+    isIn: boolean,
+    isOut: boolean,
+    isVibro: boolean,
+    isAcoustic: boolean
+}
+
+type TestingInfo = {
+    section1: boolean,
+    section2: boolean,
+    section3: boolean,
+    checkPoints: {
+        window1Cps: Array<CheckPoint>
+    }
 }
 
 export type {
-    DiagramElementType
+    DiagramElementType,
+    CheckPoint,
+    TestingInfo
 }

@@ -1,11 +1,15 @@
-import React, {useState} from "react";
-import {Form, Formik, FormikConfig, FormikValues, useField} from 'formik'
+import React from "react";
+import {Form, Formik, FormikValues, useField} from 'formik'
 import * as Yup from 'yup'
 import style from "./Auth.module.css"
 import {NavLink, Redirect} from "react-router-dom";
 import {LogInUser} from "../../redux/ThunkCreators/userThunks";
 import {useDispatch, useSelector} from "react-redux";
-import {GetAuthError, GetUserAccessToken} from "../../redux/selectors/user-selector";
+import {GetAuthError, GetUserAccessToken, GetUserInfo} from "../../redux/selectors/user-selector";
+
+type PropsType = {
+    setUserInfo: React.Dispatch<React.SetStateAction<any>>
+}
 
 type ValuesType = {
     login: string;
@@ -15,12 +19,12 @@ type ValuesType = {
 type CustomTextInputPropsType = {
     name: string,
     type: string,
-    label: string
+    label: string,
+    validate?: (value: any) => undefined | string | Promise<any>
 }
 
 const Auth = () => {
     const authError = useSelector(GetAuthError);
-    const token = useSelector(GetUserAccessToken)
     const dispatch = useDispatch();
 
     const initValues: ValuesType = {
@@ -28,34 +32,33 @@ const Auth = () => {
         password: ''
     };
 
-    const validateSchema = Yup.object({
+    const authValidateSchema = Yup.object({
         login: Yup.string().required('Обязательное поле'),
         password: Yup.string().required('Обязательное поле')
     });
 
-    const submit = (values: FormikValues, actions: any) => {
-        dispatch(LogInUser(values.login, values.password));
+    const submit = async (values: FormikValues, actions:any) => {
+        let a = JSON.stringify({a: 1, b: "dasdasd", c: [1,2,3,4]});
+        console.log(a);
+        await dispatch(LogInUser(values.login, values.password));
+        actions.setSubmitting(true);
     }
 
     return (
-        token
-            ? <Redirect to={"/home"}/>
-            :
         <Formik
             initialValues={initValues}
-            validationSchema={validateSchema}
+            validationSchema={authValidateSchema}
             onSubmit={submit}
         >
             {() => (
                 <div className={style.formContainer}>
-                    <hr/>
                     <Form className={style.form}>
                         <p className="font_usual-center">АВТОРИЗАЦИЯ</p>
                         <AuthTextInput name="login" type="text" label="Логин"/>
                         <AuthTextInput name="password" type="password" label="Пароль"/>
                         {authError && <p style={{color: "red"}}>{authError}</p>}
                         <button className="button_classic" type="submit">Войти</button>
-                        <NavLink to={""}>Нет учетной записи?</NavLink>
+                        <NavLink to={"/reg"}>Нет учетной записи?</NavLink>
                     </Form>
                 </div>
             )}

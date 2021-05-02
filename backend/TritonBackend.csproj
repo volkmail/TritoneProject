@@ -9,7 +9,6 @@
     <None Remove="Images\DiagramElementsImages\colibrator.svg" />
     <None Remove="Images\DiagramElementsImages\MaCUnit.svg" />
     <None Remove="Images\DiagramElementsImages\pc.svg" />
-    <None Remove="Images\DiagramElementsImages\trinog.svg" />
     <None Remove="Images\DiagramElementsImages\usb-cable.svg" />
   </ItemGroup>
 
@@ -18,7 +17,6 @@
     <Content Include="Images\DiagramElementsImages\colibrator.svg" />
     <Content Include="Images\DiagramElementsImages\MaCUnit.svg" />
     <Content Include="Images\DiagramElementsImages\pc.svg" />
-    <Content Include="Images\DiagramElementsImages\trinog.svg" />
     <Content Include="Images\DiagramElementsImages\usb-cable.svg" />
   </ItemGroup>
 

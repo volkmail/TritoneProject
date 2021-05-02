@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TritonBackend.Models;
 
 namespace TritonBackend.Migrations
 {
     [DbContext(typeof(TritonDbContext))]
-    partial class TritonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210430121901_AddNewColumnInDiagramTable")]
+    partial class AddNewColumnInDiagramTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,56 +94,6 @@ namespace TritonBackend.Migrations
                     b.HasKey("ElementId");
 
                     b.ToTable("DiagramElements");
-                });
-
-            modelBuilder.Entity("TritonBackend.Models.DiagramResults", b =>
-                {
-                    b.Property<int>("DiagramResultId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ResultId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("step1")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step2")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step3")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step4")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step5")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step6")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step7")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<string>("step8")
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.HasKey("DiagramResultId");
-
-                    b.HasIndex("ResultId")
-                        .IsUnique();
-
-                    b.ToTable("DiagramResults");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.Group", b =>
@@ -284,17 +236,6 @@ namespace TritonBackend.Migrations
                     b.Navigation("Result");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.DiagramResults", b =>
-                {
-                    b.HasOne("TritonBackend.Models.Result", "result")
-                        .WithOne("DiagramResults")
-                        .HasForeignKey("TritonBackend.Models.DiagramResults", "ResultId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("result");
-                });
-
             modelBuilder.Entity("TritonBackend.Models.Result", b =>
                 {
                     b.HasOne("TritonBackend.Models.DataSet", "DataSet")
@@ -357,8 +298,6 @@ namespace TritonBackend.Migrations
             modelBuilder.Entity("TritonBackend.Models.Result", b =>
                 {
                     b.Navigation("CheckPoints");
-
-                    b.Navigation("DiagramResults");
 
                     b.Navigation("Student");
                 });

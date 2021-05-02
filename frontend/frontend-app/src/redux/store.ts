@@ -4,12 +4,14 @@ import {helpReducer} from "./reducers/help-reducer";
 import {diagramReducer} from "./reducers/diagramElements-reducer";
 import {appDataReducer} from "./reducers/appData-reducer";
 import {userReducer} from "./reducers/user-reducer";
+import testingReducer from "./reducers/testing-reducer";
 
 let rootReducer = combineReducers({
     helpPage: helpReducer,
     diagramPage: diagramReducer,
     appData: appDataReducer,
-    userData: userReducer
+    userData: userReducer,
+    testingData: testingReducer
 });
 
 type AppStateType = ReturnType<typeof rootReducer>;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="15.753 3.5 59.51 96.267" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="35.24" y1="5.547" x2="35.24" y2="31.274" id="gradient-0">
+      <stop offset="0" style="stop-color: rgba(59, 103, 30, 1)"/>
+      <stop offset="1" style="stop-color: rgba(14, 24, 7, 1)"/>
+    </linearGradient>
+  </defs>
+  <rect x="43.141" y="17.159" width="1.825" height="28.004" style="" rx="3.5" ry="3.5"/>
+  <rect x="422.348" y="92.727" width="3.441" height="11.669" style="" rx="3.5" ry="3.5" transform="matrix(1, 0, 0.300012, 1, -387.903625, -8.079943)"/>
+  <rect x="376.664" y="89.749" width="3.577" height="11.669" style="" rx="3.5" transform="matrix(1, 0, -0.289481, 1, -326.849609, -4.854281)"/>
+  <line style="fill: rgb(26, 26, 25); stroke: rgb(114, 109, 71);" x1="21.018" y1="96.683" x2="68.435" y2="96.683"/>
+  <rect x="43.007" y="84.496" width="3.5" height="12.253" style="" rx="4.084" ry="4.084"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="43.973" y1="43.239" x2="24.621" y2="86.413"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="44.341" y1="42.655" x2="44.924" y2="86.413"/>
+  <line style="stroke: rgb(0, 0, 0);" x1="44.341" y1="43.239" x2="64.177" y2="85.829"/>
+  <circle style="fill: rgb(88, 88, 88);" cx="43.814" cy="12.803" r="6.807" transform="matrix(1.298844, 0, 0, 1.272476, -12.973886, 2.195377)"/>
+  <rect x="34.283" y="5.547" width="1.915" height="25.727" style="fill: url(#gradient-0);"/>
+</svg>

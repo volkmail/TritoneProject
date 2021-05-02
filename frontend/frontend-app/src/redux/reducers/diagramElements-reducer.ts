@@ -4,6 +4,7 @@ import {DiagramActionTypes} from "../../types/actionsTypes";
 type DiagramInitialStateType = typeof initialState;
 
 let initialState = {
+    fullListElements: [] as Array<DiagramElementType>,
     listElements: [] as Array<DiagramElementType>,
     filedElements: [] as Array<DiagramElementType>
 }
@@ -13,6 +14,7 @@ const diagramReducer = (state: DiagramInitialStateType = initialState, action: D
         case "GET_DIAGRAM_ELEMENTS":
             return {
                 ...state,
+                fullListElements: [...action.elements],
                 listElements: [...action.elements],
             }
         case "DELETE_DIAGRAM_ELEMENT_IN_LIST":

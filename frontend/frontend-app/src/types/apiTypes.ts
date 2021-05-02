@@ -1,4 +1,5 @@
-import {DiagramElementType} from "./generalTypes";
+import {CheckPoint, DiagramElementType} from "./generalTypes";
+import {GroupType} from "./userTypes";
 
 enum DataResponseCodesTypes {
     Success = 0,
@@ -8,6 +9,18 @@ enum DataResponseCodesTypes {
 enum ServerResponseCodesTypes{
     Ok = 200,
     Unauthorized = 401
+}
+
+type ResponseRegType = {
+    isReg: string
+}
+
+type ResponseGroupsType = {
+    groups: Array<GroupType>
+}
+
+type ResponseLoginCheckType = {
+    message: string
 }
 
 type ResponseAuthDataType = {
@@ -20,9 +33,26 @@ type ResponseDiagramElementsType = {
     resultCode: DataResponseCodesTypes
 }
 
+type ResponseSectionElement = {
+    sectionResult: string
+}
+
+type ResponseTestingInfo = {
+    sections: Array<Boolean>,
+    checkPoints: {
+        window1Cps?: Array<CheckPoint>,
+        window2Cps?: Array<CheckPoint>
+    }
+}
+
 export type {
     ResponseDiagramElementsType,
-    ResponseAuthDataType
+    ResponseAuthDataType,
+    ResponseLoginCheckType,
+    ResponseGroupsType,
+    ResponseRegType,
+    ResponseSectionElement,
+    ResponseTestingInfo
 }
 
 export {

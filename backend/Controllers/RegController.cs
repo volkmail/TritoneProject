@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,11 @@ namespace TritonBackend.Controllers
 
                 _context.Results.Add(new Result
                 {
-                    DataSet = _context.DataSets.Single(ds => ds.DataSetId == DataSetId)
+                    DataSet = _context.DataSets.Single(ds => ds.DataSetId == DataSetId),
+                    DiagramResults = new DiagramResults() { },
+                    Section1 = false,
+                    Section2 = false,
+                    Section3 = false
                 });
 
                 _context.SaveChanges();
@@ -51,7 +56,8 @@ namespace TritonBackend.Controllers
 
                 _context.CheckPoints.AddRange(CreateCheckPoints(_context.Results.Single(r => r.ResultId == ResultLastRecordId)));
 
-                _context.Students.Add(new Student {
+                _context.Students.Add(new Student
+                {
                     Result = _context.Results.Single(r => r.ResultId == ResultLastRecordId),
                     Group = _context.Groups.Single(g => g.GroupName == request.GroupName),
                     User = _context.Users.Single(u => u.UserId == UserLastRecordId)
@@ -59,20 +65,32 @@ namespace TritonBackend.Controllers
 
                 _context.SaveChanges();
 
-                return Ok();
+                return Ok(new { isReg="0"});
             }
 
             return Problem(detail: "Тело запроса пустое");
         }
 
         [Route("api/reg/validLogin")]
-        [HttpGet]
+        [HttpPost]
         public IActionResult ValidUserLogin([FromBody] ValidRequest request)
         {
             if (!_context.Users.Any(u => u.Login == request.Login))
-                return Ok();
+                return Ok(new { message = "0" });
             else
-                return Problem(detail: "Пользователь с таким логином уже существует");
+                return Ok(new { message = "Пользователь с таким логином уже существует" });
+        }
+
+        [Route("api/reg/getGroups")]
+        [HttpGet]
+        public IActionResult GetGroups()
+        {
+            List<Group> groups = _context.Groups.Select(g => new Group
+            {
+                GroupId = g.GroupId,
+                GroupName = g.GroupName
+            }).ToList();
+            return Ok(new { groups = groups});
         }
 
         private List<CheckPoint> CreateCheckPoints(Result studentResult)

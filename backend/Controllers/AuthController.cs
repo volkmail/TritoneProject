@@ -51,7 +51,7 @@ namespace TritonBackend.Controllers
 
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim("userId", user.UserId.ToString()),
                 new Claim("name", user.Name),
                 new Claim("surname", user.Surname),
                 new Claim("patronymic", user.Patronymic),

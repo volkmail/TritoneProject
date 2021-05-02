@@ -16,6 +16,7 @@ namespace TritonBackend.Models
         public DbSet<DataSet> DataSets { get; set; }
         public DbSet<CheckPoint> CheckPoints { get; set; }
         public DbSet<DiagramElement> DiagramElements { get; set; }
+        public DbSet<DiagramResults> DiagramResults { get; set; }
         
         public TritonDbContext(DbContextOptions<TritonDbContext> options)
         : base(options)

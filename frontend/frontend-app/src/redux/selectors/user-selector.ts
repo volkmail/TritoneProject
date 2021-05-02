@@ -22,8 +22,28 @@ const GetAuthError = (state: AppStateType) => {
         return state.userData.authError;
 }
 
+const GetGroups = (state: AppStateType) => {
+    if(state.userData.groups.length === 0){
+        return null;
+    }
+    else{
+        return state.userData.groups;
+    }
+}
+
+const isRegDone = (state: AppStateType) => {
+    return state.userData.isReg;
+}
+
+const isLoginBusy = (state: AppStateType) => {
+    return state.userData.loginIsBusy;
+}
+
 export{
     GetUserAccessToken,
     GetAuthError,
-    GetUserInfo
+    GetUserInfo,
+    GetGroups,
+    isRegDone,
+    isLoginBusy
 }
