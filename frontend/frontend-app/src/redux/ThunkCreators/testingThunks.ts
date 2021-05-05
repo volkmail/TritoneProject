@@ -4,7 +4,8 @@ import {DiagramActionTypes, TestingActionsTypes} from "../../types/actionsTypes"
 import {Dispatch} from "react";
 import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
-import {GetElements} from "../ActionCreators/DiagramActionCreators";
+import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
+import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
@@ -20,10 +21,34 @@ const GetTestingInfo = (): ThunkAction<Promise<void>, AppStateType, unknown, Tes
 
 const SetSectionComplete = (sectionNumber: number): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
     async (dispatch: Dispatch<TestingActionsTypes>) => {
-        //const responseData = await UserAPI.GetStudentGroups();
+        const response = await TestingAPI.AddSectionComplete(sectionNumber);
+        if(response && response.isSectionResultSet){
+            dispatch(SetSectionCompleteAction(sectionNumber));
+        }
 }
+
+const SetDiagramSetResults = (result: string, currentStep: number): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
+    async (dispatch: Dispatch<DiagramActionTypes>) => {
+        const responseData = await TestingAPI.SetCurrentDiagramStepResults(result, currentStep);
+        if(responseData){
+            dispatch(GoToNextStep());
+        }
+
+    }
+
+const GetCurrentStep = (): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
+    async (dispatch: Dispatch<DiagramActionTypes>) => {
+        const responseData = await TestingAPI.GetCurrentStep();
+        if(responseData){
+            dispatch(SetCurrentDiagramStep(responseData.currentStep));
+        }
+
+    }
 
 export {
     GetTestingInfo,
-    GetDiagramElements
+    GetDiagramElements,
+    SetDiagramSetResults,
+    SetSectionComplete,
+    GetCurrentStep
 }

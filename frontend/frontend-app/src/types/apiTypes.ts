@@ -34,7 +34,7 @@ type ResponseDiagramElementsType = {
 }
 
 type ResponseSectionElement = {
-    sectionResult: string
+    isSectionResultSet: boolean
 }
 
 type ResponseTestingInfo = {
@@ -45,6 +45,10 @@ type ResponseTestingInfo = {
     }
 }
 
+type ResponseCurrentStep = {
+    currentStep: number
+}
+
 export type {
     ResponseDiagramElementsType,
     ResponseAuthDataType,
@@ -52,7 +56,8 @@ export type {
     ResponseGroupsType,
     ResponseRegType,
     ResponseSectionElement,
-    ResponseTestingInfo
+    ResponseTestingInfo,
+    ResponseCurrentStep
 }
 
 export {

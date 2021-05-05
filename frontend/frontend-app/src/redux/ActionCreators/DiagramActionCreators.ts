@@ -7,22 +7,51 @@ const GetElements = (elements: Array<DiagramElementType>) => {
     } as const
 }
 
-const PopElement = (elementId: number) => {
+const AddElementOnField = (elementId: number) => {
     return {
-        type: "DELETE_DIAGRAM_ELEMENT_IN_LIST",
+        type: "ADD_DIAGRAM_ELEMENT_TO_FIELD",
         elementId
     } as const
 }
 
-const DeleteElementOnField = (elementId: number) => {
+const DeleteElementFromField = (elementId: number) => {
     return {
-        type: "DELETE_DIAGRAM_ELEMENT_ON_FIELD",
+        type: "DELETE_DIAGRAM_ELEMENT_FROM_FIELD",
         elementId
+    } as const
+}
+
+const SetCurrentDiagramStep = (currentDiagramStep: number) => {
+    return{
+        type: "SET_CURRENT_DIAGRAM_STEP",
+        currentDiagramStep
+    } as const
+}
+
+const GoToNextStep = () => {
+    return{
+        type: "GO_TO_NEXT_STEP"
+    } as const
+}
+
+const RefreshElementsList = () => {
+    return{
+        type:"REFRESH_ELEMENTS_LIST"
+    } as const
+}
+
+const SetSAZOn = () => {
+    return{
+        type:"SET_SAZ_ON"
     } as const
 }
 
 export {
     GetElements,
-    PopElement,
-    DeleteElementOnField
+    AddElementOnField,
+    DeleteElementFromField,
+    SetCurrentDiagramStep,
+    GoToNextStep,
+    RefreshElementsList,
+    SetSAZOn
 }

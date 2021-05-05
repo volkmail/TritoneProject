@@ -5,6 +5,12 @@ type DiagramElementType = {
     elementText?: string
 }
 
+type DiagramStepInfo = {
+    title: string,
+    connections: Array<string>,
+    isSAZOn?: boolean
+}
+
 type CheckPoint = {
     cpId: number,
     cpName: string,
@@ -27,5 +33,6 @@ type TestingInfo = {
 export type {
     DiagramElementType,
     CheckPoint,
-    TestingInfo
+    TestingInfo,
+    DiagramStepInfo
 }

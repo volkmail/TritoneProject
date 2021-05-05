@@ -2,7 +2,7 @@ import {
     ServerResponseCodesTypes,
     ResponseDiagramElementsType,
     ResponseSectionElement,
-    ResponseTestingInfo
+    ResponseTestingInfo, ResponseCurrentStep
 } from "../types/apiTypes";
 import axios from "axios";
 
@@ -18,6 +18,27 @@ export const TestingAPI = {
                     return response.data;
             })
     },
+    SetCurrentDiagramStepResults (result: string, currentStep: number){
+        return axios.put<ResponseCurrentStep>("https://localhost:44380/api/testing/setCurrentDiagramStep",{
+            stepResult: result,
+            stepNumber: currentStep
+        },{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return response.data;
+            })
+    },
+    GetCurrentStep(){
+        return axios.get<ResponseCurrentStep>("https://localhost:44380/api/testing/getCurrentDiagramStep",{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return response.data;
+            })
+    },
     AddSectionComplete(sectionNumber: number) {
         return axios.put<ResponseSectionElement>("https://localhost:44380/api/testing/setSectionComplete", {
             sectionNumber
@@ -26,7 +47,7 @@ export const TestingAPI = {
         })
             .then(response => {
                 if (response.status === ServerResponseCodesTypes.Ok)
-                    return response.data
+                    return response.data;
             })
     },
     GetTestingInfo(){

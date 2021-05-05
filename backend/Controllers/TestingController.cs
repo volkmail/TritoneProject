@@ -13,6 +13,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
+using TritonBackend.Models.ViewModels;
 
 namespace TritonBackend.Controllers
 {
@@ -75,6 +76,8 @@ namespace TritonBackend.Controllers
             {
                 if (steps[i] != "")
                     currentStep++;
+                else
+                    break;
             }
 
             return Ok(new { currentStep});
@@ -83,68 +86,68 @@ namespace TritonBackend.Controllers
         [Authorize]
         [HttpPut]
         [Route("api/testing/setCurrentDiagramStep")]
-        public ActionResult SetCurrentDiagramStep(string stepResult, int stepNumber)
+        public ActionResult SetCurrentDiagramStep(StepResultRequest request)
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
             DiagramResults diagramResults = _context.DiagramResults.Single(dr => dr.ResultId == student.ResultId);
 
-            switch (stepNumber)
+            switch (request.stepNumber)
             {
                 case 1:
                     {
-                        diagramResults.step1 = stepResult;
+                        diagramResults.step1 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 2:
                     {
-                        diagramResults.step2 = stepResult;
+                        diagramResults.step2 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 3:
                     {
-                        diagramResults.step3 = stepResult;
+                        diagramResults.step3 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 4:
                     {
-                        diagramResults.step4 = stepResult;
+                        diagramResults.step4 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 5:
                     {
-                        diagramResults.step5 = stepResult;
+                        diagramResults.step5 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 6:
                     {
-                        diagramResults.step6 = stepResult;
+                        diagramResults.step6 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 7:
                     {
-                        diagramResults.step7 = stepResult;
+                        diagramResults.step7 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
                 case 8:
                     {
-                        diagramResults.step8 = stepResult;
+                        diagramResults.step8 = request.stepResult;
                         _context.Entry(diagramResults).State = EntityState.Modified;
                         break;
                     }
             }
 
-            stepNumber = (stepNumber + 1) == 9 ? 0 : stepNumber++;
+            _context.SaveChanges();
 
-            
-
-            return Ok(new { stepNumber });
+            int currentStep = request.stepNumber+1;
+          
+            return Ok(new { currentStep });
         }
 
         [Authorize]
@@ -196,7 +199,7 @@ namespace TritonBackend.Controllers
 
             _context.SaveChanges();
 
-            return Ok(new { });
+            return Ok(new { isSectionResultSet = true});
         }
 
 

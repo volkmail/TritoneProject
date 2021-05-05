@@ -9,21 +9,21 @@ namespace TritonBackend.Models
     	public int ResultId { get; set; }
         public Result result { get; set; }
 
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step1 { get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step2 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step3 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step4 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step5 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step6 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step7 {get; set; }
-        [MaxLength(1000)]
+        [MaxLength(int.MaxValue)]
         public string? step8 {get; set; }
 
         
