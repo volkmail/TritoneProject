@@ -2,7 +2,7 @@ import {
     ServerResponseCodesTypes,
     ResponseDiagramElementsType,
     ResponseSectionElement,
-    ResponseTestingInfo, ResponseCurrentStep
+    ResponseTestingInfo, ResponseCurrentStep, ResponseDataSet
 } from "../types/apiTypes";
 import axios from "axios";
 
@@ -52,6 +52,16 @@ export const TestingAPI = {
     },
     GetTestingInfo(){
         return axios.get<ResponseTestingInfo>("https://localhost:44380/api/testing/getCheckPoints",{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok){
+                    return response.data;
+                }
+            })
+    },
+    GetDataSetInfo(){
+        return axios.get<ResponseDataSet>("https://localhost:44380/api/testing/getDataSetInfo",{
             headers:{"Authorization":`Bearer ${GetJwt()}`}
         })
             .then(response => {

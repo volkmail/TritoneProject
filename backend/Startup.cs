@@ -91,8 +91,8 @@ namespace TritonBackend
 
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"Images\\DiagramElementsImages")),
-                RequestPath = "/Images/DiagramElementsImages"
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"StaticFiles")),
+                RequestPath = "/StaticFiles"
             });
 
             app.UseEndpoints(endpoints =>

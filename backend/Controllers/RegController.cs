@@ -38,7 +38,7 @@ namespace TritonBackend.Controllers
                     Role = _context.Roles.Single(r => r.RoleId == 3)
                 });
 
-                int DataSetId = new Random(DateTime.Now.Millisecond).Next(1, 5);
+                int DataSetId = new Random(DateTime.Now.Millisecond).Next(1, 15);
 
                 _context.Results.Add(new Result
                 {

@@ -5,7 +5,7 @@ import {Dispatch} from "react";
 import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
 import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
-import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
+import {SetDataSet, SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
@@ -45,10 +45,19 @@ const GetCurrentStep = (): ThunkAction<Promise<void>, AppStateType, unknown, Tes
 
     }
 
+const GetDataSet = (): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
+    async (dispatch: Dispatch<TestingActionsTypes>) => {
+        const responseData = await TestingAPI.GetDataSetInfo();
+        if(responseData){
+            dispatch(SetDataSet(responseData));
+        }
+    }
+
 export {
     GetTestingInfo,
     GetDiagramElements,
     SetDiagramSetResults,
     SetSectionComplete,
-    GetCurrentStep
+    GetCurrentStep,
+    GetDataSet
 }

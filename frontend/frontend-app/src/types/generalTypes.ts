@@ -30,9 +30,35 @@ type TestingInfo = {
     }
 }
 
+type DataSetType = {
+    frequency: Array<number>,
+    signalLevelMax: Array<number>,
+    signalLevel: Array<number>,
+    signalLevelMin: Array<number>
+}
+
+type DataSetTypeForViewResult = {
+    frequency: number,
+    signalLevelMax: number,
+    signalLevel: number,
+    signalLevelMin: number
+}
+
+enum signalKeys {
+    signalLevelMax = "signalLevelMax",
+    signalLevel = "signalLevel",
+    signalLevelMin = "signalLevelMin"
+}
+
+export {
+    signalKeys
+}
+
 export type {
     DiagramElementType,
     CheckPoint,
     TestingInfo,
-    DiagramStepInfo
+    DiagramStepInfo,
+    DataSetType,
+    DataSetTypeForViewResult
 }

@@ -38,8 +38,6 @@ const Auth = () => {
     });
 
     const submit = async (values: FormikValues, actions:any) => {
-        let a = JSON.stringify({a: 1, b: "dasdasd", c: [1,2,3,4]});
-        console.log(a);
         await dispatch(LogInUser(values.login, values.password));
         actions.setSubmitting(true);
     }

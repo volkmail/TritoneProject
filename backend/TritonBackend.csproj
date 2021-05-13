@@ -5,19 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\DiagramElementsImages\coaxial.svg" />
-    <None Remove="Images\DiagramElementsImages\colibrator.svg" />
-    <None Remove="Images\DiagramElementsImages\MaCUnit.svg" />
-    <None Remove="Images\DiagramElementsImages\pc.svg" />
-    <None Remove="Images\DiagramElementsImages\usb-cable.svg" />
+    <None Remove="StaticFiles\DiagramElementsImages\coaxial.svg" />
+    <None Remove="StaticFiles\DiagramElementsImages\colibrator.svg" />
+    <None Remove="StaticFiles\DiagramElementsImages\MaCUnit.svg" />
+    <None Remove="StaticFiles\DiagramElementsImages\pc.svg" />
+    <None Remove="StaticFiles\DiagramElementsImages\usb-cable.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\DiagramElementsImages\coaxial.svg" />
-    <Content Include="Images\DiagramElementsImages\colibrator.svg" />
-    <Content Include="Images\DiagramElementsImages\MaCUnit.svg" />
-    <Content Include="Images\DiagramElementsImages\pc.svg" />
-    <Content Include="Images\DiagramElementsImages\usb-cable.svg" />
+    <Content Include="StaticFiles\DiagramElementsImages\coaxial.svg" />
+    <Content Include="StaticFiles\DiagramElementsImages\colibrator.svg" />
+    <Content Include="StaticFiles\DiagramElementsImages\MaCUnit.svg" />
+    <Content Include="StaticFiles\DiagramElementsImages\pc.svg" />
+    <Content Include="StaticFiles\DiagramElementsImages\usb-cable.svg" />
   </ItemGroup>
 
   <ItemGroup>

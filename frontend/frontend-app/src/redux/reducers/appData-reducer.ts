@@ -15,7 +15,7 @@ let initialState = {
         },{
             sectionTitle: "Раздел 3. Анализ результатов",
             sectionBody: "Вы получите результаты своих замеров и сможете проанализировать их.",
-            sectionRef: ""
+            sectionRef: "/testing/viewResult"
         }]
     }
 }

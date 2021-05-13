@@ -38,16 +38,19 @@
     border: 0 transparent;
     border-radius: 5px;
     text-align: center;
+    align-items: center;
+    align-content: center;
 }
 
 .stepTitle>h1{
     margin-top: 1.25vh;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 .stepTitle>p{
     margin-top: 0.75vh;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: red;
+    background-color: #c4ffc4;
 }
 
 .constructor{
@@ -109,6 +112,8 @@
     width: 33.5vw;
     height: 70vh;
 }
+
+
 
 .wall{
     height: 70vh;

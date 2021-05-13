@@ -1,5 +1,6 @@
 import {CheckPoint} from "../../types/generalTypes";
 import {TestingActionsTypes} from "../../types/actionsTypes";
+import {getRandomArbitrary} from "../../functions/Random";
 
 type TestingInitialStateType = typeof initialState;
 
@@ -7,6 +8,12 @@ const initialState = {
     sections:[false,false,false],
     checkPoints: {
         window1Cps: [] as Array<CheckPoint>
+    },
+    dataSet:{
+        frequency: [] as Array<number>,
+        signalLevelMax: [] as Array<number>,
+        signalLevel: [] as Array<number>,
+        signalLevelMin: [] as Array<number>
     }
 }
 
@@ -29,6 +36,32 @@ const testingReducer = (state: TestingInitialStateType = initialState, action: T
             return{
                 ...state,
                 sections: [...newSections]
+            }
+        }
+        case "SET_DATASET":{
+            return{
+                ...state,
+                dataSet: {
+                    ...state.dataSet,
+                    frequency: action.payload.frequency,
+                    signalLevelMax: action.payload.signalLevelMax,
+                    signalLevel: action.payload.signalLevel,
+                    signalLevelMin: action.payload.signalLevelMin
+                }
+            }
+        }
+        case "CHANGE_SIGNAL_LEVEL":{
+            let newSignalLevel: Array<number> = [state.dataSet.signalLevel.length];
+            for(let i=0;i<state.dataSet.signalLevel.length;i++){
+                newSignalLevel[i] = +getRandomArbitrary(state.dataSet.signalLevelMin[i], state.dataSet.signalLevelMax[i]).toFixed(1);
+            }
+
+            return {
+                ...state,
+                dataSet:{
+                    ...state.dataSet,
+                    signalLevel: [...newSignalLevel]
+                }
             }
         }
         default: {

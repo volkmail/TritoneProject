@@ -1,0 +1,105 @@
+.viewer_container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-image: url(../../../assets/img/background2.svg);
+    background-size: cover;
+    position: relative;
+}
+
+.viewer_title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    width: 85vw;
+    margin-top: 10vh;
+    background-color: rgba(235, 235, 235, 0.95);
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.viewer_field{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    height: 75vh;
+    width: 85vw;
+    background-color: rgba(235, 235, 235, 0.95);
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 5px;
+}
+
+.viewer_panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(214, 214, 214, 0.95);
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 5px;
+    width: 15vw;
+    height: 73vh;
+    margin-left: 0.5vw;
+    padding: 1vh;
+}
+
+.levelControl{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background-color: rgba(239, 239, 239, 0.95);
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 5px;
+    margin-right: 0.5vw;
+    padding-top: 1.5vh;
+    width: 12vw;
+    height: 15vh;
+}
+
+.levelControl>p{
+    align-self: center;
+    margin-bottom: 1.5vh;
+}
+
+.levelControl label{
+    margin: 0.5vh 0.5vw;
+}
+
+.levelControl label>input{
+    margin: 0 0.5vw;
+}
+
+.viewer_diagram{
+    width: 67vw;
+    height: 73vh;
+    background-color: rgba(239, 239, 239, 0.95);
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 5px;
+    margin-right: 0.5vw;
+    padding-top: 1.5vh;
+}
+
+.viewer_barChar{
+    width: 65px;
+    height: 71px;
+    color: #8ed78e;
+}
+
+.customTooltip{
+    width: 13vw;
+    height: 6vh;
+    background-color: #b6fdb6;
+    padding: 1vh;
+}

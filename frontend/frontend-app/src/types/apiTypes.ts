@@ -49,6 +49,13 @@ type ResponseCurrentStep = {
     currentStep: number
 }
 
+type ResponseDataSet = {
+    frequency: Array<number>,
+    signalLevelMax: Array<number>,
+    signalLevel: Array<number>,
+    signalLevelMin: Array<number>
+}
+
 export type {
     ResponseDiagramElementsType,
     ResponseAuthDataType,
@@ -57,7 +64,8 @@ export type {
     ResponseRegType,
     ResponseSectionElement,
     ResponseTestingInfo,
-    ResponseCurrentStep
+    ResponseCurrentStep,
+    ResponseDataSet
 }
 
 export {

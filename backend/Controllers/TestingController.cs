@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 using TritonBackend.Models.ViewModels;
+using System.IO;
 
 namespace TritonBackend.Controllers
 {
@@ -202,6 +203,66 @@ namespace TritonBackend.Controllers
             return Ok(new { isSectionResultSet = true});
         }
 
+        //[Authorize]
+        [Route("api/testing/getDataSetInfo")]
+        [HttpGet]
+        public ActionResult GetDataSetInfo() 
+        {
+            List<Tuple<double, double>> dataSet = GetAndParseDataSetFile();
+            if (dataSet != null)
+            {
+                Random rnd = new Random(DateTime.Now.Millisecond);
+
+                double[] frequency = new double[dataSet.Count];
+                double[] signalLevelMax = new double[dataSet.Count];
+                double[] signalLevel = new double[dataSet.Count];
+                double[] signalLevelMin = new double[dataSet.Count];
+
+                for (int i = 0; i < dataSet.Count; i++)
+                {
+                    frequency[i] = dataSet[i].Item1;
+                    signalLevelMax[i] = dataSet[i].Item2;
+                    signalLevel[i] = Math.Round(dataSet[i].Item2 - (dataSet[i].Item2 * rnd.Next(3, 14)) / 100, 1);
+                    signalLevelMin[i] = Math.Round(dataSet[i].Item2 - (dataSet[i].Item2 * rnd.Next(14, 21)) / 100, 1);
+                }
+
+                return Ok(new { frequency, signalLevelMax, signalLevel, signalLevelMin });
+            }
+
+            return Ok();
+        }
+
+        private List<Tuple<double, double>> GetAndParseDataSetFile()
+        {
+            //Student student = _context.Students.Single(s => s.UserId == userId);
+            //Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
+            DataSet dataSet = _context.DataSets.Single(d => d.DataSetId == 1);
+          
+            if (dataSet != null) 
+            {
+                List<Tuple<double, double>> dataResult = new List<Tuple<double, double>>();
+                string filePath = Path.Combine(env.ContentRootPath, dataSet.DataSetPath);
+
+                using (StreamReader sr = new StreamReader(Path.Combine(env.ContentRootPath, dataSet.DataSetPath), System.Text.Encoding.Default))
+                {
+                    string line;
+                    Regex regex = new Regex("\t");
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (regex.IsMatch(line))
+                        {
+                            string[] xy = line.Split('\t');
+                            dataResult.Add(new Tuple<double, double>(double.Parse(xy[0]), double.Parse(xy[1])));
+                        }                       
+                    }
+                }
+
+                return dataResult;
+            }
+                
+            return null;
+        }
 
     }
 

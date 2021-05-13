@@ -2,39 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eca3da3-2fe0-49ea-b08b-22c9cf46b333" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/DiagramField.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/Field.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/HelpFunctions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/SplitDiagramField.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/TritonBackend/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/TritonBackend/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/TritonBackend/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/TritonBackend/config/applicationhost.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/CustomTooltip.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResult.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResult.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/testing-selector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/TritonBackend/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/TritonBackend/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RegController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TestingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TestingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/MaCUnit.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/SAZ.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/accelerometer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/coaxial.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/colibrator.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/loudspeaker.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/loudspeakerBan.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/noiseGenerator.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/noiseGeneratorBan.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/pc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/trinog.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/trinogLeft.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/trinogRight.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/DiagramElementsImages/usb-cable.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TritonBackend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TritonBackend.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.runtimeconfig.dev.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/TritonBackend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/TritonBackend.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/TritonBackend.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/TritonBackend.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/CustomConnectionLine.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/ConnectionLine.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/CustomEdge.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/Edge.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/CustomeNodeComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramComponentsAndFunctions/NodeComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/api/testingApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/api/testingApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Auth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Auth/Auth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramConstructor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramConstructor.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramConstructor.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section1/DiagramConstructor/DiagramConstructor.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/DiagramActionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/DiagramActionCreators.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/diagramElements-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/diagramElements-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestingActionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestingActionCreators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/testingThunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/testingThunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/appData-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/appData-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/testing-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/testing-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/types/apiTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/types/apiTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/types/generalTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/types/generalTypes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,5 +84,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

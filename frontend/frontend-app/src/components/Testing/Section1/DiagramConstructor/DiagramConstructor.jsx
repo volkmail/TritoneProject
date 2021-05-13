@@ -69,7 +69,7 @@ const DiagramConstructor = () => {
                         <h1 className="font_bold-center">ЗАДАНИЕ ВЫПОЛНЕНО УСПЕШНО!</h1>
                     </div>
                     : <div className={myStyle.stepTitle}>
-                        <h1 className="font_bold-center">{stepInfo?.title.toUpperCase()}</h1>
+                        <h1 className="font_usual-center">{stepInfo?.title.toUpperCase()}</h1>
                         {errorMessage.length > 0 && <p>{errorMessage}</p>}
                     </div>}
                 <div className={myStyle.constructor}>

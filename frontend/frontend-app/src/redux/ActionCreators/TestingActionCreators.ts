@@ -1,4 +1,4 @@
-import {TestingInfo} from "../../types/generalTypes";
+import {DataSetType, TestingInfo} from "../../types/generalTypes";
 
 const GetTestingInfoAction = (testingInfo: TestingInfo) => {
     return {
@@ -14,7 +14,23 @@ const SetSectionCompleteAction = (sectionNumber: number) => {
     } as const
 }
 
+const SetDataSet = (payload: DataSetType) => {
+    return {
+        type: "SET_DATASET",
+        payload
+    } as const
+}
+
+const ChangeSignalLevel = () => {
+    return {
+        type: "CHANGE_SIGNAL_LEVEL",
+    } as const
+}
+
+
 export {
     GetTestingInfoAction,
-    SetSectionCompleteAction
+    SetSectionCompleteAction,
+    SetDataSet,
+    ChangeSignalLevel
 }
