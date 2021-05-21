@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {GetUserInfo} from "./redux/selectors/user-selector";
 import Registration from "./components/Registration/Registration";
 import {InitUser} from "./redux/ActionCreators/UserActionCreators";
+import ViewResultPoints from "./components/Testing/Section3/ViewResultPoints/ViewResultPoints";
+import ViewResultPoint from "./components/Testing/Section3/ViewResultPoints/ViewResultPoint";
 import ViewResult from "./components/Testing/Section3/ViewResult";
 
 const Help = React.lazy(() => import ('./components/Help/Help'));
@@ -46,10 +48,13 @@ const App = (props: any) => {
                 <Route path="/help" render={withSuspense(Help)}/>
                 <Route exact path="/testing" render={() => <Testing/>}/>
                 <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>
-                <Route path="/testing/viewResult" render={() => <ViewResult/>}/>
+                <Route exact path="/testing/viewPoints" render={() => <ViewResultPoints/>}/>
+                <Route exact path="/testing/viewPoints/Point/:pointName" children={<ViewResultPoint/>} />
+                <Route exact path="/testing/viewPoints/Point/:pointName/Calc/:typeName" children={<ViewResult/>} />
             </Switch>
         </>
     );
 }
+// render={() => <ViewResultPoint/>}
 
 export default withRouter(App);

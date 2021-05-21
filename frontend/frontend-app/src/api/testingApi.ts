@@ -60,8 +60,8 @@ export const TestingAPI = {
                 }
             })
     },
-    GetDataSetInfo(){
-        return axios.get<ResponseDataSet>("https://localhost:44380/api/testing/getDataSetInfo",{
+    GetDataSetInfo(placeTypeName: string){
+        return axios.get<ResponseDataSet>("https://localhost:44380/api/testing/getDataSetInfo/"+placeTypeName,{
             headers:{"Authorization":`Bearer ${GetJwt()}`}
         })
             .then(response => {

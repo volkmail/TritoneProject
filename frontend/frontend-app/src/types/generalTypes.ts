@@ -44,6 +44,20 @@ type DataSetTypeForViewResult = {
     signalLevelMin: number
 }
 
+type CalcInfoType = {
+    id: number,
+    pointName: string,
+    pointTitle: string,
+    results: {id: number, typeName: string, typeTitle: string, result: boolean}[]
+} []
+
+type CurrentCalcInfoType = {
+    id: number,
+    pointName: string,
+    pointTitle: string,
+    results: {id: number, typeName: string, typeTitle: string, result: boolean}[]
+} | null | undefined
+
 enum signalKeys {
     signalLevelMax = "signalLevelMax",
     signalLevel = "signalLevel",
@@ -60,5 +74,7 @@ export type {
     TestingInfo,
     DiagramStepInfo,
     DataSetType,
-    DataSetTypeForViewResult
+    DataSetTypeForViewResult,
+    CalcInfoType,
+    CurrentCalcInfoType,
 }

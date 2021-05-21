@@ -1,5 +1,5 @@
-import {DiagramElementType, DiagramStepInfo} from "../../types/generalTypes";
-import {DiagramActionTypes} from "../../types/actionsTypes";
+import {DiagramElementType, DiagramStepInfo} from "../../../types/generalTypes";
+import {DiagramActionTypes} from "../../../types/actionsTypes";
 
 type DiagramInitialStateType = typeof initialState;
 

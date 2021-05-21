@@ -38,11 +38,9 @@ namespace TritonBackend.Controllers
                     Role = _context.Roles.Single(r => r.RoleId == 3)
                 });
 
-                int DataSetId = new Random(DateTime.Now.Millisecond).Next(1, 15);
-
                 _context.Results.Add(new Result
                 {
-                    DataSet = _context.DataSets.Single(ds => ds.DataSetId == DataSetId),
+                    CalculationResults = new CalculationResults() { },
                     DiagramResults = new DiagramResults() { },
                     Section1 = false,
                     Section2 = false,
@@ -65,7 +63,7 @@ namespace TritonBackend.Controllers
 
                 _context.SaveChanges();
 
-                return Ok(new { isReg="0"});
+                return Ok(new { isReg = "0" });
             }
 
             return Problem(detail: "Тело запроса пустое");
@@ -90,7 +88,7 @@ namespace TritonBackend.Controllers
                 GroupId = g.GroupId,
                 GroupName = g.GroupName
             }).ToList();
-            return Ok(new { groups = groups});
+            return Ok(new { groups = groups });
         }
 
         private List<CheckPoint> CreateCheckPoints(Result studentResult)
@@ -108,7 +106,7 @@ namespace TritonBackend.Controllers
             {
                 checkPoints.Add(new CheckPoint
                 {
-                    CpName=$"window1_cp{i}",
+                    CpName = $"window1_cp{i}",
                     Result = studentResult,
                     IsActive = false,
                     IsIn = false,

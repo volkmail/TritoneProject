@@ -32,6 +32,8 @@ namespace TritonBackend.Controllers
             this.env = env;
         }
 
+        #region DigramRegion
+
         [Authorize]
         [Route("api/testing/getDiagramElements")]
         [HttpGet]
@@ -151,6 +153,10 @@ namespace TritonBackend.Controllers
             return Ok(new { currentStep });
         }
 
+        #endregion
+
+        #region CheckPointRegion
+
         [Authorize]
         [HttpGet]
         [Route("api/testing/getCheckPoints")]
@@ -167,6 +173,10 @@ namespace TritonBackend.Controllers
             return Ok(new { sections = new bool[3] { result.Section1, result.Section2, result.Section3 },
                 checkPoints = new { window1Cps } });
         }
+
+        #endregion
+
+        #region GeneralRegion
 
         [Authorize]
         [Route("api/testing/setSectionComplete")]
@@ -203,12 +213,18 @@ namespace TritonBackend.Controllers
             return Ok(new { isSectionResultSet = true});
         }
 
+
+        #endregion
+
+        #region DataCalcRegion
+
         //[Authorize]
-        [Route("api/testing/getDataSetInfo")]
+        [Route("api/testing/getDataSetInfo/{placeTypeName}")]
         [HttpGet]
-        public ActionResult GetDataSetInfo() 
+        public ActionResult GetDataSetInfo(string placeTypeName) 
         {
-            List<Tuple<double, double>> dataSet = GetAndParseDataSetFile();
+            List<Tuple<double, double>> dataSet = GenerateDataFromFile($"StaticFiles\\DataSets\\{placeTypeName}.txt");
+            
             if (dataSet != null)
             {
                 Random rnd = new Random(DateTime.Now.Millisecond);
@@ -222,38 +238,66 @@ namespace TritonBackend.Controllers
                 {
                     frequency[i] = dataSet[i].Item1;
                     signalLevelMax[i] = dataSet[i].Item2;
-                    signalLevel[i] = Math.Round(dataSet[i].Item2 - (dataSet[i].Item2 * rnd.Next(3, 14)) / 100, 1);
-                    signalLevelMin[i] = Math.Round(dataSet[i].Item2 - (dataSet[i].Item2 * rnd.Next(14, 21)) / 100, 1);
+                    signalLevel[i] = Math.Round(dataSet[i].Item2 - dataSet[i].Item2 * rnd.Next(3, 14) / 100, 1);
+                    signalLevelMin[i] = Math.Round(dataSet[i].Item2 - dataSet[i].Item2 * rnd.Next(14, 21) / 100, 1);
                 }
 
                 return Ok(new { frequency, signalLevelMax, signalLevel, signalLevelMin });
             }
 
+            return Ok(); //ПРИДУМАТЬ ОТВЕТ
+        }
+
+        [Route("api/testing/postDataSetInfo")]
+        [HttpPost]
+        public ActionResult SaveResult(DataSetPostRequest request) 
+        {
             return Ok();
         }
 
-        private List<Tuple<double, double>> GetAndParseDataSetFile()
+        private List<Tuple<double, double>> GenerateDataFromFile(string resultName)
         {
             //Student student = _context.Students.Single(s => s.UserId == userId);
             //Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
-            DataSet dataSet = _context.DataSets.Single(d => d.DataSetId == 1);
-          
-            if (dataSet != null) 
+            //DataSet dataSet = _context.DataSets.Single(d => d.DataSetId == 1);
+
+            string filePath = Path.Combine(env.ContentRootPath, resultName);
+
+            if (System.IO.File.Exists(filePath)) 
             {
                 List<Tuple<double, double>> dataResult = new List<Tuple<double, double>>();
-                string filePath = Path.Combine(env.ContentRootPath, dataSet.DataSetPath);
+                Random rnd = new Random(DateTime.Now.Millisecond);
 
-                using (StreamReader sr = new StreamReader(Path.Combine(env.ContentRootPath, dataSet.DataSetPath), System.Text.Encoding.Default))
+                using (StreamReader sr = new StreamReader(filePath, System.Text.Encoding.Default))
                 {
                     string line;
-                    Regex regex = new Regex("\t");
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        if (regex.IsMatch(line))
+                        if (Regex.IsMatch(line, "\t"))
                         {
                             string[] xy = line.Split('\t');
-                            dataResult.Add(new Tuple<double, double>(double.Parse(xy[0]), double.Parse(xy[1])));
+                            double signalLevelMax = 0;
+
+                            switch (resultName) 
+                            {
+                                case var _ when Regex.IsMatch(resultName, @"[SAZ, Test]"):
+                                    {
+                                        signalLevelMax = Math.Round(double.Parse(xy[1]) + double.Parse(xy[1]) * rnd.Next(-2, 3) / 100, 1);
+                                        break;
+                                    }
+                                case var _ when Regex.IsMatch(resultName, @"Signal"):
+                                    {
+                                        signalLevelMax = Math.Round(double.Parse(xy[1]) + double.Parse(xy[1]) * rnd.Next(-5, 6) / 100, 1);
+                                        break;
+                                    }
+                                case var _ when Regex.IsMatch(resultName, @"Back"):
+                                    {
+                                        signalLevelMax = Math.Round(double.Parse(xy[1]) + double.Parse(xy[1]) * rnd.Next(-3, 4) / 100, 1);
+                                        break;
+                                    }
+                            }                          
+                            dataResult.Add(new Tuple<double, double>(double.Parse(xy[0]), signalLevelMax));
                         }                       
                     }
                 }
@@ -263,6 +307,8 @@ namespace TritonBackend.Controllers
                 
             return null;
         }
+
+        #endregion
 
     }
 

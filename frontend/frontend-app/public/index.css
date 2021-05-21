@@ -9,7 +9,7 @@ body,
 }
 
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 body::-webkit-scrollbar{
@@ -57,43 +57,6 @@ html {
   font-size: 1.2em;
   color: rgba(0, 0, 0, 0.75);
   text-shadow: 0 0 0.5vh rgba(0, 198, 46, 0.3);
-}
-
-/* Шаблонные классы - контейнеры*/
-
-/* Шаблонные классы - контейнеры - футер*/
-
-.footer_container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.footer{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #F6F6F6;
-  height: 8vh;
-  width: 99vw;
-  border: 0 transparent;
-  border-radius: 15px;
-  margin-bottom: 0.4vh;
-  box-shadow: 0 0.25vh 1.5vh rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.work_info>p{
-  text-align: center;
-}
-
-.program_info{
-  margin-left: 0.5vw;
-}
-
-.author_info{
-  margin-right: 0.5vw;
 }
 
 /* Шаблонные классы - элементы*/

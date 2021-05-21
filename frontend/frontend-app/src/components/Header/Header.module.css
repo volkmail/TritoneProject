@@ -17,14 +17,10 @@
     border-radius: 15px;
 }
 
-.logo, .logo>a>img{
-    max-width: 11vw;
-    max-height: 8vh;
-    min-width: 5.5vw;
-    min-height: 4vh;
-}
-
-.logo_title{
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     max-width: 60vw;
     max-height: 6vh;
     min-width: 30vw;
@@ -32,8 +28,51 @@
     background-color: transparent;
 }
 
+.logo>a>img{
+    max-width: 11vw;
+    max-height: 8vh;
+    min-width: 5.5vw;
+    min-height: 4vh;
+}
+
+.functionalBlock{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: .5vh 1vw .5vh 1vw;
+    height: 7vh;
+}
+
+.profileInfo{
+    display: flex;
+    align-items: center;
+    /*border: solid black 1px;*/
+    border-radius: 15px 0 0 15px ;
+    height: 5.5vh;
+    padding:0 0.5vw 0 0.5vw;
+    background-color: #ebffeb;
+}
+
+/*.profileInfo:hover{*/
+/*    background-color: #ebffeb;*/
+/*    box-shadow: 0 0.25vh 1.5vh rgba(0, 0, 0, 0.2);*/
+/*}*/
+
 .menu{
-    margin-right: 0.5vw;
+    height: 5.5vh;
+    display: flex;
+    align-items: center;
+    /*border: solid black 1px;*/
+    padding:0 0.5vw 0 0.5vw;
+    border-radius: 15px;
+    background-color: #ebffeb;
+
+}
+
+.menu:hover{
+    background-color: #ebffeb;
+    box-shadow: 0 0.25vh 1.5vh rgba(0, 0, 0, 0.2);
 }
 
 .menu>a{

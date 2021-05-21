@@ -52,6 +52,11 @@
     padding: 1vh;
 }
 
+.viewer_panel>button>p{
+    font-size: 0.75rem;
+    margin-top: .5vh;
+}
+
 .levelControl{
     display: flex;
     flex-direction: column;

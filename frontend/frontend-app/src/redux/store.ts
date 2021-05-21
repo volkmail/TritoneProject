@@ -1,17 +1,19 @@
 import {combineReducers, createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {helpReducer} from "./reducers/help-reducer";
-import {diagramReducer} from "./reducers/diagramElements-reducer";
+import {diagramReducer} from "./reducers/TestReducers/diagramElements-reducer";
 import {appDataReducer} from "./reducers/appData-reducer";
 import {userReducer} from "./reducers/user-reducer";
-import testingReducer from "./reducers/testing-reducer";
+import testingReducer from "./reducers/TestReducers/testing-reducer";
+import calcReducer from "./reducers/TestReducers/calc-reducer";
 
 let rootReducer = combineReducers({
     helpPage: helpReducer,
     diagramPage: diagramReducer,
     appData: appDataReducer,
     userData: userReducer,
-    testingData: testingReducer
+    testingData: testingReducer,
+    calcData: calcReducer
 });
 
 type AppStateType = ReturnType<typeof rootReducer>;

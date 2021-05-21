@@ -1,6 +1,6 @@
 import React from "react";
-import style from "./ViewResult.module.css"
-import {signalKeys} from "../../../types/generalTypes";
+import style from "../ViewResult.module.css"
+import {signalKeys} from "../../../../types/generalTypes";
 
 const GetSignalLevel = (currentSignalLevel, payload) => {
     switch (currentSignalLevel){
