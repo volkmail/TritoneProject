@@ -1,0 +1,99 @@
+.choseContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8vh;
+    min-width: 50vw;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.calcTypeChose{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(245, 245, 245, 0.95);
+    margin: 1vh;
+    padding: 1vh;
+    border-radius: 15px;
+}
+
+.calcTypeChose>p{
+    font-size: 1.1rem;
+    margin-bottom: .5vh;
+}
+
+.calcTypeChose>select{
+    font-size: 1rem;
+    padding: .15vh;
+    border-radius: 10px;
+}
+
+.chosePlayground{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 40vw;
+    margin: 1vh 0 1vh 0;
+
+}
+
+.columnsStack{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 18vw;
+    background-color: rgba(245, 245, 245, 0.95);
+    margin: 1vh 1vw 1vh 1vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    min-height: 340px;
+}
+
+.columnsStack>p{
+    margin: 0 0 .7vh 0;
+    background-color: #dfffdf;
+    min-width: 18vw;
+    text-align: center;
+    font-size: 1.1rem;
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid black;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.columnsStack>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 18vw;
+    min-height: 320px;
+}
+
+.columnsStack>div>p{
+    font-size: 1.1rem;
+    margin: .25vh 0 .25vh 0;
+    text-align: center;
+    min-width: inherit;
+    transition: 5ms ease-in;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.columnsStack>div>p:hover{
+    min-width: 16vw;
+    transform: scale(1.1);
+    background-color: #dfffdf;
+    border-radius: 10px;
+}

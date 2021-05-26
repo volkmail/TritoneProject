@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import style from "./ViewResultPoints.module.css";
+import {useDispatch} from "react-redux";
+import {ResetProgress, ResetSignalValuesToStep4} from "../../../../redux/ActionCreators/CalcActionsCreators";
 
 const ViewResultPoints = () => {
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(ResetProgress());
+        dispatch(ResetSignalValuesToStep4());
+        sessionStorage.getItem("currentMeasureSequence") && sessionStorage.removeItem("currentMeasureSequence");
+    },[])
+
     return (
         <div className={style.container}>
             <div className={style.title}>

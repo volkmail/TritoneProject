@@ -15,7 +15,7 @@
     align-items: center;
     flex-direction: column;
     height: 12vh;
-    width: 27vw;
+    width: 70vw;
     margin-top: 10vh;
     background-color: rgba(246,246,246,0.95);
     box-shadow: 0 0.25vh 0.5vh rgba(250, 250, 250, 0.75);
@@ -81,6 +81,87 @@
 }
 
 /*Point*/
+.pointSelectionGrid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50vw;
+    height: 40vh;
+}
+
+.pointSelectionContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 70vw;
+    height: 40vh;
+    margin-top: 15vh;
+}
+
+.pointSelectionContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.chooseTypes{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #F6F6F6;
+    box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
+    width: 20vw;
+    border-radius: 5px;
+}
+
+.chooseTypes>div{
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.historyBackButton{
+    position: absolute;
+    top: 12.5vh;
+    right: 87.5vw;
+    width: 10vw;
+    wrap-option: wrap;
+    letter-spacing: 1px;
+    font-size: .9em;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: #000;
+    background-color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    transition: 1s;
+    padding: 1vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.historyBackButton:hover{
+    background-color: #99ff99;
+    transform: scale(1.1);
+}
+
+.chooseTypes button{
+    margin: 3vh 0 1vh .22vw;
+}
+
+.chooseTypes p{
+    margin: .5vw;
+    padding: .25vw;
+    background-color: #e2ffe2;
+    border-radius: 5px;
+}
 
 .grid_types{
     display: flex;
@@ -93,7 +174,7 @@
     box-shadow: 0 0.25vh 0.5vh rgba(0, 0, 0, 0.75);
     border: 0 transparent;
     border-radius: 5px;
-    margin: 0 2vw;
+    margin: 0 1vw;
 }
 
 .grid_types>a{

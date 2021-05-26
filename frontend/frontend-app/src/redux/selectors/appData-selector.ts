@@ -4,6 +4,11 @@ const GetSectionsData = (state: AppStateType) => {
     return state.appData.testPart.sectionData;
 }
 
+const GetVariables = (state: AppStateType) => {
+    return state.appData.testPart.variables;
+}
+
 export {
-    GetSectionsData
+    GetSectionsData,
+    GetVariables
 }

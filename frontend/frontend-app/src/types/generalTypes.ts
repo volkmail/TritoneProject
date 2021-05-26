@@ -58,14 +58,47 @@ type CurrentCalcInfoType = {
     results: {id: number, typeName: string, typeTitle: string, result: boolean}[]
 } | null | undefined
 
+type VariableWithValuesType = {
+    id: number,
+    valuesName?:string,
+    variableTitle: string,
+    variableName: string,
+    variableDownIndex: string,
+    values: Array<number>
+}
+
+type VariableType = {
+    id: number,
+    valuesName?:string,
+    variableTitle: string,
+    variableName: string,
+    variableDownIndex: string,
+}
+
 enum signalKeys {
     signalLevelMax = "signalLevelMax",
     signalLevel = "signalLevel",
     signalLevelMin = "signalLevelMin"
 }
 
+enum signalTypes {
+    Test = 1,
+    Signal = 2,
+    Back = 3,
+    SAZ = 4
+}
+
+enum signalTypesString {
+    Test = "Test",
+    Signal = "Signal",
+    Back = "Back",
+    SAZ = "SAZ"
+}
+
 export {
-    signalKeys
+    signalKeys,
+    signalTypes,
+    signalTypesString
 }
 
 export type {
@@ -77,4 +110,6 @@ export type {
     DataSetTypeForViewResult,
     CalcInfoType,
     CurrentCalcInfoType,
+    VariableWithValuesType,
+    VariableType,
 }

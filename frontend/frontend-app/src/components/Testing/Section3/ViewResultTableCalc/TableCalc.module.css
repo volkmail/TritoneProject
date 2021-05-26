@@ -1,0 +1,16 @@
+.TableContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10vh;
+    min-width: 50vw;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.TableContainer>button{
+    margin: 1vh 0 1vh 0;
+}

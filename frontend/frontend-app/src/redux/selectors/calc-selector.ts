@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import {AppStateType} from "../store";
-import {DataSetTypeForViewResult} from "../../types/generalTypes";
+import {DataSetTypeForViewResult, VariableWithValuesType} from "../../types/generalTypes";
 
 const GetDataSetFrequency = (state: AppStateType) => {
     if(state.calcData.dataSet.frequency.length >= 0)
@@ -45,6 +45,32 @@ const GetDataSetSelector = createSelector(GetDataSetFrequency, GetDataSetSignalL
             return null;
     })
 
+const GetCurrentCalcInfo = (pointName: string) => (state: AppStateType) => {
+    return state.calcData.calculationInfo.find(el => el.pointName === pointName);
+}
+
+const GetPointProgress = (state: AppStateType) => {
+    return state.calcData.pointProgress;
+}
+
+const GetRightVariables = (state: AppStateType) => {
+    return {
+        Acoustic: state.calcData.pointProgress.step3.rightAcousticSequence,
+        Vibro: state.calcData.pointProgress.step3.rightVibroSequence
+    }
+}
+
+const GetSelectedVariables = (state: AppStateType): VariableWithValuesType[] => {
+    return state.calcData.pointProgress.step4.selectedVariables;
+}
+
+
 export {
-    GetDataSetSelector
+    GetDataSetSelector,
+    GetCurrentCalcInfo,
+    GetPointProgress,
+    GetDataSetSignalLevelMax,
+    GetRightVariables,
+    GetSelectedVariables,
+    // GetCurrentMeasureSequence,
 }

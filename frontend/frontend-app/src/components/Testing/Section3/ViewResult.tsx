@@ -2,12 +2,16 @@ import React, {useEffect, useState} from "react";
 import style from "./ViewResult.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {GetDataSet} from "../../../redux/ThunkCreators/testingThunks";
-import {signalKeys} from "../../../types/generalTypes";
+import {signalKeys, signalTypes} from "../../../types/generalTypes";
 import PanelControl from "./CustomComponents/PanelControl";
 import MyBarChar from "./CustomComponents/CustomBarChar";
 import {useParams} from "react-router-dom";
 import {GetDataSetSelector} from "../../../redux/selectors/calc-selector";
 import {ChangeSignalLevel} from "../../../redux/ActionCreators/CalcActionsCreators";
+import {
+    GetMeasureTypeByIdRussian,
+    GetPointNameTranslation
+} from "../../../functions/PointTestFunctions";
 
 const initialCheckBoxState = {
     signalLevelMax: false,
@@ -17,7 +21,7 @@ const initialCheckBoxState = {
 
 type useParamsType = {
     pointName: string,
-    typeName: string
+    typeId: string
 }
 
 const ViewResult = () => {
@@ -26,9 +30,28 @@ const ViewResult = () => {
     const [checkBoxState, setCheckBoxState] = useState(initialCheckBoxState);
 
     const myDispatch = useDispatch();
-    let {pointName, typeName} = useParams<useParamsType>()
+    let {pointName, typeId} = useParams<useParamsType>()
 
     useEffect(()=>{
+        let typeName: string = "";
+        switch(parseInt(typeId)){
+            case signalTypes.Test:
+                typeName="Test";
+                break;
+            case signalTypes.Signal:{
+                typeName="Signal";
+                break;
+            }
+            case signalTypes.Back:{
+                typeName="Back";
+                break;
+            }
+            case signalTypes.SAZ:{
+                typeName="SAZ";
+                break;
+            }
+        }
+
         /Floor|Wall|Ceiling/.test(pointName)
             ? myDispatch(GetDataSet("FWC"+typeName))
             : myDispatch(GetDataSet(pointName+typeName));
@@ -45,7 +68,8 @@ const ViewResult = () => {
     return(
         <div className={style.viewer_container}>
             <div className={style.viewer_title}>
-                <h1>Просмотр результатов снятия сигнала</h1>
+                <p>{GetMeasureTypeByIdRussian(parseInt(typeId))}</p>
+                <p>Тип конструкции: {GetPointNameTranslation(pointName)}</p>
             </div>
             <div className={style.viewer_field}>
                 <PanelControl

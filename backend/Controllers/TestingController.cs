@@ -248,7 +248,7 @@ namespace TritonBackend.Controllers
             return Ok(); //ПРИДУМАТЬ ОТВЕТ
         }
 
-        [Route("api/testing/postDataSetInfo")]
+        [Route("api/testing/postCalcProgress")]
         [HttpPost]
         public ActionResult SaveResult(DataSetPostRequest request) 
         {

@@ -11,6 +11,7 @@
 
 .viewer_title{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 8vh;
@@ -21,6 +22,11 @@
     border: 0 transparent;
     border-radius: 5px;
     text-align: center;
+}
+
+.viewer_title p{
+    margin-top: 0.2vh;
+    font-size: 1.3rem;
 }
 
 .viewer_field{
@@ -107,4 +113,12 @@
     height: 6vh;
     background-color: #b6fdb6;
     padding: 1vh;
+}
+
+.dialog h2{
+    margin: 1vh 0 1vh 1vw;
+}
+
+.dialog p{
+    margin: 1vh 0 1vh 1vw;
 }
