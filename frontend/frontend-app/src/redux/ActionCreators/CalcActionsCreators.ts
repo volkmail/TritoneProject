@@ -1,8 +1,16 @@
 import {DataSetType, signalTypesString, VariableType} from "../../types/generalTypes";
 
-const GetSummaryResults = () => {
+const SetSummaryResults = (results: Array<boolean>) => {
     return{
-        type: "GET_SUMMARY_RESULTS"
+        type: "SET_SUMMARY_RESULTS",
+        results
+    } as const
+}
+
+const GetSummaryResults = (results: Array<boolean>) => {
+    return{
+        type: "GET_SUMMARY_RESULTS",
+        results
     } as const
 }
 
@@ -74,6 +82,7 @@ const SetSelectedVariables = (variables: Array<VariableType>) =>{
 
 export {
     GetSummaryResults,
+    SetSummaryResults,
     SetDataSet,
     ChangeSignalLevel,
     ClearDataSet,
@@ -83,5 +92,5 @@ export {
     AddSignalValuesToStep4,
     ResetSignalValuesToStep4,
     SetStep4CalcType,
-    SetSelectedVariables
+    SetSelectedVariables,
 }

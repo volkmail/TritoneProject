@@ -69,7 +69,7 @@ let initialState = {
                 id: 9 as number,
                 valuesName:"delta",
                 variableTitle:"Поправка к расчетному значению уровня тестового акустического (вибрационного) сигнала в контрольной точке, дБ",
-                variableName: "&#916",
+                variableName: "delta",
                 variableDownIndex: ""
             },{
                 id: 10 as number,

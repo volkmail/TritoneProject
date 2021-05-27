@@ -69,5 +69,29 @@ export const TestingAPI = {
                     return response.data;
                 }
             })
+    },
+    GetPointsProgress(){
+        return axios.get<{pointSummaryProgress: string }>("https://localhost:44380/api/testing/getCalcProgress",{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok){
+                    return response.data;
+                }
+            })
+    },
+    SetPointsProgress(results: string){
+        return axios.post("https://localhost:44380/api/testing/postCalcProgress/",{
+            results
+        },{
+            headers:{"Authorization":`Bearer ${GetJwt()}`,}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok){
+                    return 0;
+                }else{
+                    return 1;
+                }
+            })
     }
 }

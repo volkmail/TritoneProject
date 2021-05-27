@@ -1,8 +1,7 @@
 import React, {MouseEvent, useState} from "react";
-import {DataSetTypeForViewResult, signalKeys, signalTypes, signalTypesString} from "../../../../types/generalTypes";
+import {signalKeys, signalTypesString} from "../../../../types/generalTypes";
 import style from "../ViewResult.module.css";
-import {Redirect, useLocation, useParams} from "react-router-dom";
-import {boolean} from "yup";
+import {Redirect, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {AddSignalValuesToStep4} from "../../../../redux/ActionCreators/CalcActionsCreators";
 import {GetMeasureTypeById} from "../../../../functions/PointTestFunctions";
@@ -18,11 +17,11 @@ type PropsType = {
     setCheckBoxState: React.Dispatch<React.SetStateAction<{ signalLevelMax: boolean, signalLevel: boolean, signalLevelMin: boolean }>>
 }
 type useParamsType = {
-    pointName: string,
+    pointId: string,
     typeId: string
 }
 const PanelControl: React.FC<PropsType> = (props) => {
-    const {pointName, typeId} = useParams<useParamsType>();
+    const {pointId, typeId} = useParams<useParamsType>();
     const [isDone, setIsDone] = useState<boolean>(false);
     const SignalLevelMax = useSelector(GetDataSetSignalLevelMax);
     const dispatch = useDispatch();
@@ -72,7 +71,7 @@ const PanelControl: React.FC<PropsType> = (props) => {
 
     return (
         isDone
-            ? <Redirect to={`/testing/viewPoints/Point/${pointName}`}/>
+            ? <Redirect to={`/testing/viewPoints/Point/${pointId}`}/>
             : <div className={style.viewer_panel}>
                 <div className={style.levelControl}>
                     <p>Уровень</p>

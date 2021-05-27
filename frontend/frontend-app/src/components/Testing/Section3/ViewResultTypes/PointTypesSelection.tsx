@@ -9,11 +9,11 @@ import SuccessDialog from "../CustomComponents/SuccessDialog";
 import MistakeDialog from "../CustomComponents/MistakeDialog";
 
 type useParamsType = {
-    pointName: string
+    pointId: string
 }
 
 const PointTypesSelection = (props: any) => {
-    let {pointName} = useParams<useParamsType>();
+    let {pointId} = useParams<useParamsType>();
     const history = useHistory();
     const [isFinish, SetIsFinish] = useState<boolean>(false);
     const [isMistake, SetIsMistake] = useState<boolean>(false);
@@ -80,16 +80,16 @@ const PointTypesSelection = (props: any) => {
                 <div className={style.pointSelectionContent}>
                     <div className={style.pointSelectionGrid}>
                         <div id= "1" className={style.grid_types}>
-                            <NavLink to={"/testing/viewPoints/Point/"+pointName+"/Measure/1"}>Измерение тест-сигнала</NavLink>
+                            <NavLink to={"/testing/viewPoints/Point/"+pointId+"/Measure/1"}>Измерение тест-сигнала</NavLink>
                         </div>
                         <div id= "2" className={style.grid_types}>
-                            <NavLink to={"/testing/viewPoints/Point/"+pointName+"/Measure/2"}>Измерение информативного сигнала и фона</NavLink>
+                            <NavLink to={"/testing/viewPoints/Point/"+pointId+"/Measure/2"}>Измерение информативного сигнала и фона</NavLink>
                         </div>
                         <div id= "3" className={style.grid_types}>
-                            <NavLink to={"/testing/viewPoints/Point/"+pointName+"/Measure/3"}>Измерение фона</NavLink>
+                            <NavLink to={"/testing/viewPoints/Point/"+pointId+"/Measure/3"}>Измерение фона</NavLink>
                         </div>
                         <div id= "4" className={style.grid_types}>
-                            <NavLink to={"/testing/viewPoints/Point/"+pointName+"/Measure/4"}>Измерение помехи</NavLink>
+                            <NavLink to={"/testing/viewPoints/Point/"+pointId+"/Measure/4"}>Измерение помехи</NavLink>
                         </div>
                     </div>
                     <button className="button_classic" onClick={checkStepRight}>Завершить выполнения этапа</button>

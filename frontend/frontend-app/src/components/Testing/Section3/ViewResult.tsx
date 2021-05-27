@@ -6,7 +6,7 @@ import {signalKeys, signalTypes} from "../../../types/generalTypes";
 import PanelControl from "./CustomComponents/PanelControl";
 import MyBarChar from "./CustomComponents/CustomBarChar";
 import {useParams} from "react-router-dom";
-import {GetDataSetSelector} from "../../../redux/selectors/calc-selector";
+import {GetCurrentPointInfo, GetDataSetSelector} from "../../../redux/selectors/calc-selector";
 import {ChangeSignalLevel} from "../../../redux/ActionCreators/CalcActionsCreators";
 import {
     GetMeasureTypeByIdRussian,
@@ -20,42 +20,47 @@ const initialCheckBoxState = {
 };
 
 type useParamsType = {
-    pointName: string,
+    pointId: string,
     typeId: string
 }
 
 const ViewResult = () => {
+    let {pointId, typeId} = useParams<useParamsType>()
+    const currentPointInfo = useSelector(GetCurrentPointInfo(parseInt(pointId)));
     const dataSet = useSelector(GetDataSetSelector);
     const [currentSignalLevel, setCurrentSignalLevel] = useState(signalKeys.signalLevel);
     const [checkBoxState, setCheckBoxState] = useState(initialCheckBoxState);
 
     const myDispatch = useDispatch();
-    let {pointName, typeId} = useParams<useParamsType>()
+
 
     useEffect(()=>{
-        let typeName: string = "";
-        switch(parseInt(typeId)){
-            case signalTypes.Test:
-                typeName="Test";
-                break;
-            case signalTypes.Signal:{
-                typeName="Signal";
-                break;
+        if(currentPointInfo){
+            let typeName: string = "";
+            switch(parseInt(typeId)){
+                case signalTypes.Test:
+                    typeName="Test";
+                    break;
+                case signalTypes.Signal:{
+                    typeName="Signal";
+                    break;
+                }
+                case signalTypes.Back:{
+                    typeName="Back";
+                    break;
+                }
+                case signalTypes.SAZ:{
+                    typeName="SAZ";
+                    break;
+                }
             }
-            case signalTypes.Back:{
-                typeName="Back";
-                break;
-            }
-            case signalTypes.SAZ:{
-                typeName="SAZ";
-                break;
-            }
+
+            /Floor|Wall|Ceiling/.test(currentPointInfo.pointName)
+                ? myDispatch(GetDataSet("FWC"+typeName))
+                : myDispatch(GetDataSet(currentPointInfo.pointName+typeName));
         }
 
-        /Floor|Wall|Ceiling/.test(pointName)
-            ? myDispatch(GetDataSet("FWC"+typeName))
-            : myDispatch(GetDataSet(pointName+typeName));
-    },[myDispatch])
+    },[myDispatch, currentPointInfo])
 
     useEffect(()=>{
         const intervalId = setInterval(() => {
@@ -69,7 +74,7 @@ const ViewResult = () => {
         <div className={style.viewer_container}>
             <div className={style.viewer_title}>
                 <p>{GetMeasureTypeByIdRussian(parseInt(typeId))}</p>
-                <p>Тип конструкции: {GetPointNameTranslation(pointName)}</p>
+                <p>Тип конструкции: {currentPointInfo?.pointTitle}</p>
             </div>
             <div className={style.viewer_field}>
                 <PanelControl

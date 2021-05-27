@@ -6,7 +6,7 @@ import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
 import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
 import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
-import {SetDataSet} from "../ActionCreators/CalcActionsCreators";
+import {GetSummaryResults, SetDataSet, SetSummaryResults} from "../ActionCreators/CalcActionsCreators";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
@@ -54,11 +54,37 @@ const GetDataSet = (placeTypeName: string): ThunkAction<Promise<void>, AppStateT
         }
     }
 
+const GetSummaryPointsProgress = (): ThunkAction<Promise<void>, AppStateType, unknown, CalcActionsTypes> =>
+    async (dispatch: Dispatch<CalcActionsTypes>, getState) => {
+        if(getState().calcData.summaryProgress.length === 0){
+            const responseData = await TestingAPI.GetPointsProgress();
+            if(responseData && responseData.pointSummaryProgress){
+                let result: Array<boolean> = JSON.parse(responseData!.pointSummaryProgress);
+                dispatch(SetSummaryResults(result));
+            } else{
+                dispatch(SetSummaryResults([false,false,false,false,false,false]));
+            }
+        }
+    }
+
+const SavePointProgress = (pointId: number): ThunkAction<Promise<void>, AppStateType, unknown, CalcActionsTypes> =>
+    async (dispatch: Dispatch<CalcActionsTypes>, getState) => {
+        if(getState().calcData.summaryProgress.length > 0){
+            let newSummaryResult: Array<boolean> = [...getState().calcData.summaryProgress];
+            newSummaryResult.splice(pointId,1,true);
+            const responseData = await TestingAPI.SetPointsProgress(JSON.stringify(newSummaryResult));
+            if(responseData === 0)
+                dispatch(SetSummaryResults(newSummaryResult));
+        }
+    }
+
 export {
     GetTestingInfo,
     GetDiagramElements,
     SetDiagramSetResults,
     SetSectionComplete,
     GetCurrentStep,
-    GetDataSet
+    GetDataSet,
+    GetSummaryPointsProgress,
+    SavePointProgress
 }

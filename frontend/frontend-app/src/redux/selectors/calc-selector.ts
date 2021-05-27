@@ -45,8 +45,12 @@ const GetDataSetSelector = createSelector(GetDataSetFrequency, GetDataSetSignalL
             return null;
     })
 
-const GetCurrentCalcInfo = (pointName: string) => (state: AppStateType) => {
-    return state.calcData.calculationInfo.find(el => el.pointName === pointName);
+const GetPointsInfo = (state: AppStateType) => {
+    return state.calcData.pointsInfo;
+}
+
+const GetCurrentPointInfo = (pointId: number) => (state: AppStateType) => {
+    return state.calcData.pointsInfo.find(el => el.id === pointId);
 }
 
 const GetPointProgress = (state: AppStateType) => {
@@ -64,13 +68,12 @@ const GetSelectedVariables = (state: AppStateType): VariableWithValuesType[] => 
     return state.calcData.pointProgress.step4.selectedVariables;
 }
 
-
 export {
     GetDataSetSelector,
-    GetCurrentCalcInfo,
+    GetCurrentPointInfo,
     GetPointProgress,
     GetDataSetSignalLevelMax,
     GetRightVariables,
     GetSelectedVariables,
-    // GetCurrentMeasureSequence,
+    GetPointsInfo,
 }

@@ -4,30 +4,6 @@ import {signalTypesString, VariableWithValuesType} from "../../../types/generalT
 import {ReturnSelectedVariables} from "../../../functions/PointTestFunctions";
 
 type CalcInitialStateType = typeof initialState;
-// type ResultsInitialType = typeof resultsInitial;
-
-// const resultsInitial = [{
-//     id: 0 as number,
-//     typeName: "Test" as string,
-//     typeTitle: "Измерение тест-сигнала" as string,
-//     result: false as boolean,
-// }, {
-//     id: 1 as number,
-//     typeName: "Signal" as string,
-//     typeTitle: "Измерение информативного сигнала и фона" as string,
-//     result: false as boolean,
-// }, {
-//     id: 2 as number,
-//     typeName: "Back" as string,
-//     typeTitle: "Измерение фона" as string,
-//     result: false as boolean,
-// }, {
-//     id: 3 as number,
-//     typeName: "SAZ",
-//     typeTitle: "Измерение помехи",
-//     result: false as boolean,
-// }
-// ];
 
 const dataSetInitial = {
     frequency: [] as Array<number>,
@@ -65,49 +41,43 @@ const pointProgressInitial = {
         delta: [] as Array<number>,
         isolationValues: [] as Array<number>,
         isComplete: false,
-        selectedVariables: [] as Array<VariableWithValuesType>
+        selectedVariables: [] as Array<VariableWithValuesType>,
     },
     isComplete: false as boolean,
     currentStep: 1 as number
 }
 
 const initialState = {
-    calculationInfo: [
+    pointsInfo: [
         {
             id: 0 as number,
             pointName: "Door" as string,
             pointTitle: "Дверь" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }, {
             id: 1 as number,
             pointName: "Battery" as string,
             pointTitle: "Батарея" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }, {
             id: 2 as number,
             pointName: "Window" as string,
             pointTitle: "Окно" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }, {
             id: 3 as number,
             pointName: "Floor" as string,
             pointTitle: "Пол" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }, {
             id: 4 as number,
             pointName: "Ceiling" as string,
             pointTitle: "Потолок" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }, {
             id: 5 as number,
             pointName: "Wall" as string,
             pointTitle: "Стена" as string,
-            // results: [...resultsInitial] as ResultsInitialType
             isComplete: false as boolean,
         }
     ],
@@ -115,7 +85,7 @@ const initialState = {
     pointProgress: {
         ...pointProgressInitial
     },
-    summaryProgress: [false,false,false,false,false,false],
+    summaryProgress: [] as Array<boolean>,
     dataSet: {
         ...dataSetInitial
     }
@@ -124,8 +94,18 @@ const initialState = {
 
 const calcReducer = (state: CalcInitialStateType = initialState, action: CalcActionsTypes): CalcInitialStateType => {
     switch (action.type) {
-        case "GET_SUMMARY_RESULTS": {
-            return state;
+        case "SET_SUMMARY_RESULTS": {
+
+            let newPointsInfo = [...state.pointsInfo];
+            for(let i = 0; i<newPointsInfo.length;i++){
+                newPointsInfo[i].isComplete = action.results[i];
+            }
+
+            return {
+                ...state,
+                pointsInfo: [...newPointsInfo],
+                summaryProgress: action.results
+            }
         }
         case "SET_DATASET":{
             return{

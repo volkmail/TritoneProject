@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import style from "./ViewResultPoints.module.css"
+import style from "./ViewResultPoints.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {ClearDataSet} from "../../../../redux/ActionCreators/CalcActionsCreators";
-import {GetCurrentCalcInfo, GetPointProgress} from "../../../../redux/selectors/calc-selector";
+import {GetCurrentPointInfo, GetPointProgress} from "../../../../redux/selectors/calc-selector";
 import PointTypesSelection from "../ViewResultTypes/PointTypesSelection";
 import ChoseColumns from "../ViewResultChoseColumns/ChoseColumns";
 import TableCalc from "../ViewResultTableCalc/TableCalc";
+import SuccessPointDialog from "../CustomComponents/SuccessPointDialog";
 
 type useParamsType = {
-    pointName: string
+    pointId: string
 }
 
 type CurrentStepType = {
@@ -41,13 +42,13 @@ const GetStepContent = (stepNumber: number, props: any = null) => {
                 return <TableCalc stepNumber={stepNumber}/>
         }
     } else {
-        return <div>Секция завершена</div> // TODO: Сделать красиво
+        return <SuccessPointDialog/> // TODO: Сделать красиво
     }
 }
 
 const PointTest = () => {
-    let {pointName} = useParams<useParamsType>();
-    const currentCalcInfo = useSelector(GetCurrentCalcInfo(pointName)); // инфа о констрцкии и о выполнении замеров на ней
+    let {pointId} = useParams<useParamsType>();
+    const currentPointInfo = useSelector(GetCurrentPointInfo(parseInt(pointId))); // инфа о констрцкии и о выполнении замеров на ней TODO:УБРАТЬ ЕГО
     const pointProgress = useSelector(GetPointProgress); //инфа о прохождении измерении и расчетов на конструкции
     const [currentStep, setCurrentStep] = useState<CurrentStepType>(null); //инфа о текущем этапе
     const dispatch = useDispatch();
@@ -86,7 +87,7 @@ const PointTest = () => {
         <div className={style.container}>
             <div className={style.title}>
                 <p>{`${currentStep?.stepTitle} ${currentStep?.isAcoustic !== undefined ? currentStep.isAcoustic ? "звукоизоляции" : "виброизоляции" : ""}`}</p>
-                <p>Тип конструкции: {currentCalcInfo?.pointTitle}.</p>
+                <p>Тип конструкции: {currentPointInfo?.pointTitle}.</p>
             </div>
             {GetStepContent(pointProgress.currentStep)}
         </div>

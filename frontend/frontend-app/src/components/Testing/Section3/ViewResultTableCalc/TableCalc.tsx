@@ -1,56 +1,64 @@
-import React, {useEffect, useMemo, useRef} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import style from "./TableCalc.module.css"
 import MaterialTable from "../CustomComponents/MaterialTable";
 import {useSelector} from "react-redux";
 import {GetSelectedVariables} from "../../../../redux/selectors/calc-selector";
-import {GridColumns, GridRowsProp} from "@material-ui/data-grid";
+import {GridColumns, GridEditCellPropsParams, GridRowsProp} from "@material-ui/data-grid";
 import {VariableWithValuesType} from "../../../../types/generalTypes";
-import {CreateTableColumns, CreateTableRows} from "../../../../functions/PointTestFunctions";
+import {CheckCalculations, CreateTableColumns, CreateTableRows} from "../../../../functions/PointTestFunctions";
+import SuccessDialog from "../CustomComponents/SuccessDialog";
+import MistakeDialog from "../CustomComponents/MistakeDialog";
 
-// function useApiRef() {
-//     const apiRef = useRef(null);
-//     const _columns = useMemo(
-//         () =>
-//             // @ts-ignore
-//             columns.concat({
-//                 field: "__HIDDEN__",
-//                 width: 0,
-//                 renderCell: (params: any) => {
-//                     apiRef.current = params.api;
-//                     return null;
-//                 }
-//             }),
-//         // @ts-ignore
-//         [columns]
-//     );
-//
-//     return { apiRef, columns: _columns };
-// }
-
-const TableCalc = (props:{stepNumber:number}) => {
-    // const { apiRef, columns } = useApiRef();
+const TableCalc = (props: { stepNumber: number }) => {
     const variables: VariableWithValuesType[] = useSelector(GetSelectedVariables);
-    const tableColumns: GridColumns = CreateTableColumns(variables);
-    const tableRows: GridRowsProp = CreateTableRows(variables);
+    const [isAutoFill, SetAutoFill] = useState<boolean>(false);
+    const [isFinish, SetIsFinish] = useState<boolean>(false);
+    const [isMistake, SetIsMistake] = useState<boolean>(false);
+    const tableColumns: GridColumns = useMemo(() => CreateTableColumns(variables), [variables]);
+    const tableRows: GridRowsProp = useMemo(() => CreateTableRows(variables, isAutoFill), [variables, isAutoFill]);
+    const [calculatedVariables, SetCalculatedVariables] = useState<{ [p: string]: Array<number> }>({
+        delta: new Array<number>(11).fill(0, 0, 11),
+        isolationValues: new Array<number>(11).fill(0, 0, 11)
+    });
 
+    const WriteValueFromTable = useCallback((valueData: GridEditCellPropsParams) => {
+        console.log(valueData);
+        SetCalculatedVariables(prevSate => {
+            let values = [...prevSate[valueData.field as string]];
+            values.splice((valueData.id as number) - 1, 1, valueData.props.value as number);
 
+            return {...prevSate, [valueData.field as string]: [...values]}
+        });
+    }, []);
 
-    // const OnCheckButtonHandler = () => {
-    //     // @ts-ignore
-    //     console.log(apiRef.current.getRowModels());
-    // }
-    // useEffect(()=>{
-    //     if(variables && variables.length === 6){
-    //         tableColumns = CreateTableColumns(variables);
-    //         tableRows = CreateTableRows(variables);
-    //     }
-    // },[variables])
+    const OnCheckButtonHandler = () => {
+        // alert(calculatedVariables["delta"]);
+        // alert(calculatedVariables["isolationValues"]);
+        // CheckCalculations(variables, calculatedVariables) ? alert("Done") : alert("Mistake");
+        CheckCalculations(variables, calculatedVariables) ? SetIsFinish(true) : SetIsMistake(true);
+    }
 
-    return(
-        <div className={style.TableContainer}>
-            <MaterialTable tableColumns={tableColumns} tableRows={tableRows}/>
-            <button className="button_classic">Завершить этап</button>
-        </div>
+    const OnFillAnswersButtonHandler = () => {
+        let rightDelta: Array<number> = variables.find(el => el.valuesName === "delta")!.values;
+        let rightIsolationValues: Array<number> = variables.find(el => el.valuesName === "isolationValues")!.values;
+        SetCalculatedVariables(calculatedVariables => {
+            return {
+                ...calculatedVariables,
+                ["delta"]: rightDelta,
+                ["isolationValues"]: rightIsolationValues,
+            }
+        });
+        SetAutoFill(true);
+    }
+
+    return (
+        isFinish ? <SuccessDialog stepNumber={props.stepNumber} SetIsFinish={SetIsFinish}/>
+            : isMistake ? <MistakeDialog SetIsMistake={SetIsMistake}/>
+            :<div className={style.TableContainer}>
+                <MaterialTable tableColumns={tableColumns} tableRows={tableRows} WriteValueFromTable={WriteValueFromTable}/>
+                <button className="button_classic" onClick={OnCheckButtonHandler}>Завершить этап</button>
+                <button className="button_classic" onClick={OnFillAnswersButtonHandler}>Заполнить ответы</button>
+            </div>
     )
 }
 

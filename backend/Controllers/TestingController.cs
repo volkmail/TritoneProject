@@ -218,7 +218,7 @@ namespace TritonBackend.Controllers
 
         #region DataCalcRegion
 
-        //[Authorize]
+        [Authorize]
         [Route("api/testing/getDataSetInfo/{placeTypeName}")]
         [HttpGet]
         public ActionResult GetDataSetInfo(string placeTypeName) 
@@ -248,11 +248,31 @@ namespace TritonBackend.Controllers
             return Ok(); //ПРИДУМАТЬ ОТВЕТ
         }
 
+        [Authorize]
         [Route("api/testing/postCalcProgress")]
         [HttpPost]
-        public ActionResult SaveResult(DataSetPostRequest request) 
+        public ActionResult SaveCalcResult(DataSetPostRequest request) 
         {
+            Student student = _context.Students.Single(s => s.UserId == userId);
+            CalculationResults calculationResults = _context.CalculationResults.Single(cr => cr.ResultId == student.ResultId);
+
+            calculationResults.CalculationResult = request.results;
+            _context.Entry(calculationResults).State = EntityState.Modified;
+
+            _context.SaveChanges();
+
             return Ok();
+        }
+
+        [Authorize]
+        [Route("api/testing/getCalcProgress")]
+        [HttpGet]
+        public ActionResult GetCalcResult()
+        {
+            Student student = _context.Students.Single(s => s.UserId == userId);
+            string pointSummaryProgress;
+            pointSummaryProgress = _context.CalculationResults.Single(cr => cr.ResultId == student.ResultId).CalculationResult;
+            return Ok(new { pointSummaryProgress });                        
         }
 
         private List<Tuple<double, double>> GenerateDataFromFile(string resultName)

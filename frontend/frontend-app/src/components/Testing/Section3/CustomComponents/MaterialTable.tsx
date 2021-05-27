@@ -1,43 +1,26 @@
 import * as React from 'react';
-import { DataGrid, GridColumns, GridRowsProp } from '@material-ui/data-grid';
-import {useMemo, useRef} from "react";
+import {DataGrid, GridColumns, GridEditCellPropsParams, GridRowsProp} from '@material-ui/data-grid';
 
 type PropsType = {
     tableColumns: GridColumns,
-    tableRows: GridRowsProp
+    tableRows: GridRowsProp,
+    WriteValueFromTable: (valueData: GridEditCellPropsParams)=> void
 }
 
-function useApiRef() {
-    const apiRef = useRef(null);
-    const _columns = useMemo(
-        () =>
-            // @ts-ignore
-            columns.concat({
-                field: "__HIDDEN__",
-                width: 0,
-                renderCell: (params: any) => {
-                    apiRef.current = params.api;
-                    return null;
-                }
-            }),
-        // @ts-ignore
-        [columns]
-    );
+const MaterialTable: React.FC<PropsType> = (propsA) => {
 
-    return { apiRef, columns: _columns };
-}
-
-const MaterialTable: React.FC<PropsType> = (props) => {
-    const { apiRef, columns } = useApiRef();
+    const handleEditCellChange = ({id, field, props}: GridEditCellPropsParams) => {
+        propsA.WriteValueFromTable({id, field, props});
+    }
 
     return (
-        <div style={{ height: "50vh", width: '100%' }}>
+        <div style={{ height: "50vh", width: '80%' }}>
             <DataGrid
                 disableColumnMenu={true}
-                rows={props.tableRows}
-                columns={props.tableColumns}
+                rows={propsA.tableRows}
+                columns={propsA.tableColumns}
                 hideFooter={true}
-                // rowsPerPageOptions={[]}
+                onEditCellChangeCommitted={handleEditCellChange}
             />
         </div>
     );

@@ -14,7 +14,7 @@ import ViewResultPoints from "./components/Testing/Section3/ViewResultPoints/Vie
 import PointTest from "./components/Testing/Section3/ViewResultPoints/PointTest";
 import ViewResult from "./components/Testing/Section3/ViewResult";
 import ChoseColumns from "./components/Testing/Section3/ViewResultChoseColumns/ChoseColumns";
-import TableShow from "./components/Testing/Section3/CustomComponents/MaterialTableShow";
+// import TableShow from "./components/Testing/Section3/CustomComponents/MaterialTableShow";
 
 const Help = React.lazy(() => import ('./components/Help/Help'));
 
@@ -50,9 +50,9 @@ const App = (props: any) => {
                 <Route path="/help" render={withSuspense(Help)}/>
                 <Route exact path="/testing" render={() => <Testing/>}/>
                 <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>
-                <Route exact path="/testing/viewPoints" render={() => <TableShow/>}/>
-                <Route exact path="/testing/viewPoints/Point/:pointName" children={<PointTest/>} />
-                <Route exact path="/testing/viewPoints/Point/:pointName/Measure/:typeId" children={<ViewResult/>} />
+                <Route exact path="/testing/viewPoints" render={() => <ViewResultPoints/>}/>
+                <Route exact path="/testing/viewPoints/Point/:pointId" children={<PointTest/>} />
+                <Route exact path="/testing/viewPoints/Point/:pointId/Measure/:typeId" children={<ViewResult/>} />
             </Switch>
         </>
     );
