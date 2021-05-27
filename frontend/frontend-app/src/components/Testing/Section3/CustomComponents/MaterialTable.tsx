@@ -1,41 +1,42 @@
 import * as React from 'react';
 import { DataGrid, GridColumns, GridRowsProp } from '@material-ui/data-grid';
+import {useMemo, useRef} from "react";
 
 type PropsType = {
     tableColumns: GridColumns,
     tableRows: GridRowsProp
 }
 
-// const columns: GridColumns = [
-//     { field: 'frequency', headerName: 'Lci', description:"dasdasdsadasdasd", editable: false},
-//     { field: 'age', headerName: 'V(с+ш)i', type: 'number', editable: true },
-// ];
-//
-// const rows: GridRowsProp = [
-//     {
-//         id: 1,
-//         frequency: 15,
-//         age: 25,
-//     },
-//     {
-//         id: 2,
-//         frequency: 15.5,
-//         age: 36,
-//     },
-//     {
-//         id: 3,
-//         frequency: 1254.6,
-//         age: 19,
-//     },
-// ];
+function useApiRef() {
+    const apiRef = useRef(null);
+    const _columns = useMemo(
+        () =>
+            // @ts-ignore
+            columns.concat({
+                field: "__HIDDEN__",
+                width: 0,
+                renderCell: (params: any) => {
+                    apiRef.current = params.api;
+                    return null;
+                }
+            }),
+        // @ts-ignore
+        [columns]
+    );
+
+    return { apiRef, columns: _columns };
+}
 
 const MaterialTable: React.FC<PropsType> = (props) => {
+    const { apiRef, columns } = useApiRef();
+
     return (
         <div style={{ height: "50vh", width: '100%' }}>
             <DataGrid
                 disableColumnMenu={true}
                 rows={props.tableRows}
                 columns={props.tableColumns}
+                hideFooter={true}
                 // rowsPerPageOptions={[]}
             />
         </div>

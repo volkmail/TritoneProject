@@ -5819,20 +5819,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\volko\\.nuget\\packages\\": {}
+    "C:\\Users\\Aleksey\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\volko\\Desktop\\main\\myProjects\\TritoneProject\\backend\\TritonBackend.csproj",
+      "projectUniqueName": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj",
       "projectName": "TritonBackend",
-      "projectPath": "C:\\Users\\volko\\Desktop\\main\\myProjects\\TritoneProject\\backend\\TritonBackend.csproj",
-      "packagesPath": "C:\\Users\\volko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\volko\\Desktop\\main\\myProjects\\TritoneProject\\backend\\obj\\",
+      "projectPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\TritonBackend.csproj",
+      "packagesPath": "C:\\Users\\Aleksey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aleksey\\Desktop\\main\\my_projects\\TritoneProject\\backend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\volko\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Aleksey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -5894,7 +5899,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
