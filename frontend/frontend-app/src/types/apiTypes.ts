@@ -1,4 +1,4 @@
-import {CheckPoint, DiagramElementType} from "./generalTypes";
+import {DiagramElementType} from "./generalTypes";
 import {GroupType} from "./userTypes";
 
 enum DataResponseCodesTypes {
@@ -39,10 +39,6 @@ type ResponseSectionElement = {
 
 type ResponseTestingInfo = {
     sections: Array<Boolean>,
-    checkPoints: {
-        window1Cps?: Array<CheckPoint>,
-        window2Cps?: Array<CheckPoint>
-    }
 }
 
 type ResponseCurrentStep = {

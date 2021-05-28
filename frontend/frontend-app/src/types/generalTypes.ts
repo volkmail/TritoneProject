@@ -11,23 +11,10 @@ type DiagramStepInfo = {
     isSAZOn?: boolean
 }
 
-type CheckPoint = {
-    cpId: number,
-    cpName: string,
-    isActive: boolean,
-    isIn: boolean,
-    isOut: boolean,
-    isVibro: boolean,
-    isAcoustic: boolean
-}
-
 type TestingInfo = {
     section1: boolean,
     section2: boolean,
     section3: boolean,
-    checkPoints: {
-        window1Cps: Array<CheckPoint>
-    }
 }
 
 type DataSetType = {
@@ -103,7 +90,6 @@ export {
 
 export type {
     DiagramElementType,
-    CheckPoint,
     TestingInfo,
     DiagramStepInfo,
     DataSetType,

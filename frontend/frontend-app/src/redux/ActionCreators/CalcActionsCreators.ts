@@ -7,13 +7,6 @@ const SetSummaryResults = (results: Array<boolean>) => {
     } as const
 }
 
-const GetSummaryResults = (results: Array<boolean>) => {
-    return{
-        type: "GET_SUMMARY_RESULTS",
-        results
-    } as const
-}
-
 const SetDataSet = (payload: DataSetType) => {
     return {
         type: "SET_DATASET",
@@ -81,7 +74,6 @@ const SetSelectedVariables = (variables: Array<VariableType>) =>{
 }
 
 export {
-    GetSummaryResults,
     SetSummaryResults,
     SetDataSet,
     ChangeSignalLevel,

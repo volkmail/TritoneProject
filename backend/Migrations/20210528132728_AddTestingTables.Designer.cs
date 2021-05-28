@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TritonBackend.Models;
 
 namespace TritonBackend.Migrations
 {
     [DbContext(typeof(TritonDbContext))]
-    partial class TritonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210528132728_AddTestingTables")]
+    partial class AddTestingTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -159,19 +159,12 @@ namespace TritonBackend.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("api/testing/getCheckPoints")]
+        [Route("api/testing/getTestingProgress")]
         public ActionResult GetUserTestingInfo() 
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
             Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
-
-            List<CheckPoint> checkPoints = _context.CheckPoints.Where(cp => cp.ResultId == student.ResultId).ToList();
-
-            List<CheckPoint> window1Cps = checkPoints?.Where(cp => Regex.IsMatch(cp.CpName, @"^window1_cp(\d?)")).ToList();
-
-            //TODO: Здесь будут еще другие контрольные точки
-            return Ok(new { sections = new bool[3] { result.Section1, result.Section2, result.Section3 },
-                checkPoints = new { window1Cps } });
+            return Ok(new { sections = new bool[3] { result.Section1, result.Section2, result.Section3 } });
         }
 
         #endregion

@@ -50,8 +50,8 @@ export const TestingAPI = {
                     return response.data;
             })
     },
-    GetTestingInfo(){
-        return axios.get<ResponseTestingInfo>("https://localhost:44380/api/testing/getCheckPoints",{
+    GetTestingProgress(){
+        return axios.get<ResponseTestingInfo>("https://localhost:44380/api/testing/getTestingProgress",{
             headers:{"Authorization":`Bearer ${GetJwt()}`}
         })
             .then(response => {

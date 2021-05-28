@@ -6,7 +6,7 @@ import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
 import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
 import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
-import {GetSummaryResults, SetDataSet, SetSummaryResults} from "../ActionCreators/CalcActionsCreators";
+import {SetDataSet, SetSummaryResults} from "../ActionCreators/CalcActionsCreators";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {

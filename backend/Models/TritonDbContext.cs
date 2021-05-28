@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TritonBackend.Models
 {
@@ -14,7 +10,6 @@ namespace TritonBackend.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<CalculationResults> CalculationResults { get; set; }
-        public DbSet<CheckPoint> CheckPoints { get; set; }
         public DbSet<DiagramElement> DiagramElements { get; set; }
         public DbSet<DiagramResults> DiagramResults { get; set; }
         

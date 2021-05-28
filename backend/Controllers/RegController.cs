@@ -52,8 +52,6 @@ namespace TritonBackend.Controllers
                 int UserLastRecordId = _context.Users.Max(u => u.UserId);
                 int ResultLastRecordId = _context.Results.Max(r => r.ResultId);
 
-                _context.CheckPoints.AddRange(CreateCheckPoints(_context.Results.Single(r => r.ResultId == ResultLastRecordId)));
-
                 _context.Students.Add(new Student
                 {
                     Result = _context.Results.Single(r => r.ResultId == ResultLastRecordId),
@@ -89,34 +87,6 @@ namespace TritonBackend.Controllers
                 GroupName = g.GroupName
             }).ToList();
             return Ok(new { groups = groups });
-        }
-
-        private List<CheckPoint> CreateCheckPoints(Result studentResult)
-        {
-            List<CheckPoint> result = new List<CheckPoint>();
-            result.AddRange(CreateWindowCheckPoints(studentResult, 147));
-
-            return result;
-        }
-
-        private List<CheckPoint> CreateWindowCheckPoints(Result studentResult, int count)
-        {
-            List<CheckPoint> checkPoints = new List<CheckPoint>(count);
-            for (int i = 0; i < count; i++)
-            {
-                checkPoints.Add(new CheckPoint
-                {
-                    CpName = $"window1_cp{i}",
-                    Result = studentResult,
-                    IsActive = false,
-                    IsIn = false,
-                    IsOut = false,
-                    IsAcoustic = false,
-                    IsVibro = false
-                });
-            }
-
-            return checkPoints;
         }
     }
 }

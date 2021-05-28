@@ -1,9 +1,9 @@
 import {TestingInfo} from "../../types/generalTypes";
 
-const GetTestingInfoAction = (testingInfo: TestingInfo) => {
+const GetTestingProgressAction = (testingProgress: TestingInfo) => {
     return {
-        type: "GET_TESTING_INFO",
-        testingInfo
+        type: "GET_TESTING_PROGRESS",
+        testingProgress
     } as const
 }
 
@@ -16,6 +16,6 @@ const SetSectionCompleteAction = (sectionNumber: number) => {
 
 
 export {
-    GetTestingInfoAction,
+    GetTestingProgressAction,
     SetSectionCompleteAction,
 }

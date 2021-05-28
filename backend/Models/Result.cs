@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TritonBackend.Models
@@ -16,7 +15,6 @@ namespace TritonBackend.Models
         public Student Student { get; set; }
         public DiagramResults DiagramResults { get; set; }
         public CalculationResults CalculationResults { get; set; }
-        public ICollection<CheckPoint> CheckPoints { get; set; }
-        public Result() => CheckPoints = new List<CheckPoint>();
+        public TestingResults TestingResults { get; set; }
     }
 }

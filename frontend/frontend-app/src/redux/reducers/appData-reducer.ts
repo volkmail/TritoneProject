@@ -87,7 +87,7 @@ let initialState = {
                 id: 12 as number,
                 valuesName:"frequency",
                 variableTitle:"Частота, Гц",
-                variableName: "V",
+                variableName: "f",
                 variableDownIndex: ""
             }
         ]
