@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TritonBackend.Models
 {
@@ -10,10 +11,10 @@ namespace TritonBackend.Models
     {
         [Key]
         public int TestingResultId { get; set; }
-        public int ResultId { get; set; }
         public Result Result { get; set; }
         public int CountTries { get; set; }
-        public ICollection<Quiz> Quizes { get; set; }
-        public TestingResults() => Quizes = new List<Quiz>();
+        [ForeignKey("Quiz")]
+        public int QuizId { get; set; }
+        public Quiz Quiz { get; set; }
     }
 }

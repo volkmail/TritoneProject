@@ -6,6 +6,7 @@ import {appDataReducer} from "./reducers/appData-reducer";
 import {userReducer} from "./reducers/user-reducer";
 import testingReducer from "./reducers/TestReducers/testing-reducer";
 import calcReducer from "./reducers/TestReducers/calc-reducer";
+import testReducer from "./reducers/TestReducers/test-reducer";
 
 let rootReducer = combineReducers({
     helpPage: helpReducer,
@@ -13,7 +14,8 @@ let rootReducer = combineReducers({
     appData: appDataReducer,
     userData: userReducer,
     testingData: testingReducer,
-    calcData: calcReducer
+    calcData: calcReducer,
+    testData: testReducer
 });
 
 type AppStateType = ReturnType<typeof rootReducer>;

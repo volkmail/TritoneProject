@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TritonBackend.Models
 {
@@ -8,8 +7,6 @@ namespace TritonBackend.Models
         [Key]
         public int CalculationResultId { get; set; }
         public string? CalculationResult { get; set; }
-
-        public int ResultId { get; set; }
         public Result Result { get; set; }
     }
 }

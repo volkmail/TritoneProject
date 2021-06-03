@@ -8,7 +8,7 @@ namespace TritonBackend.Models
         [Key]
         public int RoleId { get; set; }
 
-        [MaxLength(10)]
+        [MaxLength(20)]
         public string RoleName { get; set; }
 
         public ICollection<User> Users { get; set; }

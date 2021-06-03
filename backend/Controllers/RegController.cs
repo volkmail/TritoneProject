@@ -35,13 +35,29 @@ namespace TritonBackend.Controllers
                     Name = request.Name,
                     Surname = request.Surname,
                     Patronymic = request.Patronymic,
-                    Role = _context.Roles.Single(r => r.RoleId == 3)
+                    Role = _context.Roles.Single(r => r.RoleId == 1)
                 });
+               
+                _context.SaveChanges();
+
+                int UserLastRecordId = _context.Users.Max(u => u.UserId);
+
+                _context.Students.Add(new Student
+                {
+                    Group = _context.Groups.Single(g => g.GroupName == request.GroupName),
+                    User = _context.Users.Single(u => u.UserId == UserLastRecordId)
+                });
+            
+                _context.SaveChanges();
+
+                int StudentLastRecordId = _context.Students.Max(u => u.StudentId);
 
                 _context.Results.Add(new Result
                 {
                     CalculationResults = new CalculationResults() { },
                     DiagramResults = new DiagramResults() { },
+                    TestingResults = new TestingResults() { QuizId = 1, CountTries = 0 },
+                    Student = _context.Students.Single(u => u.StudentId == StudentLastRecordId),
                     Section1 = false,
                     Section2 = false,
                     Section3 = false
@@ -49,15 +65,9 @@ namespace TritonBackend.Controllers
 
                 _context.SaveChanges();
 
-                int UserLastRecordId = _context.Users.Max(u => u.UserId);
-                int ResultLastRecordId = _context.Results.Max(r => r.ResultId);
-
-                _context.Students.Add(new Student
-                {
-                    Result = _context.Results.Single(r => r.ResultId == ResultLastRecordId),
-                    Group = _context.Groups.Single(g => g.GroupName == request.GroupName),
-                    User = _context.Users.Single(u => u.UserId == UserLastRecordId)
-                });
+                Student student = _context.Students.Single(s => s.StudentId == StudentLastRecordId);
+                student.Result = _context.Results.Single(r => r.StudentId == StudentLastRecordId);
+                _context.Entry(student).State = EntityState.Modified;
 
                 _context.SaveChanges();
 

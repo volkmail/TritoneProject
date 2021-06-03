@@ -62,6 +62,23 @@ type VariableType = {
     variableDownIndex: string,
 }
 
+type QuizType = {
+    quizId: number,
+    quizName: string,
+    questions: Array<QuizQuestion>
+} | null
+
+type QuizQuestion = {
+    questionId: number,
+    questionText: string,
+    answers: Array<QuizAnswer>
+}
+
+type QuizAnswer = {
+    answerId: number,
+    answerText: string
+}
+
 enum signalKeys {
     signalLevelMax = "signalLevelMax",
     signalLevel = "signalLevel",
@@ -98,4 +115,8 @@ export type {
     CurrentCalcInfoType,
     VariableWithValuesType,
     VariableType,
+    QuizType,
+    QuizQuestion,
+    QuizAnswer,
+
 }

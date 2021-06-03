@@ -67,15 +67,15 @@ export default function DropMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <StyledMenuItem>
-                    <ListItemIcon>
-                        <SchoolTwoToneIcon style={{ color: "#8ed78e" }} fontSize="small"/>
-                    </ListItemIcon>
-                    <ListItemText>
-                        <NavLink to={"/MyResults"} style={{textDecoration: "none", color: "black"}}>Мои
-                            результаты</NavLink>
-                    </ListItemText>
-                </StyledMenuItem>
+                {/*<StyledMenuItem>*/}
+                {/*    <ListItemIcon>*/}
+                {/*        <SchoolTwoToneIcon style={{ color: "#8ed78e" }} fontSize="small"/>*/}
+                {/*    </ListItemIcon>*/}
+                {/*    <ListItemText>*/}
+                {/*        <NavLink to={"/MyResults"} style={{textDecoration: "none", color: "black"}}>Мои*/}
+                {/*            результаты</NavLink>*/}
+                {/*    </ListItemText>*/}
+                {/*</StyledMenuItem>*/}
                 <StyledMenuItem>
                     <ListItemIcon>
                         <ContactSupportTwoToneIcon style={{ color: "#8ed78e" }} fontSize="small"/>

@@ -6,7 +6,6 @@ namespace TritonBackend.Models
     { 
         [Key]
         public int DiagramResultId { get; set; }
-    	public int ResultId { get; set; }
         public Result result { get; set; }
 
         [MaxLength(int.MaxValue)]
@@ -24,8 +23,6 @@ namespace TritonBackend.Models
         [MaxLength(int.MaxValue)]
         public string? step7 {get; set; }
         [MaxLength(int.MaxValue)]
-        public string? step8 {get; set; }
-
-        
+        public string? step8 {get; set; }       
     }
 }

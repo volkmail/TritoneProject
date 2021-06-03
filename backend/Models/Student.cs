@@ -7,11 +7,9 @@ namespace TritonBackend.Models
     {
         [Key]
         public int StudentId { get; set; }
-
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public int ResultId { get; set; }
         public Result Result { get; set; }
 
         public int GroupId {get; set; }

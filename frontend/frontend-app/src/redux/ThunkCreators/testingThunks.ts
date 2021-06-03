@@ -1,12 +1,13 @@
 import {ThunkAction} from "redux-thunk";
 import {AppStateType} from "../store";
-import {CalcActionsTypes, DiagramActionTypes, TestingActionsTypes} from "../../types/actionsTypes";
+import {CalcActionsTypes, DiagramActionTypes, TestActionsTypes, TestingActionsTypes} from "../../types/actionsTypes";
 import {Dispatch} from "react";
 import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
 import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
 import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
 import {SetDataSet, SetSummaryResults} from "../ActionCreators/CalcActionsCreators";
+import {SetQuizData} from "../ActionCreators/TestActionCreators";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
@@ -78,6 +79,14 @@ const SavePointProgress = (pointId: number): ThunkAction<Promise<void>, AppState
         }
     }
 
+const GetQuizData = (): ThunkAction<Promise<void>, AppStateType, unknown, TestActionsTypes> =>
+    async (dispatch: Dispatch<TestActionsTypes>) => {
+        const responseData = await TestingAPI.GetTestData();
+        if(responseData && responseData.responseTestData){
+            dispatch(SetQuizData(responseData.responseTestData));
+        }
+    }
+
 export {
     GetTestingInfo,
     GetDiagramElements,
@@ -86,5 +95,6 @@ export {
     GetCurrentStep,
     GetDataSet,
     GetSummaryPointsProgress,
-    SavePointProgress
+    SavePointProgress,
+    GetQuizData,
 }

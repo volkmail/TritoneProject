@@ -10,8 +10,8 @@ using TritonBackend.Models;
 namespace TritonBackend.Migrations
 {
     [DbContext(typeof(TritonDbContext))]
-    [Migration("20210512025350_Sync")]
-    partial class Sync
+    [Migration("20210601072424_CreateDb")]
+    partial class CreateDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,55 +21,43 @@ namespace TritonBackend.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TritonBackend.Models.CheckPoint", b =>
+            modelBuilder.Entity("TritonBackend.Models.Answer", b =>
                 {
-                    b.Property<int>("CpId")
+                    b.Property<int>("AnswerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CpName")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<string>("AnswerText")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
-                    b.Property<bool>("IsAcoustic")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsIn")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsOut")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsVibro")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ResultId")
+                    b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
-                    b.HasKey("CpId");
+                    b.Property<bool>("isRight")
+                        .HasColumnType("bit");
 
-                    b.HasIndex("ResultId");
+                    b.HasKey("AnswerId");
 
-                    b.ToTable("CheckPoints");
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.DataSet", b =>
+            modelBuilder.Entity("TritonBackend.Models.CalculationResults", b =>
                 {
-                    b.Property<int>("DataSetId")
+                    b.Property<int>("CalculationResultId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DataSetPath")
+                    b.Property<string>("CalculationResult")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("DataSetId");
+                    b.HasKey("CalculationResultId");
 
-                    b.ToTable("DataSets");
+                    b.ToTable("CalculationResults");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.DiagramElement", b =>
@@ -102,9 +90,6 @@ namespace TritonBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ResultId")
-                        .HasColumnType("int");
 
                     b.Property<string>("step1")
                         .HasMaxLength(2147483647)
@@ -140,9 +125,6 @@ namespace TritonBackend.Migrations
 
                     b.HasKey("DiagramResultId");
 
-                    b.HasIndex("ResultId")
-                        .IsUnique();
-
                     b.ToTable("DiagramResults");
                 });
 
@@ -161,6 +143,43 @@ namespace TritonBackend.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("TritonBackend.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("QuestionText")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionId");
+
+                    b.HasIndex("QuizId");
+
+                    b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.Quiz", b =>
+                {
+                    b.Property<int>("QuizId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("QuizName")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.HasKey("QuizId");
+
+                    b.ToTable("Quizzes");
+                });
+
             modelBuilder.Entity("TritonBackend.Models.Result", b =>
                 {
                     b.Property<int>("ResultId")
@@ -168,7 +187,10 @@ namespace TritonBackend.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DataSetId")
+                    b.Property<int>("CalculationResultId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DiagramResultId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Section1")
@@ -180,6 +202,12 @@ namespace TritonBackend.Migrations
                     b.Property<bool>("Section3")
                         .HasColumnType("bit");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TestingResultId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("TimeEnd")
                         .HasColumnType("datetime2");
 
@@ -188,7 +216,17 @@ namespace TritonBackend.Migrations
 
                     b.HasKey("ResultId");
 
-                    b.HasIndex("DataSetId");
+                    b.HasIndex("CalculationResultId")
+                        .IsUnique();
+
+                    b.HasIndex("DiagramResultId")
+                        .IsUnique();
+
+                    b.HasIndex("StudentId")
+                        .IsUnique();
+
+                    b.HasIndex("TestingResultId")
+                        .IsUnique();
 
                     b.ToTable("Results");
                 });
@@ -219,9 +257,6 @@ namespace TritonBackend.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ResultId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -229,13 +264,31 @@ namespace TritonBackend.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.HasIndex("ResultId")
-                        .IsUnique();
-
                     b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.TestingResults", b =>
+                {
+                    b.Property<int>("TestingResultId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountTries")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuizId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TestingResultId");
+
+                    b.HasIndex("QuizId")
+                        .IsUnique();
+
+                    b.ToTable("TestingResults");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.User", b =>
@@ -275,37 +328,61 @@ namespace TritonBackend.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.CheckPoint", b =>
+            modelBuilder.Entity("TritonBackend.Models.Answer", b =>
                 {
-                    b.HasOne("TritonBackend.Models.Result", "Result")
-                        .WithMany("CheckPoints")
-                        .HasForeignKey("ResultId")
+                    b.HasOne("TritonBackend.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Result");
+                    b.Navigation("Question");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.DiagramResults", b =>
+            modelBuilder.Entity("TritonBackend.Models.Question", b =>
                 {
-                    b.HasOne("TritonBackend.Models.Result", "result")
-                        .WithOne("DiagramResults")
-                        .HasForeignKey("TritonBackend.Models.DiagramResults", "ResultId")
+                    b.HasOne("TritonBackend.Models.Quiz", "Quiz")
+                        .WithMany("Questions")
+                        .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("result");
+                    b.Navigation("Quiz");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.Result", b =>
                 {
-                    b.HasOne("TritonBackend.Models.DataSet", "DataSet")
-                        .WithMany("Results")
-                        .HasForeignKey("DataSetId")
+                    b.HasOne("TritonBackend.Models.CalculationResults", "CalculationResults")
+                        .WithOne("Result")
+                        .HasForeignKey("TritonBackend.Models.Result", "CalculationResultId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("DataSet");
+                    b.HasOne("TritonBackend.Models.DiagramResults", "DiagramResults")
+                        .WithOne("result")
+                        .HasForeignKey("TritonBackend.Models.Result", "DiagramResultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TritonBackend.Models.Student", "Student")
+                        .WithOne("Result")
+                        .HasForeignKey("TritonBackend.Models.Result", "StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TritonBackend.Models.TestingResults", "TestingResults")
+                        .WithOne("Result")
+                        .HasForeignKey("TritonBackend.Models.Result", "TestingResultId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CalculationResults");
+
+                    b.Navigation("DiagramResults");
+
+                    b.Navigation("Student");
+
+                    b.Navigation("TestingResults");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.Student", b =>
@@ -313,12 +390,6 @@ namespace TritonBackend.Migrations
                     b.HasOne("TritonBackend.Models.Group", "Group")
                         .WithMany("Students")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TritonBackend.Models.Result", "Result")
-                        .WithOne("Student")
-                        .HasForeignKey("TritonBackend.Models.Student", "ResultId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -330,9 +401,18 @@ namespace TritonBackend.Migrations
 
                     b.Navigation("Group");
 
-                    b.Navigation("Result");
-
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.TestingResults", b =>
+                {
+                    b.HasOne("TritonBackend.Models.Quiz", "Quiz")
+                        .WithOne("TestingResults")
+                        .HasForeignKey("TritonBackend.Models.TestingResults", "QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.User", b =>
@@ -346,9 +426,14 @@ namespace TritonBackend.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.DataSet", b =>
+            modelBuilder.Entity("TritonBackend.Models.CalculationResults", b =>
                 {
-                    b.Navigation("Results");
+                    b.Navigation("Result");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.DiagramResults", b =>
+                {
+                    b.Navigation("result");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.Group", b =>
@@ -356,18 +441,31 @@ namespace TritonBackend.Migrations
                     b.Navigation("Students");
                 });
 
-            modelBuilder.Entity("TritonBackend.Models.Result", b =>
+            modelBuilder.Entity("TritonBackend.Models.Question", b =>
                 {
-                    b.Navigation("CheckPoints");
+                    b.Navigation("Answers");
+                });
 
-                    b.Navigation("DiagramResults");
+            modelBuilder.Entity("TritonBackend.Models.Quiz", b =>
+                {
+                    b.Navigation("Questions");
 
-                    b.Navigation("Student");
+                    b.Navigation("TestingResults");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.Role", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.Student", b =>
+                {
+                    b.Navigation("Result");
+                });
+
+            modelBuilder.Entity("TritonBackend.Models.TestingResults", b =>
+                {
+                    b.Navigation("Result");
                 });
 
             modelBuilder.Entity("TritonBackend.Models.User", b =>

@@ -60,7 +60,8 @@ namespace TritonBackend.Controllers
         public ActionResult GetCurrentDiagramStep()
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
-            DiagramResults diagramResults = _context.DiagramResults.Single(dr => dr.ResultId == student.ResultId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            DiagramResults diagramResults = _context.DiagramResults.Single(r => r.DiagramResultId == result.DiagramResultId);
 
             string[] steps = new string[8] {
                 diagramResults.step1 ?? "",
@@ -83,7 +84,7 @@ namespace TritonBackend.Controllers
                     break;
             }
 
-            return Ok(new { currentStep});
+            return Ok(new { currentStep });
         }
 
         [Authorize]
@@ -92,7 +93,8 @@ namespace TritonBackend.Controllers
         public ActionResult SetCurrentDiagramStep(StepResultRequest request)
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
-            DiagramResults diagramResults = _context.DiagramResults.Single(dr => dr.ResultId == student.ResultId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            DiagramResults diagramResults = _context.DiagramResults.Single(r => r.DiagramResultId == result.DiagramResultId);
 
             switch (request.stepNumber)
             {
@@ -148,23 +150,9 @@ namespace TritonBackend.Controllers
 
             _context.SaveChanges();
 
-            int currentStep = request.stepNumber+1;
-          
+            int currentStep = request.stepNumber + 1;
+
             return Ok(new { currentStep });
-        }
-
-        #endregion
-
-        #region CheckPointRegion
-
-        [Authorize]
-        [HttpGet]
-        [Route("api/testing/getTestingProgress")]
-        public ActionResult GetUserTestingInfo() 
-        {
-            Student student = _context.Students.Single(s => s.UserId == userId);
-            Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
-            return Ok(new { sections = new bool[3] { result.Section1, result.Section2, result.Section3 } });
         }
 
         #endregion
@@ -177,7 +165,7 @@ namespace TritonBackend.Controllers
         public ActionResult SetSectionComplete(int sectionNumber)
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
-            Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
 
             switch (sectionNumber)
             {
@@ -203,7 +191,7 @@ namespace TritonBackend.Controllers
 
             _context.SaveChanges();
 
-            return Ok(new { isSectionResultSet = true});
+            return Ok(new { isSectionResultSet = true });
         }
 
 
@@ -214,10 +202,10 @@ namespace TritonBackend.Controllers
         [Authorize]
         [Route("api/testing/getDataSetInfo/{placeTypeName}")]
         [HttpGet]
-        public ActionResult GetDataSetInfo(string placeTypeName) 
+        public ActionResult GetDataSetInfo(string placeTypeName)
         {
             List<Tuple<double, double>> dataSet = GenerateDataFromFile($"StaticFiles\\DataSets\\{placeTypeName}.txt");
-            
+
             if (dataSet != null)
             {
                 Random rnd = new Random(DateTime.Now.Millisecond);
@@ -244,10 +232,11 @@ namespace TritonBackend.Controllers
         [Authorize]
         [Route("api/testing/postCalcProgress")]
         [HttpPost]
-        public ActionResult SaveCalcResult(DataSetPostRequest request) 
+        public ActionResult SaveCalcResult(DataSetPostRequest request)
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
-            CalculationResults calculationResults = _context.CalculationResults.Single(cr => cr.ResultId == student.ResultId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            CalculationResults calculationResults = _context.CalculationResults.Single(r => r.CalculationResultId == result.CalculationResultId);
 
             calculationResults.CalculationResult = request.results;
             _context.Entry(calculationResults).State = EntityState.Modified;
@@ -263,9 +252,10 @@ namespace TritonBackend.Controllers
         public ActionResult GetCalcResult()
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
-            string pointSummaryProgress;
-            pointSummaryProgress = _context.CalculationResults.Single(cr => cr.ResultId == student.ResultId).CalculationResult;
-            return Ok(new { pointSummaryProgress });                        
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            CalculationResults calculationResults = _context.CalculationResults.Single(r => r.CalculationResultId == result.CalculationResultId);
+
+            return Ok(new { pointSummaryProgress = calculationResults.CalculationResult });
         }
 
         private List<Tuple<double, double>> GenerateDataFromFile(string resultName)
@@ -276,7 +266,7 @@ namespace TritonBackend.Controllers
 
             string filePath = Path.Combine(env.ContentRootPath, resultName);
 
-            if (System.IO.File.Exists(filePath)) 
+            if (System.IO.File.Exists(filePath))
             {
                 List<Tuple<double, double>> dataResult = new List<Tuple<double, double>>();
                 Random rnd = new Random(DateTime.Now.Millisecond);
@@ -292,7 +282,7 @@ namespace TritonBackend.Controllers
                             string[] xy = line.Split('\t');
                             double signalLevelMax = 0;
 
-                            switch (resultName) 
+                            switch (resultName)
                             {
                                 case var _ when Regex.IsMatch(resultName, @"[SAZ, Test]"):
                                     {
@@ -309,20 +299,77 @@ namespace TritonBackend.Controllers
                                         signalLevelMax = Math.Round(double.Parse(xy[1]) + double.Parse(xy[1]) * rnd.Next(-3, 4) / 100, 1);
                                         break;
                                     }
-                            }                          
+                            }
                             dataResult.Add(new Tuple<double, double>(double.Parse(xy[0]), signalLevelMax));
-                        }                       
+                        }
                     }
                 }
 
                 return dataResult;
             }
-                
+
             return null;
         }
 
         #endregion
 
+        #region TestRegion
+
+        [Authorize]
+        [Route("api/testing/getTestData")]
+        [HttpGet]
+        public IActionResult GetTestData()
+        {
+            Student student = _context.Students.Single(s => s.UserId == userId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            TestingResults testingResult = _context.TestingResults.Single(r => r.TestingResultId == result.TestingResultId);
+
+            ResponseTestData responseTestData = GetResponseTestData(_context.Quizzes.Single(q => q.QuizId == testingResult.QuizId));
+
+            return Ok(new { responseTestData});
+        }
+
+        private ResponseTestData GetResponseTestData(Quiz quiz)
+        {
+            ResponseTestData result = null;
+            List<Question> questions = _context.Questions.Where(q => q.QuizId == quiz.QuizId).ToList();
+
+            if (questions != null)
+            {
+                result = new ResponseTestData
+                {
+                    quizId = quiz.QuizId,
+                    quizName = quiz.QuizName,
+                    questions = new List<ResponseQuestion>()
+                };
+
+                foreach (Question question in questions)
+                {
+                    List<Answer> answers = _context.Answers.Where(a => a.QuestionId == question.QuestionId).ToList();
+                    List<ResponseAnswer> responseAnswers = new List<ResponseAnswer>(); 
+
+                    foreach (Answer answer in answers)
+                    {
+                        responseAnswers.Add(new ResponseAnswer
+                        {
+                            answerId = answer.AnswerId,
+                            answerText = answer.AnswerText
+                        });
+                    }
+
+                    result.questions.Add(new ResponseQuestion
+                    {
+                        questionId = question.QuestionId,
+                        questionText = question.QuestionText,
+                        answers = responseAnswers
+                    });
+                }
+            }
+                    
+            return result;
+        }
+
+        #endregion
     }
 
 }

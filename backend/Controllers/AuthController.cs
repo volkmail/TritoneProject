@@ -37,7 +37,7 @@ namespace TritonBackend.Controllers
             }
             else
             {
-                return Ok(new { errorMessage = "Введен неправильный логин или пароль"});
+                return Ok(new { errorMessage = "Введен неправильный логин или пароль" });
             }
         }
 

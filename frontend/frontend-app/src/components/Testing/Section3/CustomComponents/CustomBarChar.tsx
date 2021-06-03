@@ -13,8 +13,8 @@ const MyBarChar: React.FC<PropsType> = (props) => {
     return (
         <div className={style.viewer_diagram}>
             <BarChart
-                width={1000}
-                height={500}
+                width={1200}
+                height={650}
                 data={props.dataSet as any[]}
             >
                 <CartesianGrid strokeDasharray="3 3" />

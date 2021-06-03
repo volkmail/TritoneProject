@@ -12,7 +12,6 @@ const testingReducer = (state: TestingInitialStateType = initialState, action: T
             return {
                 ...state,
                 sections: [action.testingProgress.section1, action.testingProgress.section2, action.testingProgress.section3],
-
             }
         }
         case "SET_SECTION":{

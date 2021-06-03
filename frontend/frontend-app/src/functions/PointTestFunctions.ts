@@ -70,7 +70,7 @@ const ReturnSelectedVariables = (variables: Array<VariableType>, frequency: Arra
                                  signalValues: Array<number>, backValues: Array<number>): Array<VariableWithValuesType> => {
 
     let result: Array<VariableWithValuesType> = [];
-    let calcDelta: Array<number> = CalcDelta(signalValues, testValues);
+    let calcDelta: Array<number> = CalcDelta(signalValues, backValues);
     let calcIsolationValues: Array<number> = CalcIsolationValues(signalValues, testValues, calcDelta);
 
     variables.forEach(el => {
@@ -79,7 +79,7 @@ const ReturnSelectedVariables = (variables: Array<VariableType>, frequency: Arra
                 result.push({...el, values: testValues})
                 break;
             case "signalValues":
-                result.push({...el, values: testValues})
+                result.push({...el, values: signalValues})
                 break;
             case "backValues":
                 result.push({...el, values: backValues})
@@ -99,23 +99,23 @@ const ReturnSelectedVariables = (variables: Array<VariableType>, frequency: Arra
     return result;
 }
 
-const CalcDelta = (signalValues: Array<number>, testValues: Array<number>): Array<number> => {
+const CalcDelta = (signalValues: Array<number>, backValues: Array<number>): Array<number> => {
     let result: Array<number> = [];
 
     for (let i = 0; i < signalValues.length; i++) {
-        if (Math.round(signalValues[i] - testValues[i]) >= 10) {
+        if (Math.round(signalValues[i] - backValues[i]) >= 10) {
             result.push(0);
-        } else if (Math.round(signalValues[i] - testValues[i]) <= 10 && Math.round(signalValues[i] - testValues[i]) >= 6) {
+        } else if (Math.round(signalValues[i] - backValues[i]) <= 10 && Math.round(signalValues[i] - backValues[i]) >= 6) {
             result.push(1);
-        } else if (Math.round(signalValues[i] - testValues[i]) <= 6 && Math.round(signalValues[i] - testValues[i]) >= 4) {
+        } else if (Math.round(signalValues[i] - backValues[i]) <= 6 && Math.round(signalValues[i] - backValues[i]) >= 4) {
             result.push(2);
-        } else if (Math.round(signalValues[i] - testValues[i]) === 3) {
+        } else if (Math.round(signalValues[i] - backValues[i]) === 3) {
             result.push(3);
-        } else if (Math.round(signalValues[i] - testValues[i]) === 2) {
+        } else if (Math.round(signalValues[i] - backValues[i]) === 2) {
             result.push(4);
-        } else if (Math.round(signalValues[i] - testValues[i]) === 1) {
+        } else if (Math.round(signalValues[i] - backValues[i]) === 1) {
             result.push(10);
-        } else if (signalValues[i] - testValues[i] < 1) {
+        } else if (signalValues[i] - backValues[i] < 1) {
             result.push(10);
         }
     }
@@ -123,8 +123,8 @@ const CalcDelta = (signalValues: Array<number>, testValues: Array<number>): Arra
     return result
 }
 
-const CalcIsolationValues = (testValues: Array<number>,
-                             signalValues: Array<number>, delta: Array<number>): Array<number> => {
+const CalcIsolationValues = (signalValues: Array<number>,
+                             testValues: Array<number>, delta: Array<number>): Array<number> => {
 
     let result: Array<number> = [];
 

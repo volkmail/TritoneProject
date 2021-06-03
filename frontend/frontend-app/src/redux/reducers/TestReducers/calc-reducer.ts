@@ -25,7 +25,7 @@ const pointProgressInitial = {
     },
     step3:{
         id: 3,
-        stepTitle: "Этап3. Выбор обозначений для полученных резульатов и коэффициентов будующих рассчетов." as string,
+        stepTitle: "Этап3. Выбор обозначений для полученных результатов и коэффициентов будующих рассчетов." as string,
         rightAcousticSequence: [1,2,3,9,10,12] as Array<number>,
         rightVibroSequence: [5,6,7,9,11,12] as Array<number>,
         isComplete: false

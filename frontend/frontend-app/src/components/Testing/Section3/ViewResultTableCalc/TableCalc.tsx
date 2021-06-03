@@ -32,9 +32,6 @@ const TableCalc = (props: { stepNumber: number }) => {
     }, []);
 
     const OnCheckButtonHandler = () => {
-        // alert(calculatedVariables["delta"]);
-        // alert(calculatedVariables["isolationValues"]);
-        // CheckCalculations(variables, calculatedVariables) ? alert("Done") : alert("Mistake");
         CheckCalculations(variables, calculatedVariables) ? SetIsFinish(true) : SetIsMistake(true);
     }
 

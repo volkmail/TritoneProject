@@ -12,7 +12,11 @@ namespace TritonBackend.Models
         public DbSet<CalculationResults> CalculationResults { get; set; }
         public DbSet<DiagramElement> DiagramElements { get; set; }
         public DbSet<DiagramResults> DiagramResults { get; set; }
-        
+        public DbSet<TestingResults> TestingResults { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+
         public TritonDbContext(DbContextOptions<TritonDbContext> options)
         : base(options)
         {

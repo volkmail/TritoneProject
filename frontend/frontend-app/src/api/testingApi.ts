@@ -5,8 +5,10 @@ import {
     ResponseTestingInfo, ResponseCurrentStep, ResponseDataSet
 } from "../types/apiTypes";
 import axios from "axios";
+import {QuizType} from "../types/generalTypes";
 
-const GetJwt = () => localStorage.length === 1 ? localStorage.getItem("JWT") : "";
+//const GetJwt = () => localStorage.length === 1 ? localStorage.getItem("JWT") : "";
+const GetJwt = () => localStorage.getItem("JWT") || "";
 
 export const TestingAPI = {
     GetDiagramElements (){
@@ -93,5 +95,15 @@ export const TestingAPI = {
                     return 1;
                 }
             })
-    }
+    },
+    GetTestData(){
+        return axios.get<{responseTestData: QuizType }>("https://localhost:44380/api/testing/getTestData",{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok){
+                    return response.data;
+                }
+            })
+    },
 }
