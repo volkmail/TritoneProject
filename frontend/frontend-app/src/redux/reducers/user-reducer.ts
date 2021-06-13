@@ -4,17 +4,19 @@ import {GroupType, UserData} from "../../types/userTypes";
 
 type UserInitialStateType = typeof initialState;
 
+const initialCurrentUser = {
+    accessToken: "" as string,
+    userId: "" as string,
+    login: "" as string,
+    name: "" as string,
+    surname: "" as string,
+    patronymic: "" as string,
+    groupName: "" as string,
+    role: "" as string,
+}
+
 let initialState = {
-    currentUser: {
-        accessToken: "" as string,
-        userId: "" as string,
-        login: "" as string,
-        name: "" as string,
-        surname: "" as string,
-        patronymic: "" as string,
-        groupName: "" as string,
-        role: "" as string,
-    },
+    currentUser: {...initialCurrentUser},
     authError: "" as string,
     loginIsBusy: false as boolean,
     isReg: false as boolean,
@@ -90,6 +92,13 @@ const userReducer = (state: UserInitialStateType = initialState, action: UserAct
             return {
                 ...state,
                 isReg: true
+            }
+        }
+        case "LOG_OUT":{
+            localStorage.removeItem("JWT");
+            return {
+                ...state,
+                currentUser: {...initialCurrentUser}
             }
         }
         default: {

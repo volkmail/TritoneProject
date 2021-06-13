@@ -2,16 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eca3da3-2fe0-49ea-b08b-22c9cf46b333" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResultTypes/PointTypesSelection.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/api/editApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/api/statisticApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/EditGroup/EditGroup.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/EditGroup/EditGroup.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/EditGroup/EditableList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Exit/Exit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/StudentStatistic/StatisticTable.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/StudentStatistic/StudentStatistic.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/StudentStatistic/StudentStatistic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/TestResult.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/functions/TestFunctions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/EditActionCreators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/StatisticActionCreators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/editThunks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/statisticThunks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/edit-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/statistic-reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/edit-selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/statistic-selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/TritonBackend/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/TritonBackend/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/TritonBackend/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/TritonBackend/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RegController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TestingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TestingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/TritonDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/TritonDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Quiz.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Quiz.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TestingResults.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TestingResults.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TritonBackend.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/TritonBackend.csproj.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/TritonBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/TritonBackend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResultPoints/ViewResultPoint.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResultPoints/PointTest.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/CalcActionsCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/CalcActionsCreators.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/calc-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/calc-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/api/testingApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/api/testingApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Auth/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Auth/Auth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/DropMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/DropMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/CustomComponents/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/CustomComponents/Question.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/Test.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/Test.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/Test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section2/Test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResultTableCalc/TableCalc.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Section3/ViewResultTableCalc/TableCalc.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Testing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/components/Testing/Testing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestActionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestActionCreators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestingActionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/TestingActionCreators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/UserActionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ActionCreators/UserActionCreators.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/testingThunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/testingThunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/userThunks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/ThunkCreators/userThunks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/test-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/test-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/testing-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/TestReducers/testing-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/appData-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/appData-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/appData-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/appData-selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/calc-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/calc-selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/user-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/reducers/user-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/test-selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/test-selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/testing-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/selectors/testing-selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/types/actionsTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/types/actionsTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/types/apiTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/types/apiTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/frontend-app/src/types/generalTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/frontend-app/src/types/generalTypes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

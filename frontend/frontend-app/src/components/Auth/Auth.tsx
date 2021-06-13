@@ -54,7 +54,7 @@ const Auth = () => {
                         <p className="font_usual-center">АВТОРИЗАЦИЯ</p>
                         <AuthTextInput name="login" type="text" label="Логин"/>
                         <AuthTextInput name="password" type="password" label="Пароль"/>
-                        {authError && <p style={{color: "red"}}>{authError}</p>}
+                        {authError && <p style={{fontSize:"0.9rem",backgroundColor:"#ff8f8f", padding:"0.5vh", borderRadius:"15px"}}>{authError}</p>}
                         <button className="button_classic" type="submit">Войти</button>
                         <NavLink to={"/reg"}>Нет учетной записи?</NavLink>
                     </Form>

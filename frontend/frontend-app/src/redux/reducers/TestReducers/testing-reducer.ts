@@ -3,7 +3,7 @@ import {TestingActionsTypes} from "../../../types/actionsTypes";
 type TestingInitialStateType = typeof initialState;
 
 const initialState = {
-    sections:[false,false,false],
+    sections:[true,false,false] as Array<boolean>,
 }
 
 const testingReducer = (state: TestingInitialStateType = initialState, action: TestingActionsTypes): TestingInitialStateType => {
@@ -11,7 +11,7 @@ const testingReducer = (state: TestingInitialStateType = initialState, action: T
         case "GET_TESTING_PROGRESS":{
             return {
                 ...state,
-                sections: [action.testingProgress.section1, action.testingProgress.section2, action.testingProgress.section3],
+                sections: [...action.sections],
             }
         }
         case "SET_SECTION":{

@@ -1,4 +1,4 @@
-import {QuizType} from "../../types/generalTypes";
+import {QuizResult, QuizType} from "../../types/generalTypes";
 
 const SetQuizData = (testData: QuizType) => {
     return {
@@ -7,6 +7,15 @@ const SetQuizData = (testData: QuizType) => {
     } as const
 }
 
+const SetQuizResult = (testResult: Array<QuizResult>) => {
+    return {
+        type: "SET_TEST_RESULT",
+        testResult
+    } as const
+}
+
 export {
     SetQuizData,
+    SetQuizResult,
+
 }

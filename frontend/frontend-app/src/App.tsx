@@ -13,9 +13,10 @@ import {InitUser} from "./redux/ActionCreators/UserActionCreators";
 import ViewResultPoints from "./components/Testing/Section3/ViewResultPoints/ViewResultPoints";
 import PointTest from "./components/Testing/Section3/ViewResultPoints/PointTest";
 import ViewResult from "./components/Testing/Section3/ViewResult";
-import ChoseColumns from "./components/Testing/Section3/ViewResultChoseColumns/ChoseColumns";
 import Test from "./components/Testing/Section2/Test";
-// import TableShow from "./components/Testing/Section3/CustomComponents/MaterialTableShow";
+import Exit from "./components/Exit/Exit";
+import StudentStatistic from "./components/StudentStatistic/StudentStatistic";
+import EditGroup from "./components/EditGroup/EditGroup.jsx";
 
 const Help = React.lazy(() => import ('./components/Help/Help'));
 
@@ -45,16 +46,34 @@ const App = (props: any) => {
         <>
             <Header/>
             <Switch>
-                <Route exact path="/" render={() => <Redirect to={'/home'}/>}/>
-                <Route exact path="/auth" render={() => <Redirect to={'/home'}/>}/>
-                <Route path='/home' render={() => <Main/>}/>
-                <Route path="/help" render={withSuspense(Help)}/>
-                <Route exact path="/testing" render={() => <Testing/>}/>
-                <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>
-                <Route path="/testing/test" render={() => <Test/>}/>
-                <Route exact path="/testing/viewPoints" render={() => <ViewResultPoints/>}/>
-                <Route exact path="/testing/viewPoints/Point/:pointId" children={<PointTest/>} />
-                <Route exact path="/testing/viewPoints/Point/:pointId/Measure/:typeId" children={<ViewResult/>} />
+                {userInfo.role === "Студент"
+                    ? <>
+                        <Route exact path="/" render={() => <Redirect to={'/home'}/>}/>
+                        <Route exact path="/auth" render={() => <Redirect to={'/home'}/>}/>
+                        <Route path='/home' render={() => <Main/>}/>
+                        <Route path="/help" render={withSuspense(Help)}/>
+                        <Route exact path="/testing" render={() => <Testing/>}/>
+                        <Route path="/testing/diagram" render={() => <DiagramConstructor/>}/>
+                        <Route path="/testing/test" render={() => <Test/>}/>
+                        <Route exact path="/testing/viewPoints" render={() => <ViewResultPoints/>}/>
+                        <Route exact path="/testing/viewPoints/Point/:pointId" children={<PointTest/>} />
+                        <Route exact path="/testing/viewPoints/Point/:pointId/Measure/:typeId" children={<ViewResult/>} />
+                        <Route path="/exit" render={() => <Exit/>}/>
+                    </>
+                    : userInfo.role === "Преподаватель"
+                        ? <>
+                            <Route exact path="/" render={() => <Redirect to={'/statistic'}/>}/>
+                            <Route exact path="/auth" render={() => <Redirect to={'/statistic'}/>}/>
+                            <Route path='/home' render={() => <Redirect to={'/statistic'}/>}/>
+                            <Route path="/statistic" render={() => <StudentStatistic/>}/>
+                            <Route path="/edit/groups" render={() => <EditGroup/>}/>
+                            <Route path="/regStudent" render={() => <Registration/>}/>
+                            <Route path="/exit" render={() => <Exit/>}/>
+                        </>
+                        : <p>Загрузка приложения...</p>
+                }
+
+
             </Switch>
         </>
     );

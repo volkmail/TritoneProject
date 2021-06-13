@@ -1,13 +1,14 @@
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useMemo, useState} from "react";
 import style from "./TableCalc.module.css"
 import MaterialTable from "../CustomComponents/MaterialTable";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {GetSelectedVariables} from "../../../../redux/selectors/calc-selector";
 import {GridColumns, GridEditCellPropsParams, GridRowsProp} from "@material-ui/data-grid";
 import {VariableWithValuesType} from "../../../../types/generalTypes";
 import {CheckCalculations, CreateTableColumns, CreateTableRows} from "../../../../functions/PointTestFunctions";
 import SuccessDialog from "../CustomComponents/SuccessDialog";
 import MistakeDialog from "../CustomComponents/MistakeDialog";
+import {SetSectionComplete} from "../../../../redux/ThunkCreators/testingThunks";
 
 const TableCalc = (props: { stepNumber: number }) => {
     const variables: VariableWithValuesType[] = useSelector(GetSelectedVariables);
@@ -20,9 +21,15 @@ const TableCalc = (props: { stepNumber: number }) => {
         delta: new Array<number>(11).fill(0, 0, 11),
         isolationValues: new Array<number>(11).fill(0, 0, 11)
     });
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if(isFinish){
+            dispatch(SetSectionComplete(3));
+        }
+    },[isFinish])
 
     const WriteValueFromTable = useCallback((valueData: GridEditCellPropsParams) => {
-        console.log(valueData);
         SetCalculatedVariables(prevSate => {
             let values = [...prevSate[valueData.field as string]];
             values.splice((valueData.id as number) - 1, 1, valueData.props.value as number);

@@ -18,8 +18,10 @@ const LogInUser = (login: string, password: string): ThunkAction<Promise<void>, 
         if(responseData){
             if (responseData.errorMessage)
                 dispatch(AuthError(responseData.errorMessage));
-            if (responseData.accessToken)
+            if (responseData.accessToken){
                 dispatch(AuthMe(responseData.accessToken));
+                dispatch(AuthError(""));
+            }
         }
 }
 

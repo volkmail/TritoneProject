@@ -5,6 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import GreenRadio from "./GreenRadio";
 import {QuizQuestion} from "../../../../types/generalTypes";
+import {ExpandVariable} from "../../../../functions/TestFunctions";
 
 type PropsType = {
     currentQuestion: QuizQuestion,
@@ -14,30 +15,40 @@ type PropsType = {
 const Question: React.FC<PropsType> = (props) => {
     const [value, SetValue] = useState<string>(`${props.currentQuestion.answers[0].answerId}`);
 
-    useEffect(()=>{
+    useEffect(() => {
         props.SetSelectedAnswer(parseInt(value));
-    },[])
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         SetValue(`${props.currentQuestion.answers[0].answerId}`);
         props.SetSelectedAnswer(props.currentQuestion.answers[0].answerId);
-    },[props.currentQuestion.answers[0].answerId])
+    }, [props.currentQuestion.answers[0].answerId])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         SetValue((event.target as HTMLInputElement).value);
         props.SetSelectedAnswer(parseInt((event.target as HTMLInputElement).value));
     };
 
-    return(
+    return (
         <div className={style.question}>
             <FormControl component="fieldset">
                 <p className={style.questionText}>{props.currentQuestion.questionText}</p>
                 <RadioGroup value={value} onChange={handleChange}>
-                    {props.currentQuestion.answers.map(el =>
-                        <FormControlLabel value={`${el.answerId}`}
-                                          control={<GreenRadio />}
-                                          label={<p className={style.AnswerText}>{el.answerText}</p>}
-                        />)
+                    {props.currentQuestion.answers.map(el => {
+                        let expandVariable = ExpandVariable(el.answerText);
+
+                        return <FormControlLabel value={`${el.answerId}`}
+                                                 control={<GreenRadio/>}
+                                                 label={<p className={style.AnswerText}>{
+                                                     expandVariable ? <>
+                                                             {expandVariable[0]}
+                                                             <sub>{expandVariable[1]}</sub>
+                                                         </>
+                                                         : <>{el.answerText}</>
+                                                 }</p>}
+
+                        />
+                    })
                     }
                 </RadioGroup>
             </FormControl>

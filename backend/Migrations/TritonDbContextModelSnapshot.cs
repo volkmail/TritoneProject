@@ -173,6 +173,9 @@ namespace TritonBackend.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
+                    b.Property<int>("TestingResultId")
+                        .HasColumnType("int");
+
                     b.HasKey("QuizId");
 
                     b.ToTable("Quizzes");
@@ -283,8 +286,7 @@ namespace TritonBackend.Migrations
 
                     b.HasKey("TestingResultId");
 
-                    b.HasIndex("QuizId")
-                        .IsUnique();
+                    b.HasIndex("QuizId");
 
                     b.ToTable("TestingResults");
                 });
@@ -405,8 +407,8 @@ namespace TritonBackend.Migrations
             modelBuilder.Entity("TritonBackend.Models.TestingResults", b =>
                 {
                     b.HasOne("TritonBackend.Models.Quiz", "Quiz")
-                        .WithOne("TestingResults")
-                        .HasForeignKey("TritonBackend.Models.TestingResults", "QuizId")
+                        .WithMany("TestingResults")
+                        .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

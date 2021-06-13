@@ -51,12 +51,17 @@ namespace TritonBackend.Controllers
                 _context.SaveChanges();
 
                 int StudentLastRecordId = _context.Students.Max(u => u.StudentId);
+                int QuizRecordId = _context.Quizzes.Max(u => u.QuizId);
 
                 _context.Results.Add(new Result
                 {
+                    //ResultId = _context.Results.Count >= 1 ? _context.Results.Max (r => r.ResultId) + 1 : 1, //TODO
                     CalculationResults = new CalculationResults() { },
                     DiagramResults = new DiagramResults() { },
-                    TestingResults = new TestingResults() { QuizId = 1, CountTries = 0 },
+                    TestingResults = new TestingResults() 
+                    {   Quiz = _context.Quizzes.Single(q => q.QuizId == 1),
+                        CountTries = 0 
+                    },
                     Student = _context.Students.Single(u => u.StudentId == StudentLastRecordId),
                     Section1 = false,
                     Section2 = false,

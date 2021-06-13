@@ -1,9 +1,7 @@
-import {TestingInfo} from "../../types/generalTypes";
-
-const GetTestingProgressAction = (testingProgress: TestingInfo) => {
+const SetSectionsProgress = (sections: Array<boolean>) => {
     return {
         type: "GET_TESTING_PROGRESS",
-        testingProgress
+        sections
     } as const
 }
 
@@ -14,8 +12,7 @@ const SetSectionCompleteAction = (sectionNumber: number) => {
     } as const
 }
 
-
 export {
-    GetTestingProgressAction,
+    SetSectionsProgress,
     SetSectionCompleteAction,
 }

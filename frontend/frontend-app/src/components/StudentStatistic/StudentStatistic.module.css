@@ -1,0 +1,28 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-image: url(../../assets/img/background1.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30vh;
+    min-width: 70vw;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.table>p{
+    margin: .5vh 0 .5vh 0;
+    font-size: 1.1rem;
+}

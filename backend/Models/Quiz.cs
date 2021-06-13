@@ -12,8 +12,13 @@ namespace TritonBackend.Models
         public int QuizId { get; set; }
         [MaxLength(300)]
         public string QuizName { get; set; }
-        public TestingResults TestingResults { get; set; }
+        public int TestingResultId { get; set; }
+        public ICollection<TestingResults> TestingResults { get; set; }
         public ICollection<Question> Questions { get; set; }
-        public Quiz() => Questions = new List<Question>();
+        public Quiz()
+        {
+            Questions = new List<Question>();
+            TestingResults = new List<TestingResults>();
+        } 
     }
 }

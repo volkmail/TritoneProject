@@ -2,12 +2,11 @@ import {
     ServerResponseCodesTypes,
     ResponseDiagramElementsType,
     ResponseSectionElement,
-    ResponseTestingInfo, ResponseCurrentStep, ResponseDataSet
+    ResponseTestingInfo, ResponseCurrentStep, ResponseDataSet,
 } from "../types/apiTypes";
 import axios from "axios";
-import {QuizType} from "../types/generalTypes";
+import { QuizSelectedAnswers, QuizType} from "../types/generalTypes";
 
-//const GetJwt = () => localStorage.length === 1 ? localStorage.getItem("JWT") : "";
 const GetJwt = () => localStorage.getItem("JWT") || "";
 
 export const TestingAPI = {
@@ -52,8 +51,8 @@ export const TestingAPI = {
                     return response.data;
             })
     },
-    GetTestingProgress(){
-        return axios.get<ResponseTestingInfo>("https://localhost:44380/api/testing/getTestingProgress",{
+    GetSectionsProgress(){
+        return axios.get<ResponseTestingInfo>("https://localhost:44380/api/testing/getSectionsProgress",{
             headers:{"Authorization":`Bearer ${GetJwt()}`}
         })
             .then(response => {
@@ -98,6 +97,19 @@ export const TestingAPI = {
     },
     GetTestData(){
         return axios.get<{responseTestData: QuizType }>("https://localhost:44380/api/testing/getTestData",{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok){
+                    return response.data;
+                }
+            })
+    },
+    GetTestResults(answers: Array<QuizSelectedAnswers>){
+
+        return axios.put<any>("https://localhost:44380/api/testing/getTestResult",{
+            answers
+        },{
             headers:{"Authorization":`Bearer ${GetJwt()}`}
         })
             .then(response => {

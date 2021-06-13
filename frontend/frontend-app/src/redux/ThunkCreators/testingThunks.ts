@@ -5,9 +5,10 @@ import {Dispatch} from "react";
 import {DataResponseCodesTypes} from "../../types/apiTypes";
 import {TestingAPI} from "../../api/testingApi";
 import {GetElements, GoToNextStep, SetCurrentDiagramStep} from "../ActionCreators/DiagramActionCreators";
-import {SetSectionCompleteAction} from "../ActionCreators/TestingActionCreators";
+import {SetSectionCompleteAction, SetSectionsProgress} from "../ActionCreators/TestingActionCreators";
 import {SetDataSet, SetSummaryResults} from "../ActionCreators/CalcActionsCreators";
-import {SetQuizData} from "../ActionCreators/TestActionCreators";
+import {SetQuizData, SetQuizResult} from "../ActionCreators/TestActionCreators";
+import {QuizSelectedAnswers} from "../../types/generalTypes";
 
 const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown, DiagramActionTypes> =>
     async (dispatch: Dispatch<DiagramActionTypes>) => {
@@ -16,9 +17,12 @@ const GetDiagramElements = (): ThunkAction<Promise<void>, AppStateType, unknown,
             dispatch(GetElements(responseData.data));
     }
 
-const GetTestingInfo = (): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
+const GetSectionsProgress = (): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
     async (dispatch: Dispatch<TestingActionsTypes>) => {
-        //const responseData = await UserAPI.GetStudentGroups();
+        const responseData = await TestingAPI.GetSectionsProgress();
+        if(responseData && responseData.sections.length === 3){
+            dispatch(SetSectionsProgress(responseData.sections));
+        }
 }
 
 const SetSectionComplete = (sectionNumber: number): ThunkAction<Promise<void>, AppStateType, unknown, TestingActionsTypes> =>
@@ -87,8 +91,26 @@ const GetQuizData = (): ThunkAction<Promise<void>, AppStateType, unknown, TestAc
         }
     }
 
+const GetQuizResult = (answers: Array<QuizSelectedAnswers>): ThunkAction<Promise<void>, AppStateType, unknown, TestActionsTypes> =>
+    async (dispatch: Dispatch<TestActionsTypes>) => {
+        const responseData = await TestingAPI.GetTestResults(answers);
+        if(responseData && responseData.responseResult){
+            dispatch(SetQuizResult(responseData.responseResult));
+        }
+    }
+
+// const SetDateStart = (answers: Array<QuizSelectedAnswers>): ThunkAction<Promise<void>, AppStateType, unknown, unknown> =>
+//     async () => {
+//         await TestingAPI.GetTestResults(answers);
+//     }
+//
+// const SetDateEnd = (answers: Array<QuizSelectedAnswers>): ThunkAction<Promise<void>, AppStateType, unknown, unknown> =>
+//     async () => {
+//         await TestingAPI.GetTestResults(answers);
+//     }
+
 export {
-    GetTestingInfo,
+    GetSectionsProgress,
     GetDiagramElements,
     SetDiagramSetResults,
     SetSectionComplete,
@@ -97,4 +119,6 @@ export {
     GetSummaryPointsProgress,
     SavePointProgress,
     GetQuizData,
+    GetQuizResult,
+
 }

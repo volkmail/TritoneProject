@@ -37,9 +37,19 @@ namespace TritonBackend.Controllers
         [Authorize]
         [Route("api/testing/getDiagramElements")]
         [HttpGet]
-        public async Task<ActionResult> GetDiagramElements()
+        public ActionResult GetDiagramElements()
         {
-            List<DiagramElement> diagramElements = await _context.DiagramElements.Select(de => new DiagramElement()
+            Student student = _context.Students.Single(s => s.UserId == userId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+
+            if (result.TimeStart == null) 
+            {
+                result.TimeStart = DateTime.Now;
+                _context.Entry(result).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+
+            List<DiagramElement> diagramElements = _context.DiagramElements.Select(de => new DiagramElement()
             {
                 ElementId = de.ElementId,
                 ElementName = de.ElementName,
@@ -49,7 +59,7 @@ namespace TritonBackend.Controllers
                     Request.PathBase,
                     de.ElementImageSrc.Replace(@"\", @"/")),
                 ElementText = de.ElementText ?? ""
-            }).ToListAsync();
+            }).ToList();
 
             return Ok(new { data = diagramElements, ResultCode = 0 });
         }
@@ -184,6 +194,7 @@ namespace TritonBackend.Controllers
                 case 3:
                     {
                         result.Section3 = true;
+                        result.TimeEnd = DateTime.Now;
                         _context.Entry(result).State = EntityState.Modified;
                         break;
                     }
@@ -192,6 +203,18 @@ namespace TritonBackend.Controllers
             _context.SaveChanges();
 
             return Ok(new { isSectionResultSet = true });
+        }
+
+        [Authorize]
+        [Route("api/testing/getSectionsProgress")]
+        [HttpGet]
+        public ActionResult GetSectionsProgress()
+        {
+            Student student = _context.Students.Single(s => s.UserId == userId);
+            Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+            bool[] sections = new bool[3] { result.Section1, result.Section2, result.Section3 };
+          
+            return Ok(new { sections});
         }
 
 
@@ -260,10 +283,6 @@ namespace TritonBackend.Controllers
 
         private List<Tuple<double, double>> GenerateDataFromFile(string resultName)
         {
-            //Student student = _context.Students.Single(s => s.UserId == userId);
-            //Result result = _context.Results.Single(r => r.ResultId == student.ResultId);
-            //DataSet dataSet = _context.DataSets.Single(d => d.DataSetId == 1);
-
             string filePath = Path.Combine(env.ContentRootPath, resultName);
 
             if (System.IO.File.Exists(filePath))
@@ -327,6 +346,54 @@ namespace TritonBackend.Controllers
             ResponseTestData responseTestData = GetResponseTestData(_context.Quizzes.Single(q => q.QuizId == testingResult.QuizId));
 
             return Ok(new { responseTestData});
+        }
+
+        [Authorize]
+        [Route("api/testing/getTestResult")]
+        [HttpPut]
+        public ActionResult GetTestResult(RequestTestResultObjectFormat request)
+        {
+                Student student = _context.Students.Single(s => s.UserId == userId);
+                Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
+                TestingResults testingResult = _context.TestingResults.Single(r => r.TestingResultId == result.TestingResultId);
+                List<Question> questions = _context.Questions.Where(q => q.QuizId == testingResult.QuizId).ToList();
+                
+
+                if (questions != null)
+                {
+                    if (questions.Count == request.answers.Length)
+                    {
+                        ResponseTestResult[] responseResult = new ResponseTestResult[questions.Count];
+                        int count = 0;
+                        for (int i = 0; i < request.answers.Length; i++)
+                        {
+                            Answer pickAnswer = _context.Answers.Single(a => a.AnswerId == request.answers[i].answerId);
+                            responseResult[i] = new ResponseTestResult
+                            {
+                                questionId = request.answers[i].questionId,
+                                answerText = pickAnswer.AnswerText,
+                                isRight = pickAnswer.isRight
+                            };
+                            if (pickAnswer.isRight)
+                                count++;
+                        }
+
+                        double percentRight = (count * 100) / questions.Count;
+
+                    if (percentRight > 80)
+                    {
+                        testingResult.CountTries += 1;
+                        _context.Entry(testingResult).State = EntityState.Modified;
+                        result.Section3 = true;                        
+                        _context.Entry(result).State = EntityState.Modified;
+                        _context.SaveChanges();
+                    }
+
+                    return Ok(new { responseResult = responseResult });
+                    }
+                }
+
+                return Ok(new { responseResult = "error" });                    
         }
 
         private ResponseTestData GetResponseTestData(Quiz quiz)

@@ -45,6 +45,12 @@ const InitUser = () => {
     } as const
 }
 
+const LogOut = () => {
+    return {
+        type:"LOG_OUT"
+    } as const
+}
+
 export {
     AuthMe,
     AuthError,
@@ -52,5 +58,7 @@ export {
     GetGroups,
     LoginNotBusy,
     RegistrationStudent,
-    InitUser
+    InitUser,
+    LogOut,
+
 }

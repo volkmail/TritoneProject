@@ -1,0 +1,70 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-image: url(../../assets/img/background1.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20vh;
+    min-width: 70vw;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    max-height: 90vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.table li{
+    list-style-type: none;
+}
+
+.table div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 65vh;
+    max-width: 70vw;
+}
+
+.table div>ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: inherit;
+    height: 55vh;
+    margin: 0;
+}
+
+.table>p{
+    margin-bottom: 1vh;
+}
+
+.table>button{
+    margin-top: 1vh;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    max-height: 90vh;
+    min-width: 65vw;
+    box-shadow: 0 0.25vh 0.5vh black;
+}

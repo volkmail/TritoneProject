@@ -2,7 +2,7 @@ import React, {useEffect} from "react"
 import style from "./Registration.module.css"
 import {Form, Formik, FormikValues, useField} from 'formik'
 import {useDispatch, useSelector} from "react-redux";
-import {GetGroups, isLoginBusy, isRegDone} from "../../redux/selectors/user-selector";
+import {GetGroups, GetUserInfo, isLoginBusy, isRegDone} from "../../redux/selectors/user-selector";
 import {GetStudentsGroups, IsLoginBusy, RegistrStudent} from "../../redux/ThunkCreators/userThunks";
 import { Redirect } from "react-router-dom";
 
@@ -27,6 +27,7 @@ const Registration = () => {
     const groups = useSelector(GetGroups);
     const isBusyLogin = useSelector(isLoginBusy);
     const isReg = useSelector(isRegDone);
+    const userInfo = useSelector(GetUserInfo);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -140,38 +141,39 @@ const Registration = () => {
 
     return (
         isReg
-            ? <Redirect to={"/auth"}/>
-            :
-        <Formik
-            initialValues={initValues}
-            onSubmit={submit}
-            validate={validSchema}
-        >
-            {({isSubmitting}) => (
-                <div className={style.formContainer}>
-                    <Form className={style.form}>
-                        <p>РЕГИСТРАЦИЯ СТУДЕНТА</p>
-                        <div className={style.horizontalGroup}>
-                            <div className={style.horizontalGroup_group}>
-                                <RegTextInput name="login" type="text" label="Логин"/>
-                                <RegTextInput name="password" type="text" label="Пароль"/>
-                                <RegTextInput name="repeatPassword" type="text" label="Подтверждение пароля"/>
+            ? !userInfo
+                ? <Redirect to={"/statistic"}/>
+                : <Redirect to={"/auth"}/>
+            : <Formik
+                initialValues={initValues}
+                onSubmit={submit}
+                validate={validSchema}
+            >
+                {({isSubmitting}) => (
+                    <div className={style.formContainer}>
+                        <Form className={style.form}>
+                            <p>РЕГИСТРАЦИЯ СТУДЕНТА</p>
+                            <div className={style.horizontalGroup}>
+                                <div className={style.horizontalGroup_group}>
+                                    <RegTextInput name="login" type="text" label="Логин"/>
+                                    <RegTextInput name="password" type="text" label="Пароль"/>
+                                    <RegTextInput name="repeatPassword" type="text" label="Подтверждение пароля"/>
+                                </div>
+                                <div className={style.horizontalGroup_group}>
+                                    <RegTextInput name="surname" type="text" label="Фамилия"/>
+                                    <RegTextInput name="name" type="text" label="Имя"/>
+                                    <RegTextInput name="patronymic" type="text" label="Отчество"/>
+                                    <RegSelect name="groupName" type="range" label="Группа">
+                                        <option value={"none"}>---</option>
+                                        {groups && groups.map(el => <option value={el.groupName}>{el.groupName}</option>)}
+                                    </RegSelect>
+                                </div>
                             </div>
-                            <div className={style.horizontalGroup_group}>
-                                <RegTextInput name="surname" type="text" label="Фамилия"/>
-                                <RegTextInput name="name" type="text" label="Имя"/>
-                                <RegTextInput name="patronymic" type="text" label="Отчество"/>
-                                <RegSelect name="groupName" type="range" label="Группа">
-                                    <option value={"none"}>---</option>
-                                    {groups && groups.map(el => <option value={el.groupName}>{el.groupName}</option>)}
-                                </RegSelect>
-                            </div>
-                        </div>
-                        <button className="button_classic" type="submit" disabled={isSubmitting}>Зарегистрироваться</button>
-                    </Form>
-                </div>
-            )}
-        </Formik>
+                            <button className="button_classic" type="submit" disabled={isSubmitting}>Зарегистрироваться</button>
+                        </Form>
+                    </div>
+                )}
+            </Formik>
     )
 }
 

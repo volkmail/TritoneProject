@@ -46,12 +46,21 @@
 
 .profileInfo{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     /*border: solid black 1px;*/
     border-radius: 15px 0 0 15px ;
     height: 5.5vh;
     padding:0 0.5vw 0 0.5vw;
     background-color: #ebffeb;
+}
+
+.profileInfo>p:nth-child(1){
+    background-color: #b6fdb6;
+    border-radius: 15px;
+    padding: .5vh;
+    margin-bottom: .3vh;
 }
 
 /*.profileInfo:hover{*/

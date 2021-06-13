@@ -11,12 +11,6 @@ type DiagramStepInfo = {
     isSAZOn?: boolean
 }
 
-type TestingInfo = {
-    section1: boolean,
-    section2: boolean,
-    section3: boolean,
-}
-
 type DataSetType = {
     frequency: Array<number>,
     signalLevelMax: Array<number>,
@@ -79,6 +73,33 @@ type QuizAnswer = {
     answerText: string
 }
 
+type QuizSelectedAnswers = {
+    questionId: number,
+    answerId: number
+}
+
+type QuizResult = {
+    questionId: number,
+    answerText: string,
+    isRight: boolean
+}
+
+type StatisticType = {
+    surname: string,
+    name: string,
+    patronymic: string,
+    groupName: string,
+    sections: Array<boolean>,
+    diagramResults: Array<string>,
+    timeStart: Date,
+    timeEnd: Date
+}
+
+type GroupEdit = {
+    groupId: number,
+    groupName: string
+}
+
 enum signalKeys {
     signalLevelMax = "signalLevelMax",
     signalLevel = "signalLevel",
@@ -107,7 +128,6 @@ export {
 
 export type {
     DiagramElementType,
-    TestingInfo,
     DiagramStepInfo,
     DataSetType,
     DataSetTypeForViewResult,
@@ -118,5 +138,8 @@ export type {
     QuizType,
     QuizQuestion,
     QuizAnswer,
-
+    QuizSelectedAnswers,
+    QuizResult,
+    StatisticType,
+    GroupEdit
 }

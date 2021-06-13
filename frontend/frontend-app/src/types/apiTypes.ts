@@ -38,7 +38,7 @@ type ResponseSectionElement = {
 }
 
 type ResponseTestingInfo = {
-    sections: Array<Boolean>,
+    sections: Array<boolean>,
 }
 
 type ResponseCurrentStep = {
@@ -61,7 +61,8 @@ export type {
     ResponseSectionElement,
     ResponseTestingInfo,
     ResponseCurrentStep,
-    ResponseDataSet
+    ResponseDataSet,
+
 }
 
 export {

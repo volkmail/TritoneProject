@@ -44,10 +44,32 @@
     transition: 0.5s;
     padding: 1vh;
     box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.button_start_disabled{
+    letter-spacing: 1px;
+    font-size: 1em;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: #000;
+    background-color: #d6d6d6;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+    padding: 1vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.button_start>a{
     text-decoration: none;
+    color: black;
 }
 
 .button_start:hover {
     background-color: #99ff99;
     transform: scale(1.05);
+}
+
+.locked{
+
 }
