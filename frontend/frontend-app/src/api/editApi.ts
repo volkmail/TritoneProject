@@ -1,6 +1,6 @@
 import axios from "axios";
 import {ServerResponseCodesTypes} from "../types/apiTypes";
-import {GroupEdit, QuizType} from "../types/generalTypes";
+import {EditQuestion, GroupEdit, QuizType} from "../types/generalTypes";
 
 const GetJwt = () => localStorage.getItem("JWT") || "";
 
@@ -21,6 +21,28 @@ export const EditApi = {
             .then(response => {
                 if(response.status === ServerResponseCodesTypes.Ok)
                     return response.data;
+            })
+    },
+    EditQuestion (question: EditQuestion){
+        return axios.post("https://localhost:44380/api/editing/editTest",{
+            questionId: question.questionId,
+            questionText: question.questionText,
+            answers: question.answers,
+        },{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return "done";
+            })
+    },
+    DeleteQuestion (questionId: number){
+        return axios.post("https://localhost:44380/api/editing/deleteQuestion", {questionId: questionId},{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return "done";
             })
     },
 }

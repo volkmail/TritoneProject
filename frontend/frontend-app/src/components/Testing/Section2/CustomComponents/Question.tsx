@@ -21,7 +21,7 @@ const Question: React.FC<PropsType> = (props) => {
 
     useEffect(() => {
         SetValue(`${props.currentQuestion.answers[0].answerId}`);
-        props.SetSelectedAnswer(props.currentQuestion.answers[0].answerId);
+        props.SetSelectedAnswer(props.currentQuestion.answers[0].answerId!);
     }, [props.currentQuestion.answers[0].answerId])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

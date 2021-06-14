@@ -89,41 +89,58 @@ namespace TritonBackend.Controllers
 
         //[Authorize]
         [Route("api/editing/editTest")]
-        [HttpGet]
-        public ActionResult EditQuestions(EditQuestionRequest request)
+        [HttpPost]
+        public ActionResult EditQuestions([FromBody]EditQuestionRequest request)
         {
             if (_context.Questions.ToList().Exists(q => q.QuestionId == request.questionId))
             {
                 Question question = _context.Questions.Single(q => q.QuestionId == request.questionId);
                 List<Answer> answers = _context.Answers.Where(a => a.QuestionId == question.QuestionId).ToList();
 
-                for (int i = 0; i < request.answers.Count; i++)
+                for (int i = 0; i < request.answers.Length; i++)
                 {
                     answers[i].AnswerText = request.answers[i].answerText;
                     answers[i].isRight = (bool)request.answers[i].answerRight;
-                    _context.Entry(answers).State = EntityState.Modified;
+                    _context.Entry(answers[i]).State = EntityState.Modified;
                 }
 
                 _context.SaveChanges();
             }
-            else 
+            else
             {
                 Quiz quiz = _context.Quizzes.Single(q => q.QuizId == 1);
                 _context.Questions.Add(new Question
                 {
-                    QuestionId = request.questionId,
                     QuizId = quiz.QuizId,
                     QuestionText = request.questionText
                 });
 
                 _context.SaveChanges();
 
+                int questionLastId = _context.Questions.Max(q => q.QuestionId);
+
                 foreach (var answer in request.answers)
                 {
-                    _context.Answers.Add(new Answer { AnswerText = answer.answerText, isRight = (bool)answer.answerRight });
+                    _context.Answers.Add(new Answer { QuestionId = questionLastId, AnswerText = answer.answerText, isRight = (bool)answer.answerRight });
                 }
 
-                _context.SaveChanges();                
+                _context.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        //[Authorize]
+        [Route("api/editing/deleteQuestion")]
+        [HttpPost]
+        public ActionResult DeleteQuestion([FromBody] DeleteQuestionRequest request)
+        {
+            if (_context.Questions.ToList().Exists(q => q.QuestionId == request.questionId))
+            {                
+                Question question = _context.Questions.Single(q => q.QuestionId == request.questionId);
+                _context.Questions.Remove(question);
+
+                _context.SaveChanges();
             }
 
             return Ok();

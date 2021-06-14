@@ -69,7 +69,7 @@ type QuizQuestion = {
 }
 
 type QuizAnswer = {
-    answerId: number,
+    answerId?: number,
     answerText: string
     answerRight?: boolean
 }
@@ -86,11 +86,9 @@ type QuizResult = {
 }
 
 type EditQuestion = {
-    questionId: string,
+    questionId: number,
     questionText: string,
-    answer1: string,
-    answer2: string,
-    answer3: string,
+    answers: Array<QuizAnswer>
 }
 
 type StatisticType = {
@@ -150,5 +148,6 @@ export type {
     QuizSelectedAnswers,
     QuizResult,
     StatisticType,
-    GroupEdit
+    GroupEdit,
+    EditQuestion
 }

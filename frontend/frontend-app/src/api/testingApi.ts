@@ -106,7 +106,6 @@ export const TestingAPI = {
             })
     },
     GetTestResults(answers: Array<QuizSelectedAnswers>){
-
         return axios.put<any>("https://localhost:44380/api/testing/getTestResult",{
             answers
         },{

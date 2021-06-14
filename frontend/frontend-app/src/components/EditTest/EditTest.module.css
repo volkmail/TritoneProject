@@ -138,6 +138,12 @@
     padding: 1vh;
 }
 
+.checkboxGroup{
+    width: 35vw;
+    position: relative;
+    padding: 1vh;
+}
+
 .inputGroup__input {
     padding: 0 0 10px 0;
     margin: 20px 0px;

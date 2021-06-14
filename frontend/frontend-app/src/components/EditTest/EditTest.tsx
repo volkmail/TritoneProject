@@ -4,7 +4,6 @@ import QuestionEditor from "./QuestionEditor";
 import {useDispatch, useSelector} from "react-redux";
 import {GetTest} from "../../redux/ThunkCreators/editThunks";
 import {SelectTest} from "../../redux/selectors/edit-selectors";
-import {QuizQuestion} from "../../types/generalTypes";
 
 const EditTest = () => {
     const test = useSelector(SelectTest);
@@ -29,8 +28,8 @@ const EditTest = () => {
                                     answerText: el.answers[1].answerText,
                                     answerRight: el.answers[1].answerRight!,
                                 },{
-                                    answerText: el.answers[1].answerText,
-                                    answerRight: el.answers[1].answerRight!,
+                                    answerText: el.answers[2].answerText,
+                                    answerRight: el.answers[2].answerRight!,
                                 }];
                                 return <QuestionEditor
                                     questionId={el.questionId.toString()}

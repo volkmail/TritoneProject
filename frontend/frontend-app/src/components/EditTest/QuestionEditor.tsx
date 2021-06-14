@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import style from "./EditTest.module.css"
-import {QuizType} from "../../types/generalTypes";
+import {EditQuestion, QuizAnswer, QuizType} from "../../types/generalTypes";
 import {Form, Formik, FormikValues, useField} from "formik";
-import {NavLink} from "react-router-dom";
-import {LogInUser} from "../../redux/ThunkCreators/userThunks";
 import CreateTwoToneIcon from '@material-ui/icons/CreateTwoTone';
 import CancelTwoToneIcon from '@material-ui/icons/CancelTwoTone';
 import CheckTwoToneIcon from '@material-ui/icons/CheckTwoTone';
+import {useDispatch} from "react-redux";
+import {deleteQuestion, editQuestion} from "../../redux/ThunkCreators/editThunks";
 
 type PropsType = {
     questionId: string,
@@ -31,13 +31,14 @@ type QuestionFromikValuesType = {
 
 type CustomTextInputPropsType = {
     name: string,
-    type: string,
+    type?: string,
     label: string,
     validate?: (value: any) => undefined | string | Promise<any>
 }
 
 const QuestionEditor: React.FC<PropsType> = (props) => {
     const [isEdit, SetIsEdit] = useState(false);
+    const dispatch = useDispatch();
 
     const initValues: QuestionFromikValuesType = {
         questionId: props.questionId,
@@ -51,13 +52,31 @@ const QuestionEditor: React.FC<PropsType> = (props) => {
     };
 
     const submit = async (values: FormikValues, actions: any) => {
-        console.log(values);
+        let answers: QuizAnswer[] = [{
+            answerText: values.answer1,
+            answerRight: values.answer1Right,
+        },{
+            answerText: values.answer2,
+            answerRight: values.answer2Right,
+        },{
+            answerText: values.answer3,
+            answerRight: values.answer3Right,
+        }];
+
+
+        let editQuestionData: EditQuestion = {
+            questionId: parseInt(values.questionId),
+            questionText: values.questionText,
+            answers
+        }
+
+        dispatch(editQuestion(editQuestionData));
         SetIsEdit(isEdit=>!isEdit);
     }
 
-    // const editClick = () => {
-    //
-    // }
+    const deleteClick = () => {
+        dispatch(deleteQuestion(parseInt(props.questionId)));
+    }
 
     return (
         <Formik
@@ -72,7 +91,7 @@ const QuestionEditor: React.FC<PropsType> = (props) => {
                             <CreateTwoToneIcon style={{color: "#21a421"}} fontSize="small"/>
                         </button>
                         {!props.isNew
-                        && <button className={style.deleteButton}>
+                        && <button className={style.deleteButton} onClick={deleteClick}>
                             <CancelTwoToneIcon style={{color: "#a42121"}} fontSize="small"/>
                         </button>
                         }
@@ -83,6 +102,9 @@ const QuestionEditor: React.FC<PropsType> = (props) => {
                         <TextInput name="answer1" type="text" label="Текст ответа №1"/>
                         <TextInput name="answer2" type="text" label="Текст ответа №2"/>
                         <TextInput name="answer3" type="text" label="Текст ответа №3"/>
+                        <CheckBoxInput name="answer1Right" label="Правильный ответ №1"/>
+                        <CheckBoxInput name="answer2Right" label="Правильный ответ №2"/>
+                        <CheckBoxInput name="answer3Right" label="Правильный ответ №3"/>
                         <button type="submit">
                             <CheckTwoToneIcon style={{color: "#21a421"}} fontSize="small"/>
                         </button>
@@ -91,7 +113,6 @@ const QuestionEditor: React.FC<PropsType> = (props) => {
                 </div>
             )}
         </Formik>
-
     );
 };
 
@@ -110,6 +131,18 @@ const TextInput = (props: CustomTextInputPropsType) => {
         </div>
     )
 }
+
+const CheckBoxInput = (props: CustomTextInputPropsType) => {
+    const [field, meta] = useField(props);
+
+    return (
+        <div className={style.checkboxGroup}>
+            <label>{props.label}</label>
+            <input type={"checkbox"} checked={field.value} {...field} {...props}/>
+        </div>
+    )
+}
+
 
 export default QuestionEditor;
 
