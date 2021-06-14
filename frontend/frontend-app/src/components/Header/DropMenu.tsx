@@ -115,7 +115,7 @@ export default function DropMenu() {
                                     <CreateTwoToneIcon style={{color: "#8ed78e"}} fontSize="small"/>
                                 </ListItemIcon>
                                 <ListItemText>
-                                    <NavLink to={"/statistic"} style={{textDecoration: "none", color: "black"}}>Ред. теста</NavLink>
+                                    <NavLink to={"/edit/test"} style={{textDecoration: "none", color: "black"}}>Ред. теста</NavLink>
                                 </ListItemText>
                             </StyledMenuItem>
                             <StyledMenuItem>

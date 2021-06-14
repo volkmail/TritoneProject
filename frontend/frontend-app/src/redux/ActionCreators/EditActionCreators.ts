@@ -1,4 +1,4 @@
-import {GroupEdit} from "../../types/generalTypes";
+import {GroupEdit, QuizType} from "../../types/generalTypes";
 
 const setGroups = (groups: Array<GroupEdit>) => {
     return {
@@ -7,6 +7,14 @@ const setGroups = (groups: Array<GroupEdit>) => {
     } as const
 }
 
+const setTest = (test: QuizType) => {
+    return {
+        type: 'SET_TEST',
+        test
+    } as const
+}
+
+
 // const addGroup = (groupName: string) => {
 //     return {
 //         type: "ADD_GROUYP"
@@ -14,5 +22,7 @@ const setGroups = (groups: Array<GroupEdit>) => {
 // }
 
 export {
-    setGroups
+    setGroups,
+    setTest,
+
 }

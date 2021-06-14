@@ -1,10 +1,11 @@
 import {EditActionsTypes} from "../../types/actionsTypes";
-import {GroupEdit} from "../../types/generalTypes";
+import {GroupEdit, QuizType} from "../../types/generalTypes";
 
 type EditInitialStateType = typeof initialState;
 
 let initialState = {
     groups: [] as Array<GroupEdit>,
+    test: null as QuizType
 }
 
 const editReducer = (state: EditInitialStateType = initialState, action: EditActionsTypes): EditInitialStateType => {
@@ -13,6 +14,11 @@ const editReducer = (state: EditInitialStateType = initialState, action: EditAct
             return {
                 ...state,
                 groups: action.groups
+            }
+        case "SET_TEST":
+            return {
+                ...state,
+                test: action.test
             }
         default:
             return state;

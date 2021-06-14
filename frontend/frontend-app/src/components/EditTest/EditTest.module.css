@@ -1,0 +1,185 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-image: url(../../assets/img/background1.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.container>p{
+    align-self: center;
+    margin: 11vh 0 2vh 0;
+    font-size: 1.4rem;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    max-height: 80vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 72vw;
+    background-color: #FFFFFF;
+    padding: 1vh;
+    border-radius: 15px;
+    max-height: 80vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+    overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar{
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0.25vh 1vh rgba(0, 0, 0, 0.75);
+    border: 0 transparent;
+    border-radius: 30px;
+}
+
+.content::-webkit-scrollbar-thumb{
+    background-color: rgba(200, 200, 200, 0.75);
+    border: 0 transparent;
+    border-radius: 30px;
+}
+
+.question{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 1vh 0 1vh 0;
+    background-color: #f8f8f8;
+    padding: 1vh;
+    border-radius: 15px;
+    max-height: 90vh;
+    box-shadow: 0 0.25vh 0.5vh black;
+}
+
+.question_title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 30vw;
+}
+
+.editButton{
+    border-radius: 15px;
+    border: transparent;
+    padding: 1vh;
+    transition: 0.5s;
+    margin-left: .5vw;
+}
+
+.deleteButton{
+    border-radius: 15px;
+    border: transparent;
+    padding: 1vh;
+    transition: 0.5s;
+    margin-left: .5vw;
+}
+
+.editButton:hover{
+    border-radius: 15px;
+    background-color: #c4ffc4;
+    transform: scale(1.2);
+}
+
+.deleteButton:hover{
+    border-radius: 15px;
+    background-color: #ffc4c4;
+    transform: scale(1.2);
+}
+
+.editBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin-right: 1vw;
+    opacity: 0;
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    -moz-transition: opacity .9s, max-height .9s, max-width .9s;
+    -ms-transition: opacity .9s, max-height .9s max-width .9s;
+    transition: opacity .9s, max-height .9s, max-width .9s;
+}
+
+.editBlock>button{
+    border-radius: 15px;
+    border: transparent;
+    padding: 1vh;
+    transition: 0.5s;
+    margin-right: .5vw;
+}
+
+.editBlock>button:hover{
+    border-radius: 15px;
+    background-color: #c4ffc4;
+    transform: scale(1.2);
+}
+
+.expandedEditBlock{
+    opacity: 1;
+    max-height: 90vh;
+    max-width: 80vw;
+}
+
+.inputGroup {
+    width: 35vw;
+    position: relative;
+    margin: 1.75vh;
+    padding: 1vh;
+}
+
+.inputGroup__input {
+    padding: 0 0 10px 0;
+    margin: 20px 0px;
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+    outline: none;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.inputGroup__input :focus {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.9);
+}
+
+.inputGroup__label {
+    position: absolute;
+    left: 5px;
+    top: -8px;
+    z-index: 1;
+    color: black;
+    /*color: #158c12;*/
+    /*text-shadow: black 0.3px 0.3px 0.1px;*/
+    transition: 0.35s ease-in-out;
+}
+
+.inputGroup__input:focus ~ .inputGroup__label {
+    top: -13px;
+    font-size: 1rem;
+    /*color: #81c57d;*/
+}
+
+.inputGroup__errorHidden{
+    position: absolute;
+    visibility: hidden;
+    font-size: 0.75rem;
+}
+
+.inputGroup__errorVisible{
+    position: absolute;
+    bottom: -0.25vh;
+    right: 10vw;
+    color: red;
+    font-size: 0.75rem;
+}

@@ -71,6 +71,7 @@ type QuizQuestion = {
 type QuizAnswer = {
     answerId: number,
     answerText: string
+    answerRight?: boolean
 }
 
 type QuizSelectedAnswers = {
@@ -82,6 +83,14 @@ type QuizResult = {
     questionId: number,
     answerText: string,
     isRight: boolean
+}
+
+type EditQuestion = {
+    questionId: string,
+    questionText: string,
+    answer1: string,
+    answer2: string,
+    answer3: string,
 }
 
 type StatisticType = {

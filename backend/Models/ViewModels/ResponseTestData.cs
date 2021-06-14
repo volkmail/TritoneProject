@@ -18,7 +18,8 @@ namespace TritonBackend.Models.ViewModels
 
     public class ResponseAnswer
     {
-        public int answerId { get; set; }
+        public int? answerId { get; set; }
         public string answerText { get; set; }
+        public bool? answerRight { get; set; }
     }  
 }

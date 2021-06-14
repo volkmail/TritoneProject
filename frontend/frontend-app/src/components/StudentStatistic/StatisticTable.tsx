@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {DataGrid, GridColumns, GridEditCellPropsParams, GridRowsProp} from '@material-ui/data-grid';
-import {useMemo} from "react";
-import {CreateTableColumns, CreateTableRows} from "../../functions/PointTestFunctions";
 
 type PropsType = {
     tableColumns: GridColumns,
@@ -16,7 +14,7 @@ const StatisticTable: React.FC<PropsType> = (propsA) => {
     }
 
     return (
-        <div style={{height: "50vh", width: '100%'}}>
+        <div style={{height: "70vh", width: '80vw'}}>
             <DataGrid
                 disableColumnMenu={true}
                 rows={propsA.tableRows}
