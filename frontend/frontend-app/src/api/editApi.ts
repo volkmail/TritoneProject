@@ -14,6 +14,29 @@ export const EditApi = {
                     return response.data;
             })
     },
+    EditGroup (groupId: number, groupName: string){
+        return axios.post<{groupResponse: Array<GroupEdit>}>("https://localhost:44380/api/editing/editGroup",{
+            groupId: groupId,
+            groupName: groupName,
+        },{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return "done";
+            })
+    },
+    DeleteGroup (groupId: number){
+        return axios.post<{groupResponse: Array<GroupEdit>}>("https://localhost:44380/api/editing/deleteGroup",{
+            groupId: groupId
+        },{
+            headers:{"Authorization":`Bearer ${GetJwt()}`}
+        })
+            .then(response => {
+                if(response.status === ServerResponseCodesTypes.Ok)
+                    return "done";
+            })
+    },
     GetTest (){
         return axios.get<{test: QuizType}>("https://localhost:44380/api/editing/getTest",{
             headers:{"Authorization":`Bearer ${GetJwt()}`}

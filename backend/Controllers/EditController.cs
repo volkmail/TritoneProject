@@ -146,5 +146,47 @@ namespace TritonBackend.Controllers
             return Ok();
         }
 
+        //[Authorize]
+        [Route("api/editing/editGroup")]
+        [HttpPost]
+        public ActionResult EditGroups([FromBody] EditGroupRequest request)
+        {
+            if (_context.Groups.ToList().Exists(q => q.GroupId == request.groupId))
+            {
+                Group group = _context.Groups.Single(q => q.GroupId == request.groupId);
+
+                group.GroupName = request.groupName;                
+                _context.Entry(group).State = EntityState.Modified;
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.Groups.Add(new Group
+                {
+                    GroupName = request.groupName,
+                });
+                _context.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        //[Authorize]
+        [Route("api/editing/deleteGroup")]
+        [HttpPost]
+        public ActionResult DeleteGroup([FromBody] DeleteGroupRequest request)
+        {
+            if (_context.Groups.ToList().Exists(q => q.GroupId == request.groupId))
+            {
+                Group group = _context.Groups.Single(q => q.GroupId == request.groupId);
+                _context.Groups.Remove(group);
+
+                _context.SaveChanges();
+            }
+
+            return Ok();
+        }
+
     }
 }

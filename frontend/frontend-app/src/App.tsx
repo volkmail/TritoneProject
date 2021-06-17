@@ -16,8 +16,8 @@ import ViewResult from "./components/Testing/Section3/ViewResult";
 import Test from "./components/Testing/Section2/Test";
 import Exit from "./components/Exit/Exit";
 import StudentStatistic from "./components/StudentStatistic/StudentStatistic";
-import EditGroup from "./components/EditGroup/EditGroup.jsx";
 import EditTest from "./components/EditTest/EditTest";
+import EditGroup from "./components/EditGroup/EditGroup";
 
 const Help = React.lazy(() => import ('./components/Help/Help'));
 
