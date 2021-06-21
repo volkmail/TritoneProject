@@ -9,7 +9,7 @@
     border-radius: 30px;
     padding: 1vw;
     margin-top: 3vh;
-    width: 45vw
+    max-width: 60vw
 }
 
 .container_title{
@@ -44,6 +44,7 @@
     transition: 0.5s;
     padding: 1vh;
     box-shadow: 0 0.25vh 0.5vh black;
+    margin-left: .5vw;
 }
 
 .button_start_disabled{

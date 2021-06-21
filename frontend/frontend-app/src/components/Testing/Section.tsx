@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
 import {NavLink} from 'react-router-dom';
 import style from './Section.module.css'
+import {useDispatch} from "react-redux";
+import {SetSectionComplete} from "../../redux/ThunkCreators/testingThunks";
 
 type PropsType = {
     sectionTitle: string,
@@ -10,6 +12,21 @@ type PropsType = {
 }
 
 const Section: FC<PropsType> = (props: PropsType) => {
+    const dispatch = useDispatch()
+    const finishSection = () => {
+        switch (props.sectionTitle[7]){
+            case "1":
+                dispatch((SetSectionComplete(1)));
+                break;
+            case "2":
+                dispatch((SetSectionComplete(2)));
+                break;
+            case "3":
+                dispatch((SetSectionComplete(3)));
+                break;
+        }
+    }
+
     return (
         <div className={style.container}>
             <div className={style.container_title}>
@@ -27,6 +44,9 @@ const Section: FC<PropsType> = (props: PropsType) => {
                             ? <NavLink to={props.sectionRef}>Приступить к выполнению</NavLink>
                             : <>Приступить к выполнению</>
                     }
+                </button>
+                <button className={style.button_start} onClick={finishSection}>
+                    Завершить раздел
                 </button>
             </div>
         </div>

@@ -172,23 +172,25 @@ namespace TritonBackend.Controllers
         [Authorize]
         [Route("api/testing/setSectionComplete")]
         [HttpPut]
-        public ActionResult SetSectionComplete(int sectionNumber)
+        public ActionResult SetSectionComplete(RequestSectionComplete request)
         {
             Student student = _context.Students.Single(s => s.UserId == userId);
             Result result = _context.Results.Single(r => r.StudentId == student.StudentId);
 
-            switch (sectionNumber)
+            switch (request.sectionNumber)
             {
                 case 1:
                     {
                         result.Section1 = true;
                         _context.Entry(result).State = EntityState.Modified;
+                        _context.SaveChanges();
                         break;
                     }
                 case 2:
                     {
                         result.Section2 = true;
                         _context.Entry(result).State = EntityState.Modified;
+                        _context.SaveChanges();
                         break;
                     }
                 case 3:
@@ -196,11 +198,12 @@ namespace TritonBackend.Controllers
                         result.Section3 = true;
                         result.TimeEnd = DateTime.Now;
                         _context.Entry(result).State = EntityState.Modified;
+                        _context.SaveChanges();
                         break;
                     }
             }
 
-            _context.SaveChanges();
+            
 
             return Ok(new { isSectionResultSet = true });
         }
