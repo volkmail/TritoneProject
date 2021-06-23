@@ -71,6 +71,8 @@ namespace TritonBackend
                         .AllowAnyHeader();
                 });
             });
+
+            services.AddCoreAdmin();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -89,16 +91,19 @@ namespace TritonBackend
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"StaticFiles")),
-                RequestPath = "/StaticFiles"
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"StaticFiles")),
+            //    RequestPath = "/StaticFiles"
+            //});
 
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCoreAdminCustomUrl("admin");
         }
     }
 }

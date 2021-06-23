@@ -312,3 +312,15 @@ C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\obj\Debug\netcorea
 C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\obj\Debug\netcoreapp3.1\TritonBackend.dll
 C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\obj\Debug\netcoreapp3.1\TritonBackend.pdb
 C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\obj\Debug\netcoreapp3.1\TritonBackend.genruntimeconfig.cache
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\TritonBackend.StaticWebAssets.xml
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\DotNetEd.CoreAdmin.Views.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\DotNetEd.CoreAdmin.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.Host.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\bin\Debug\netcoreapp3.1\Mvc.Grid.Core.dll
+C:\Users\volko\Desktop\main\myProjects\TritoneProject\backend\obj\Debug\netcoreapp3.1\TritonBackend.MvcApplicationPartsAssemblyInfo.cs

@@ -1,1 +1,3 @@
-﻿<StaticWebAssets Version="1.0" />
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/CoreAdmin" Path="C:\Users\volko\.nuget\packages\coreadmin\1.4.0\build\..\staticwebassets\" />
+</StaticWebAssets>
