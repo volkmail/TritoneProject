@@ -20,7 +20,8 @@ let initialState = {
     authError: "" as string,
     loginIsBusy: false as boolean,
     isReg: false as boolean,
-    groups: [] as Array<GroupType>
+    groups: [] as Array<GroupType>,
+    isFetching: false as boolean
 }
 
 const userReducer = (state: UserInitialStateType = initialState, action: UserActionsTypes): UserInitialStateType => {
@@ -101,6 +102,16 @@ const userReducer = (state: UserInitialStateType = initialState, action: UserAct
                 currentUser: {...initialCurrentUser}
             }
         }
+        case "IS_FETCHING_ON":
+            return {
+                ...state,
+                isFetching: true
+            }
+        case "IS_FETCHING_OFF":
+            return {
+                ...state,
+                isFetching: false
+            }
         default: {
             return state;
         }

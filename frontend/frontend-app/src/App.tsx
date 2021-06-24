@@ -81,6 +81,4 @@ const App = (props: any) => {
     );
 }
 
-// render={() => <ViewResultPoint/>}
-
 export default withRouter(App);

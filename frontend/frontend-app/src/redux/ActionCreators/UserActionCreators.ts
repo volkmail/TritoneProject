@@ -51,6 +51,18 @@ const LogOut = () => {
     } as const
 }
 
+const FetchingOn = () => {
+    return{
+        type:"IS_FETCHING_ON"
+    } as const
+}
+
+const FetchingOff = () => {
+    return{
+        type:"IS_FETCHING_OFF"
+    } as const
+}
+
 export {
     AuthMe,
     AuthError,
@@ -60,5 +72,6 @@ export {
     RegistrationStudent,
     InitUser,
     LogOut,
-
+    FetchingOn,
+    FetchingOff
 }

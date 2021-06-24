@@ -91,13 +91,13 @@ namespace TritonBackend
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"StaticFiles")),
-            //    RequestPath = "/StaticFiles"
-            //});
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"StaticFiles")),
+                RequestPath = "/StaticFiles"
+            });
 
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

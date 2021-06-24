@@ -39,11 +39,16 @@ const isLoginBusy = (state: AppStateType) => {
     return state.userData.loginIsBusy;
 }
 
+const selectIsFetching = (state: AppStateType) => {
+    return state.userData.isFetching
+}
+
 export{
     GetUserAccessToken,
     GetAuthError,
     GetUserInfo,
     GetGroups,
     isRegDone,
-    isLoginBusy
+    isLoginBusy,
+    selectIsFetching
 }
