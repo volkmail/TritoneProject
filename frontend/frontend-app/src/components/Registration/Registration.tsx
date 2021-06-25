@@ -134,8 +134,9 @@ const Registration = () => {
     }
 
     const submit = (values: FormikValues, actions: any) => {
-        // alert(JSON.stringify(values));
-        dispatch(RegistrStudent(values.login, values.password, values.name, values.surname, values.patronymic, values.groupName));
+        let sha1 = require("sha1");
+        const passwordHash:string = sha1(values.password, {asString: true}).substring(0,10);
+        dispatch(RegistrStudent(values.login, passwordHash, values.name, values.surname, values.patronymic, values.groupName));
         actions.setSubmitting(true);
     }
 

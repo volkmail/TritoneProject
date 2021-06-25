@@ -40,7 +40,10 @@ const Auth = () => {
     });
 
     const submit = async (values: FormikValues, actions: any) => {
-        await dispatch(LogInUser(values.login, values.password));
+        let sha1 = require("sha1");
+        const passwordHash:string = sha1(values.password, {asString: true}).substring(0,10);
+        let a = 1;
+        await dispatch(LogInUser(values.login, passwordHash));
         actions.setSubmitting(true);
     }
 
