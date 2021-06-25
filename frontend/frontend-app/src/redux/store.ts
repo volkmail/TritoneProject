@@ -1,4 +1,4 @@
-import {combineReducers, createStore, applyMiddleware} from "redux";
+import {combineReducers, createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import {helpReducer} from "./reducers/help-reducer";
 import {diagramReducer} from "./reducers/TestReducers/diagramElements-reducer";
