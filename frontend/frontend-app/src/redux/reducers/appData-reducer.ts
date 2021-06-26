@@ -3,7 +3,7 @@ type AppDataInitialStateType = typeof initialState;
 let initialState = {
     testPart: {
         sectionData: [{
-            sectionTitle: "Раздел 1. Построение схемы соединия компонентов устройства",
+            sectionTitle: "Раздел 1. Построение схемы соединия компонентов",
             sectionBody: "В данном разделе вам предстоит собрать схему компонентов анализатора спектра Тритон. \n " +
                 "Вам будет дан набор готовых компонентов, которые необходимо правильно соединить.",
             sectionRef: "/testing/diagram"

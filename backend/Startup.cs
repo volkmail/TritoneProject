@@ -97,7 +97,7 @@ namespace TritonBackend
                 RequestPath = "/StaticFiles"
             });
 
-            //app.UseStaticFiles();
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

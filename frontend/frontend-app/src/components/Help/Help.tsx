@@ -5,6 +5,8 @@ import EquipmentArticle from "./HelpArticles/EquipmentArticle";
 import {useSelector} from "react-redux";
 import {GetArticleId} from "../../redux/selectors/help-selector";
 import ArticleList from "./HelpArticleList/ArticleList";
+import Author from "./Author/Author";
+import AboutStand from "./AboutStand/AboutStand";
 
 const Help = () => {
 
@@ -14,7 +16,8 @@ const Help = () => {
         switch (id){
             case 1: return <GeneralArticle/>;
             case 2: return <EquipmentArticle/>;
-            case 3: return <p>Здесь когда-то что-то появится :)</p>
+            case 3: return <AboutStand/>
+            case 4: return <Author/>
             default: return <p>Something wrong!</p>
         }
     }

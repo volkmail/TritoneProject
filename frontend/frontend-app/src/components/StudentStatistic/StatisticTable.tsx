@@ -14,7 +14,7 @@ const StatisticTable: React.FC<PropsType> = (propsA) => {
     }
 
     return (
-        <div style={{height: "70vh", width: '80vw'}}>
+        <div style={{height: "70vh", width: '85vw'}}>
             <DataGrid
                 disableColumnMenu={true}
                 rows={propsA.tableRows}

@@ -387,7 +387,8 @@ namespace TritonBackend.Controllers
                     {
                         testingResult.CountTries += 1;
                         _context.Entry(testingResult).State = EntityState.Modified;
-                        result.Section3 = true;                        
+
+                        result.Section2 = true;                        
                         _context.Entry(result).State = EntityState.Modified;
                         _context.SaveChanges();
                     }

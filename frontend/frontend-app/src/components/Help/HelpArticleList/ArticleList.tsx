@@ -16,7 +16,8 @@ const ArticleList = () => {
             <ul id='article_list'>
                 <li id="1" onClick={onChoiceArticle}>Общие сведения</li>
                 <li id="2" onClick={onChoiceArticle}>Комплектация</li>
-                <li id="3" onClick={onChoiceArticle}>Управление</li>
+                <li id="3" onClick={onChoiceArticle}>Об учебном стенде</li>
+                <li id="4" onClick={onChoiceArticle}>Об авторе</li>
             </ul>
         </div>
     );
