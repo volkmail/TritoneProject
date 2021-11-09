@@ -1,2 +1,2 @@
 # TritoneProject
-My thesis project
+My thesis project in FESTU
